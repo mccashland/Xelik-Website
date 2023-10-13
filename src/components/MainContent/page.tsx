@@ -1,32 +1,41 @@
-import Banner from "@/components/Banner/page";
-import LogoHeader from "@/components/LogoHeader/page";
-import Image from "next/image";
+import Link from "next/link";
 
-export default function MainContent() {
+interface Props {
+  content: {
+    mainImage: any;
+    text1: any;
+    text2: any;
+    description: any;
+    button: any;
+  };
+}
+export default function MainContent({ content }: Props) {
+  const { mainImage, text1, text2, description, button } = content;
   return (
-    <div className="w-full flex justify-center items-center">
-      <div className="flex">
+    <div className="w-full flex flex-col justify-center items-center">
+      <div className="flex items-center gap-10 w-[85%]">
         <div>
-          <div className="w-[5vw] h-[4vh]">
-            {/* <Image
-              className="-rotate-90"
-              src="/assets/imgs/Arrow Down.svg"
-              layout="fill"
-              alt="arrow"
-            /> */}
-            <div className="text-[#fff]">Revolutionizing</div>
-          </div>
-          <div className="text-[#fff]">Fittness Education</div>
-          <div className="text-[rgba(255,255,255,1)]">
-            We form long-term partnerships with passionate coaches. We enable
-            coaches through mentorship, technology, and community to help their
-            clients reach health and performance goals.
+          <div className="w-[70%]">
+            <div className="flex items-center gap-3">
+              <img src="/assets/imgs/Arrow Small.svg" alt="" />
+              <div className="text-[#fff] text-[40px]">{text1}</div>
+            </div>
+            <div className="text-[#fff] text-[40px]">{text2}</div>
+            <div className="text-[rgba(255,255,255,1)] opacity-70 text-[24px]">
+              {description}
+            </div>
           </div>
         </div>
-        <div className="relative w-full h-full">
-            <Image src="/assets/imgs/main-coaches.svg" alt="main image" layout="fill" />
+        <div className="relative w-[50vw] h-full">
+          <img src={mainImage} alt="main image" />
         </div>
       </div>
+      <Link
+        href={button.link}
+        className="bg-[#CE0019] text-[#fff] rounded-lg p-4 my-20"
+      >
+        {button.text}
+      </Link>
     </div>
   );
 }
