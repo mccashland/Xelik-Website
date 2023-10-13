@@ -1,24 +1,26 @@
 import Banner from "@/components/Banner/page";
+import Footer from "@/components/Footer/page";
 import LogoHeader from "@/components/LogoHeader/page";
 import MainContent from "@/components/MainContent/page";
 
 export default function Clients() {
   const content = {
-    text1: "Revolutionizing",
-    text2: " Fitness Education",
+    text1: "Your Partner",
+    text2: "  in Fitness Success",
     description:
-      "We form long-term partnerships with passionate coaches.  We enable coaches through mentorship, technology, and community to help their clients reach health and performance goals.",
-    mainImage: "/assets/imgs/main-coaches.svg",
+      "We help anyone who is looking to increase their health or performance. A customized plan and specialized coach are matched to each client's unique goals to optimize their likelihood of success.",
+    mainImage: "/assets/imgs/main-clients.svg",
     button: {
-      text: "Apply to be an Xelik Coach",
-      link: "https://api.leadconnectorhq.com/widget/survey/yi7KwlAQXjdPTDPhPSFI",
+      text: "Apply to get coaching",
+      link: "https://api.leadconnectorhq.com/widget/survey/JhvqI3KixDwshiVbA4bz",
     },
   };
   return (
     <div>
       <LogoHeader />
-      <Banner text={"Coaches"} />
+      <Banner text={"Clients"} />
       <MainContent content={content} />
+      <Footer/>
     </div>
   );
 }

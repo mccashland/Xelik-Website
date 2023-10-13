@@ -14,9 +14,9 @@ export default function MainContent({ content }: Props) {
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <div className="flex items-center gap-10 w-[85%]">
-        <div>
-          <div className="w-[70%]">
-            <div className="flex items-center gap-3">
+        <div className="lg:flex flex-col">
+          <div className="w-[70%] ">
+            <div className="flex  items-center gap-3">
               <img src="/assets/imgs/Arrow Small.svg" alt="" />
               <div className="text-[#fff] text-[40px]">{text1}</div>
             </div>

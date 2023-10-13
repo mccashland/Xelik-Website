@@ -1,4 +1,5 @@
 import Banner from "@/components/Banner/page";
+import Footer from "@/components/Footer/page";
 import LogoHeader from "@/components/LogoHeader/page";
 import MainContent from "@/components/MainContent/page";
 
@@ -19,6 +20,7 @@ export default function Coaches() {
       <LogoHeader />
       <Banner text={"Coaches"} />
       <MainContent content={content} />
+      <Footer/>
     </div>
   );
 }
