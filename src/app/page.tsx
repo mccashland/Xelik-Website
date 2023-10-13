@@ -28,15 +28,9 @@ export default function Home() {
   return (
     <div>
       <LogoHeader />
-      <center className="h-full">
-        <Image
-          src="/assets/imgs/Arrow Down.svg"
-          // layout="fill"
-          width={10}
-          height={600}
-          alt="arrow line"
-        />
-        <div className="text-white py-4 flex flex-col gap-y-4">
+      <center className="h-full mt-[3vh]">
+        <img className="h-[20vh]" src="/assets/imgs/Arrow Down.svg" alt="arrow line" />
+        <div className="text-white flex my-10 flex-col gap-y-4">
           {items.map((item, key) => {
             return (
               <div key={key}>
@@ -51,12 +45,9 @@ export default function Home() {
             );
           })}
         </div>
-        <Image
-          className="rotate-180"
+        <img
+          className="rotate-180 h-[20vh]"
           src="/assets/imgs/Arrow Down.svg"
-          // layout="fill"
-          width={10}
-          height={500}
           alt="arrow line"
         />
       </center>
