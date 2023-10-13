@@ -39,7 +39,7 @@ export default function Home() {
         <div className="text-white py-4 flex flex-col gap-y-4">
           {items.map((item, key) => {
             return (
-              <div>
+              <div key={key}>
                 <Link
                   className="text-[#fff] text-[26px] hover:text-[#CE0019]"
                   key={key}
