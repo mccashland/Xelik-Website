@@ -13,6 +13,7 @@ export default function MainContent({ content }: Props) {
   const { mainImage, text1, text2, description, button } = content;
   return (
     <div className="w-full flex flex-col justify-center items-center">
+      <div></div>
       <div className="flex items-center gap-10 w-[85%]">
         <div className="lg:flex flex-col">
           <div className="w-[70%] ">
