@@ -16,7 +16,7 @@ export default function ContactUs() {
     },
   };
   return (
-    <div>
+    <div className="flex flex-col gap-10">
       <LogoHeader />
       <Banner text={"Contact Us"} />
       <MainContent content={content} />

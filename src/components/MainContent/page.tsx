@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 interface Props {
@@ -13,10 +14,16 @@ export default function MainContent({ content }: Props) {
   const { mainImage, text1, text2, description, button } = content;
   return (
     <div className="w-full flex flex-col justify-center items-center">
-      <div></div>
-      <div className="flex items-center gap-10 w-[85%]">
-        <div className="lg:flex flex-col">
-          <div className="w-[70%] ">
+      <div className="xl:flex xl:flex-row flex flex-col items-center xl:gap-10 gap-12 w-[85%]">
+        <div className="xl:flex ">
+          <div className="xl:w-[70%] lg:w-[80%] relative ">
+          <Image
+          className="cnt-img absolute right-7 bottom-20"
+            src="/assets/imgs/maincnt-backimg.svg"
+            alt="img"
+            width={200}
+            height={200}
+          />
             <div className="flex  items-center gap-3">
               <img src="/assets/imgs/Arrow Small.svg" alt="" />
               <div className="text-[#fff] text-[40px]">{text1}</div>
@@ -27,8 +34,8 @@ export default function MainContent({ content }: Props) {
             </div>
           </div>
         </div>
-        <div className="relative w-[50vw] h-full">
-          <img src={mainImage} alt="main image" />
+        <div className="relative xl:w-[50vw] lg:w-[60vw]  h-full">
+          <img className="w-full h-full" src={mainImage} alt="main image" />
         </div>
       </div>
       <Link

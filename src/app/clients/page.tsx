@@ -16,7 +16,7 @@ export default function Clients() {
     },
   };
   return (
-    <div>
+    <div className="flex flex-col gap-10">
       <LogoHeader />
       <Banner text={"Clients"} />
       <MainContent content={content} />

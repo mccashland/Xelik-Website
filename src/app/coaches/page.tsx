@@ -16,7 +16,7 @@ export default function Coaches() {
     },
   };
   return (
-    <div>
+    <div className="flex flex-col gap-10">
       <LogoHeader />
       <Banner text={"Coaches"} />
       <MainContent content={content} />

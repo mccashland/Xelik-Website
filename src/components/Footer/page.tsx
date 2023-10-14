@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
@@ -6,24 +7,49 @@ export default function Footer() {
       <div className=" text-[#FFFFFF] text-[40px]">Our Socials</div>
       <div className="icons">
         <div className="flex gap-[20px]">
-          <Link href="https://www.facebook.com/ElevateYourMindBodyLife">
-            <img src="/assets/imgs/f-facebook.svg" alt="facebook" />
+          <Link href="https://www.facebook.com/ElevateYourMindBodyLife" target="_blank">
+            <Image
+              width={60}
+              height={60}
+              src="/assets/imgs/f-facebook.svg"
+              alt="facebook"
+            />
           </Link>
-          <Link href=" https://twitter.com/Xelik_Fitness">
-            <img src="/assets/imgs/f-twitter.svg" alt="twitter" />
+          <Link href=" https://twitter.com/Xelik_Fitness" target="_blank">
+            <Image
+              width={60}
+              height={60}
+              src="/assets/imgs/f-twitter.svg"
+              alt="twitter"
+            />
           </Link>
-          <Link href="https://www.instagram.com/theelevatewellness/">
-            <img src="/assets/imgs/f-instagram.svg" alt="instagram" />
+          <Link href="https://www.instagram.com/theelevatewellness/" target="_blank">
+            <Image
+              width={60}
+              height={60}
+              src="/assets/imgs/f-instagram.svg"
+              alt="instagram"
+            />
           </Link>
-          <Link href="https://www.tiktok.com/@xelik_fitness">
-            <img src="/assets/imgs/f-tiktok.svg" alt="tiktok" />
+          <Link href="https://www.tiktok.com/@xelik_fitness" target="_blank">
+            <Image
+              width={60}
+              height={60}
+              src="/assets/imgs/f-tiktok.svg"
+              alt="tiktok"
+            />
           </Link>
-          <Link href="#">
-            <img src="/assets/imgs/f-google.svg" alt="google" />
+          <Link href="#" target="_blank">
+            <Image
+              width={60}
+              height={60}
+              src="/assets/imgs/f-google.svg"
+              alt="google"
+            />
           </Link>
         </div>
       </div>
-      <div className=" text-[#FFFFFF] text-[20px]"> + 178 34279277</div>
+      <div className=" text-[#FFFFFF] text-[20px]">+1 402-302-0745</div>
     </div>
   );
 }
