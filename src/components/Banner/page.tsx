@@ -5,7 +5,7 @@ interface Props {
 }
 export default function Banner({ text }: Props) {
   return (
-    <div className="flex w-full 2xl:h-[350px] rounded-lg xl:h-[300px] lg:h-[223px] h-[120px]  justify-center items-center">
+    <div className="flex w-full 2xl:h-[350px] rounded-lg xl:h-[300px] lg:h-[223px] h-[150px]  justify-center items-center">
       <div className="rounded-lg w-[90%] relative h-[90%]">
         <img
           className="object-cover rounded-lg w-full h-full"
