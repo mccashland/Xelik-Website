@@ -4,6 +4,11 @@
 
 body {
   background: rgb(18, 28, 47);
-
 }
-
+.founder {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+}
