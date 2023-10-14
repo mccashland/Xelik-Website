@@ -40,6 +40,7 @@ export default function MainContent({ content }: Props) {
       </div>
       <Link
         href={button.link}
+        target="_blank"
         className="bg-[#CE0019] text-[#fff] rounded-lg p-4 my-20"
       >
         {button.text}
