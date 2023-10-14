@@ -13,7 +13,14 @@ export default function LogoHeader() {
       </Link>
       <div className="w-[70%] h-[20px] relative">
         <Image
+        className="hidden md:block"
           src="/assets/imgs/Header Line.svg"
+          alt="Logo Red"
+          layout="fill"
+        />
+        <Image
+        className="block md:hidden"
+          src="/assets/imgs/Header Line Mobile.svg"
           alt="Logo Red"
           layout="fill"
         />
