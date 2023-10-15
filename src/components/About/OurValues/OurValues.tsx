@@ -34,12 +34,20 @@ export default function OurValues() {
         <div className="flex flex-col  items-center  gap-3">
           <div className="flex gap-6 items-center">
             <div className="xl:hidden">
-              <img className="w-[8vw] text-center" src="/assets/imgs/Arrow Small.svg" alt="" />
+              <img
+                className="w-[8vw] text-center"
+                src="/assets/imgs/Arrow Small.svg"
+                alt=""
+              />
             </div>
 
             <div className="text-[#fff] text-[40px] ">Our Values</div>
-            <div className="xl:hidden ">
-              <img className="w-[8vw] text-center" src="/assets/imgs/value-rightarrow.svg" alt=""/>
+            <div className="xl:hidden">
+              <img
+                className="w-[8vw] text-center"
+                src="/assets/imgs/value-rightarrow.svg"
+                alt=""
+              />
             </div>
           </div>
 
