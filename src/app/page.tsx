@@ -21,7 +21,7 @@ export default function Home() {
     },
     {
       text: "Partners",
-      link: "#",
+      link: "/partners",
     },
   ];
   return (
