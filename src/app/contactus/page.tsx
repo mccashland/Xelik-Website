@@ -6,12 +6,12 @@ import MainContent from "@/components/MainContent/page";
 export default function ContactUs() {
   const content = {
     text1: "Check our ",
-    text2: "  support ticket feature",
+    text2: "support ticket feature",
     description:
-      "Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
+      "Our mission is to help you. Let's start a conversation as to what we can do for you.",
     mainImage: "/assets/imgs/main-contactus.svg",
     button: {
-      text: "Contact Us",
+      text: "Open a support ticket",
       link: "https://api.leadconnectorhq.com/widget/survey/lMNWOuJq3hLZugzjmcv1",
     },
   };
@@ -20,7 +20,7 @@ export default function ContactUs() {
       <LogoHeader />
       <Banner text={"Contact Us"} />
       <MainContent content={content} />
-      <Footer/>
+      <Footer />
     </div>
   );
 }
