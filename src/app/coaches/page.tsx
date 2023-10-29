@@ -2,6 +2,7 @@ import Banner from "@/components/Banner/page";
 import Footer from "@/components/Footer/page";
 import LogoHeader from "@/components/LogoHeader/page";
 import MainContent from "@/components/MainContent/page";
+import { route } from "@/utils/Routes";
 
 export default function Coaches() {
   const content = {
@@ -12,7 +13,7 @@ export default function Coaches() {
     mainImage: "/assets/imgs/main-coaches.svg",
     button: {
       text: "Apply to be an Xelik Coach",
-      link: "https://api.leadconnectorhq.com/widget/survey/yi7KwlAQXjdPTDPhPSFI",
+      link: route.coaches.passphrase,
     },
   };
   return (
@@ -20,7 +21,7 @@ export default function Coaches() {
       <LogoHeader />
       <Banner text={"Coaches"} />
       <MainContent content={content} />
-      <Footer/>
+      <Footer />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import Banner from "@/components/Banner/page";
 import Footer from "@/components/Footer/page";
 import LogoHeader from "@/components/LogoHeader/page";
 import MainContent from "@/components/MainContent/page";
+import { route } from "@/utils/Routes";
 
 export default function Clients() {
   const content = {
@@ -12,7 +13,7 @@ export default function Clients() {
     mainImage: "/assets/imgs/main-clients.svg",
     button: {
       text: "Apply to get coaching",
-      link: "https://api.leadconnectorhq.com/widget/survey/JhvqI3KixDwshiVbA4bz",
+      link: route.clients.passphrase,
     },
   };
   return (
@@ -20,7 +21,7 @@ export default function Clients() {
       <LogoHeader />
       <Banner text={"Clients"} />
       <MainContent content={content} />
-      <Footer/>
+      <Footer />
     </div>
   );
 }
