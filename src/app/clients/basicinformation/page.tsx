@@ -7,7 +7,7 @@ import { route } from "../../../utils/Routes";
 import { clientsInputArray, clientsInputArraytwo } from "@/utils/InputArray";
 import Inputs from "@/components/Inputs/page";
 
-export default function basicinformation() {
+export default function BasicInformation() {
   const router = useRouter();
   const content = {
     button: {

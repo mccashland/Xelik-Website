@@ -4,7 +4,7 @@ import LogoHeader from "@/components/LogoHeader/page";
 import { route } from "@/utils/Routes";
 import { useRouter } from "next/navigation";
 
-export default function phrase() {
+export default function Phrase() {
   const router = useRouter();
   const content = {
     button: {

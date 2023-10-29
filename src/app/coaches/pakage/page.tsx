@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { route } from "@/utils/Routes";
 import PakageBox from "@/components/PakageBox/page";
 
-export default function pakage() {
+export default function Pakage() {
   const router = useRouter();
 
   const pakages = [

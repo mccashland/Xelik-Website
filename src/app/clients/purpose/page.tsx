@@ -5,7 +5,7 @@ import Button from "@/components/Button/page";
 import { useRouter } from "next/navigation";
 import { route } from "../../../utils/Routes";
 
-export default function purpose() {
+export default function Purpose() {
   const router = useRouter();
   const content = {
     button: {

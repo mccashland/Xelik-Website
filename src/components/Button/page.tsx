@@ -11,7 +11,6 @@ interface Props {
 }
 
 export default function Button({ content, onClick }: Props) {
-  const {text } = content;
   return (
     <div className="flex  justify-center">
       <div

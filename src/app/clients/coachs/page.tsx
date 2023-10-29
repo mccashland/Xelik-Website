@@ -9,7 +9,7 @@ import { CoachsArray } from "@/utils/CoachsArray";
 import { useState } from "react";
 import CoachsBox from "@/components/CoachsBox/page";
 
-export default function coachs() {
+export default function Coachs() {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const dropdownOptions = ["Ascending", "Descending"];
@@ -22,7 +22,7 @@ export default function coachs() {
     },
   };
 
-  const handleOptionSelect = (option) => {
+  const handleOptionSelect = (option: any) => {
     setSelectedOption(option);
     setIsOpen(false); // Close the dropdown after selecting an option
   };
