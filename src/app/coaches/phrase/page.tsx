@@ -1,22 +1,6 @@
-"use client";
-import Button from "@/components/Button/page";
 import LogoHeader from "@/components/LogoHeader/page";
-import { route } from "@/utils/Routes";
-import { useRouter } from "next/navigation";
-
-export default function Phrase() {
-  const router = useRouter();
-  const content = {
-    button: {
-      link: route.coaches.basicinformation,
-      text: "Continue",
-    },
-  };
-
-  const handleButtonClick = () => {
-    router.push(content.button.link);
-  };
-
+import { Phrase } from "@/components/Phrase";
+export default function CoachPhrase() {
   return (
     <div className="mb-10 mx-3">
       <LogoHeader />
@@ -30,14 +14,7 @@ export default function Phrase() {
           <div className="font-bold text-[40px]  text-[#FFFFFF] w-[95%] text-center">
             Enter Your Coaches Passphrase
           </div>
-
-          <input
-            className="font-[400] outline-none text-[20px] w-full  text-[#FFFFFF] opacity-60 border focus:border-[#CE0019] bg-[#FFFFFF1A]  rounded-[10px]  py-3 px-3 "
-            type="text"
-            placeholder="Enter Passphrase"
-          />
-
-          <Button content={content} onClick={handleButtonClick} />
+          <Phrase userType="COACH" />
         </div>
         <img
           className="rotate-180 h-[20vh]"
