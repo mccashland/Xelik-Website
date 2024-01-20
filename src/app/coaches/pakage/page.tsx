@@ -57,7 +57,7 @@ export default function Pakage() {
           </div>
         </div>
       </div>
-      <Button content={content} onClick={handleButtonClick} />
+      <Button text={content.button.text} onClick={handleButtonClick} />
     </div>
   );
 }

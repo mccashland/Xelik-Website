@@ -8,7 +8,7 @@ import PakageBox from "@/components/PakageBox/page";
 
 export default function Pakage() {
   const router = useRouter();
-  const pakage = [
+  const pakage_type = [
     {
       months: "3 months",
     },
@@ -19,7 +19,7 @@ export default function Pakage() {
       months: "Reoccurring ",
     },
   ];
-  const pakage2 = [
+  const payment_type = [
     {
       months: "in full",
     },
@@ -59,7 +59,7 @@ export default function Pakage() {
               How long are you wanting 1 on 1 coaching?
             </div>
             <div className="flex  gap-5">
-              {pakage.map((value, index) => {
+              {pakage_type.map((value, index) => {
                 return <PakageBox key={index} pakage={value} />;
               })}
             </div>
@@ -69,7 +69,7 @@ export default function Pakage() {
             How are you wanting to pay?
             </div>
             <div className="flex gap-5 ">
-              {pakage2.map((value, index) => {
+              {payment_type.map((value, index) => {
                 return <PakageBox key={index} pakage={value} />;
               })}
             </div>
@@ -78,7 +78,7 @@ export default function Pakage() {
           
         </div>
       </div>
-      <Button content={content} onClick={handleButtonClick} />
+      <Button text={content.button.text} onClick={handleButtonClick} />
     </div>
   );
 }

@@ -36,13 +36,11 @@ export default function Purpose() {
                 <div className="font-semibold sm:text-xl text-base text-[#fff] text-center">Help improving my online business</div>
             </div>
             <div className="border border-[#FFFFFF1A] hover:border-[#CE0019] cursor-pointer rounded-[18px] w-[300px] h-[300px] sm:w-[350px] sm:h-[330px] justify-center  bg-[#FFFFFF08] items-center flex flex-col gap-6 transition duration-300 mb-8">
-               
                 <div className="font-semibold text-[40px] leading-[55px] text-center opacity-20 text-[#fff] px-16">More Coming Soon</div>
             </div>
-
           </div>
         </div>
-        <Button content={content} onClick={handleButtonClick} />
+        <Button text={content.button.text} onClick={handleButtonClick} />
       </div>
     </div>
   );

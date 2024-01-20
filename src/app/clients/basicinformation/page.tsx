@@ -42,7 +42,7 @@ export default function BasicInformation() {
             })}
           </div>
         </div>
-        <Button content={content} onClick={handleButtonClick} />
+        <Button text={content.button.text} onClick={handleButtonClick} />
       </div>
     </div>
   );
