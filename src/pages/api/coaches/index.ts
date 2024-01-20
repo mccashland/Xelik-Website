@@ -14,6 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         "Content-Type": "application/json",
       },
     });
+    console.log("Response:", response)
     const data = response.data.records[1].attributes.url;
     const apiUrl2 = `${salesforceBaseUrl}${data}`;
     console.log(apiUrl2);
@@ -26,6 +27,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const data2 = response2.data;
     res.status(200).json({ data2 });
   } catch (error: any) {
+//    console.error("Full Response:", error.response);
     console.error("Response data:", error.response.data);
     console.error("Response status:", error.response.status);
     console.error("Response headers:", error.response.headers);

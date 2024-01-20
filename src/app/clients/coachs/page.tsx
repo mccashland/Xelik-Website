@@ -112,7 +112,7 @@ export default function Coachs() {
             </div>
           </div>
         </div>
-        <Button content={content} onClick={handleButtonClick} />
+        <Button text={content.button.text} onClick={handleButtonClick} />
       </div>
     </div>
   );
