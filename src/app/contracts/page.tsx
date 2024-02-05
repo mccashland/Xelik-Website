@@ -1,44 +1,34 @@
-import React from 'react';
-import Contract from '../../components/Contracts/page';
-import Clients from '../../components/Contracts/ClientsWaiver';
- const fourMonth_full = "4 Month 1-on-1 Coaching Agreement (Full)";
-const fourMonth_half = "4 Month 1-on-1 Coaching Agreement (Half)";
-const fourMonth_monthly = "4 Month 1-on-1 Coaching Agreement (Monthly)";
-const sixMonth_full = "6 Month 1-on-1 Coaching Agreement (Full)";
-const sixMonth_half = "6 Month 1-on-1 Coaching Agreement (Half)";
-const sixMonth_monthly = "6 Month 1-on-1 Coaching Agreement (Monthly)";
-const FourBi_weekly = "Bi-Weekly 4 Month 1-on-1 Coaching Agreement (Monthly)";
-const SixBi_weekly = "Bi-Weekly 6 Month 1-on-1 Coaching Agreement (Monthly)";
-const recuringBi_weekly="Recurring Bi-Weekly 1-on-1 CoachingAgreement (Bi-Weekly)";
-const recuringBi_monthly="Recurring Bi-Weekly 1-on-1 CoachingAgreement (Monthly)";
-const recuringApp_Access="Recurring App Access Agreement";
-const fourMonth_Full ="$1400 ";
-const fourMonth_Half ="$750";
-const fourMonth_Monthly="$399";
-const sixMonth_Full ="$2100";
-const sixMonth_Half="$1,125";
-const sixMonth_Monthly="$399";
-const four_MonthBiWeekly_Monthly="$250 ";
-const six_MonthBiWeekly_Monthly="$250 ";
-const recuringbi_weekly="$129 ";
-const recuringbi_monthly="$249 ";
-const recuringApp_access="$99 ";
+import React from "react";
+import Contract from "../../components/Contracts/page";
+import Four_month_full from "@/components/Contracts_Components/four_month_full";
+import Four_month_half from "@/components/four_month_half";
+import Four_month_monthly from "@/components/four_month_monthly";
+import Six_month_full_Agrement from "@/components/Six_month_full_Agrement";
+import Six_month_half_Agrement from "@/components/Six_month_half_Agrement";
+import Six_month_monthly_Agrement from "@/components/Six_month_monthly_Agrement";
+import Bi_weekly_fourMonth_monthly from "@/components/Bi_weekly_fourMonth_monthly";
+import Bi_weekly_Six_month from "@/components/Bi_weekly_Six_month";
+import Client_wavier from "@/components/client_wavier";
+import Recuring_App_Access from "@/components/Recuring_App_Access";
+import Recuring_Bi_weekly from "@/components/Recuring_Bi_weekly";
+import Recuring_Bi_weekly_monthly from "@/components/Recuring_Bi_weekly_monthly";
+
 const page = () => {
   return (
     <div>
-      <Contract heading={fourMonth_full} prices={fourMonth_Full} />
-      <Contract heading={fourMonth_half} prices={fourMonth_Half} />
-      <Contract heading={fourMonth_monthly} prices={fourMonth_Monthly} />
-      <Contract heading={sixMonth_full} prices={sixMonth_Full} />
-      <Contract heading={sixMonth_half} prices={sixMonth_Half} />
-      <Contract heading={sixMonth_monthly} prices={sixMonth_Monthly} />
-      <Contract heading={FourBi_weekly} prices={four_MonthBiWeekly_Monthly} />
-      <Contract heading={SixBi_weekly} prices={six_MonthBiWeekly_Monthly} />
-      <Contract heading={recuringBi_weekly} prices={recuringbi_weekly} />
-      <Contract heading={recuringBi_monthly} prices={recuringbi_monthly} />
-      <Contract heading={recuringApp_Access} prices={recuringApp_access} />
-       <Clients />
-        </div>
+      <Four_month_full />
+      <Four_month_half />
+      <Four_month_monthly />
+      <Six_month_full_Agrement />
+      <Six_month_half_Agrement />
+      <Six_month_monthly_Agrement />
+      <Recuring_App_Access />
+      <Recuring_Bi_weekly />
+      <Recuring_Bi_weekly_monthly />
+      <Bi_weekly_fourMonth_monthly />
+      <Bi_weekly_Six_month />
+      <Client_wavier />
+    </div>
   );
 };
 
