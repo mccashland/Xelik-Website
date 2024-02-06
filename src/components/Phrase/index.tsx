@@ -1,7 +1,7 @@
 "use client";
 import React, { ChangeEvent, useState } from "react";
 import Button from "../Button/page";
-import { USER_EMAIL, USER_TYPE } from "@/utils/TYPES";
+import { EV_USER_EMAIL, EV_USER_TYPE, USER_TYPE } from "@/utils/TYPES";
 import { useRouter } from "next/navigation";
 
 type FormData = {
@@ -12,9 +12,12 @@ type FormData = {
 export const Phrase = ({ userType }: { userType: USER_TYPE }) => {
   const [data, setData] = useState<FormData>({ email: "", phrase: "" });
   const router = useRouter();
-  const handlePhraseClick = () => {
+  const handlePhraseClick = async () => {
+    // const data = await getFormData();
+    console.log(data);
     // validate phrase
-    localStorage.setItem(USER_EMAIL, data.email);
+    localStorage.setItem(EV_USER_EMAIL, data.email);
+    localStorage.setItem(EV_USER_TYPE, userType);
     if (userType === "CLIENT") {
       router.push("https://formstack.io/BFBE1");
     } else if (userType === "COACH") {

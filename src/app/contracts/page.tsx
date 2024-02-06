@@ -1,44 +1,69 @@
-import React from 'react';
-import Contract from '../../components/Contracts/page';
-import Clients from '../../components/Contracts/ClientsWaiver';
- const fourMonth_full = "4 Month 1-on-1 Coaching Agreement (Full)";
-const fourMonth_half = "4 Month 1-on-1 Coaching Agreement (Half)";
-const fourMonth_monthly = "4 Month 1-on-1 Coaching Agreement (Monthly)";
-const sixMonth_full = "6 Month 1-on-1 Coaching Agreement (Full)";
-const sixMonth_half = "6 Month 1-on-1 Coaching Agreement (Half)";
-const sixMonth_monthly = "6 Month 1-on-1 Coaching Agreement (Monthly)";
-const FourBi_weekly = "Bi-Weekly 4 Month 1-on-1 Coaching Agreement (Monthly)";
-const SixBi_weekly = "Bi-Weekly 6 Month 1-on-1 Coaching Agreement (Monthly)";
-const recuringBi_weekly="Recurring Bi-Weekly 1-on-1 CoachingAgreement (Bi-Weekly)";
-const recuringBi_monthly="Recurring Bi-Weekly 1-on-1 CoachingAgreement (Monthly)";
-const recuringApp_Access="Recurring App Access Agreement";
-const fourMonth_Full ="$1400 ";
-const fourMonth_Half ="$750";
-const fourMonth_Monthly="$399";
-const sixMonth_Full ="$2100";
-const sixMonth_Half="$1,125";
-const sixMonth_Monthly="$399";
-const four_MonthBiWeekly_Monthly="$250 ";
-const six_MonthBiWeekly_Monthly="$250 ";
-const recuringbi_weekly="$129 ";
-const recuringbi_monthly="$249 ";
-const recuringApp_access="$99 ";
+"use client";
+import React, { useEffect, useState } from "react";
+import Contract from "../../components/Contracts/page";
+import Clients from "../../components/Contracts/ClientsWaiver";
+import {
+  CLIENT_OBJECT,
+  CONTRACT,
+  EV_USER_EMAIL,
+  EV_USER_TYPE,
+} from "@/utils/TYPES";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import { contracts } from "@/utils/const";
 const page = () => {
+  const router = useRouter();
+  const [user, setUser] = useState<CLIENT_OBJECT>();
+  const [contract, setContract] = useState<CONTRACT>({
+    name: "",
+    contractLength: "",
+    contractType: "",
+    paymentFrequency: "",
+    pricing: "",
+  });
+  useEffect(() => {
+    const query = async () => {
+      let userEmail = localStorage.getItem(EV_USER_EMAIL);
+      let userType = localStorage.getItem(EV_USER_TYPE);
+      if (!userEmail || !userType) {
+        router.back();
+      }
+      if (userEmail !== null) {
+        const res = await axios.get(`/api/clients?email=${userEmail}`);
+        if (!res.data.data) {
+          alert("Something went wrong!!!");
+        }
+        setUser(res.data.data);
+      }
+    };
+    query();
+  }, []);
+
+  useEffect(() => {
+    console.log(user);
+    const contractInfo = contracts.filter((contr) => {
+      if (
+        user?.Client_Contract_Length__c === contr.contractLength &&
+        user.Client_Contract_Type__c === contr.contractType &&
+        user.Client_Payment_Frequency__c === contr.paymentFrequency
+      ) {
+        return contr;
+      }
+    });
+    console.log(contractInfo);
+    setContract(contractInfo[0]);
+  }, [user]);
+
   return (
     <div>
-      <Contract heading={fourMonth_full} prices={fourMonth_Full} />
-      <Contract heading={fourMonth_half} prices={fourMonth_Half} />
-      <Contract heading={fourMonth_monthly} prices={fourMonth_Monthly} />
-      <Contract heading={sixMonth_full} prices={sixMonth_Full} />
-      <Contract heading={sixMonth_half} prices={sixMonth_Half} />
-      <Contract heading={sixMonth_monthly} prices={sixMonth_Monthly} />
-      <Contract heading={FourBi_weekly} prices={four_MonthBiWeekly_Monthly} />
-      <Contract heading={SixBi_weekly} prices={six_MonthBiWeekly_Monthly} />
-      <Contract heading={recuringBi_weekly} prices={recuringbi_weekly} />
-      <Contract heading={recuringBi_monthly} prices={recuringbi_monthly} />
-      <Contract heading={recuringApp_Access} prices={recuringApp_access} />
-       <Clients />
-        </div>
+      <Contract
+        buyerName={user?.Name}
+        heading={contract?.name}
+        prices={contract?.pricing}
+        date={user?.Date_Signed_Up__c}
+      />
+      <Clients />
+    </div>
   );
 };
 

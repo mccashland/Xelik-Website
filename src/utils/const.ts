@@ -1,0 +1,81 @@
+import { CONTRACT } from "./TYPES";
+
+export const contracts: CONTRACT[] = [
+  {
+    name: "4 Month 1 on 1 coaching (Full)",
+    contractLength: "4 Month",
+    contractType: "1 on 1 Coaching",
+    paymentFrequency: "Full",
+    pricing: "$1,400",
+  },
+  {
+    name: "4 Month 1 on 1 coaching (Monthly)",
+    contractLength: "4 Month",
+    contractType: "1 on 1 Coaching",
+    paymentFrequency: "Monthly",
+    pricing: "$399",
+  },
+  {
+    name: "4 Month 1 on 1 coaching (Half)",
+    contractLength: "4 Month",
+    contractType: "1 on 1 Coaching",
+    paymentFrequency: "Half",
+    pricing: "$750",
+  },
+  {
+    name: "6 Month 1 on 1 coaching (Full)",
+    contractLength: "6 Month",
+    contractType: "1 on 1 Coaching",
+    paymentFrequency: "Full",
+    pricing: "$2,100",
+  },
+  {
+    name: "6 Month 1 on 1 coaching (Half)",
+    contractLength: "6 Month",
+    contractType: "1 on 1 Coaching",
+    paymentFrequency: "Half",
+    pricing: "$1,125",
+  },
+  {
+    name: "6 Month 1 on 1 coaching (Monthly)",
+    contractLength: "6 Month",
+    contractType: "1 on 1 Coaching",
+    paymentFrequency: "Monthly",
+    pricing: "$399",
+  },
+  {
+    name: "Bi-Weekly 4 Month 1 on 1 coaching Agreement (Monthly)",
+    contractLength: "4 Month",
+    contractType: "1 on 1 Coaching",
+    paymentFrequency: "Monthly",
+    pricing: "$250",
+  },
+  {
+    name: "Bi-Weekly 6 Month 1 on 1 coaching (Monthly)",
+    contractLength: "6 Month",
+    contractType: "1 on 1 Coaching",
+    paymentFrequency: "Monthly",
+    pricing: "$250",
+  },
+  {
+    name: "Recurring Bi-Weekly Coaching Agreement (Bi-Weekly)",
+    contractLength: "Monthly",
+    contractType: "1 on 1 Coaching",
+    paymentFrequency: "Bi-Weekly",
+    pricing: "$129",
+  },
+  {
+    name: "Recurring Bi-Weekly Coaching Agreement (Monthly)",
+    contractLength: "Monthly",
+    contractType: "1 on 1 Coaching",
+    paymentFrequency: "Monthly",
+    pricing: "$250",
+  },
+  {
+    name: "Recurring App Access Agreement (Monthly)",
+    contractLength: "Monthly",
+    contractType: "App Access",
+    paymentFrequency: "Monthly",
+    pricing: "$99",
+  },
+];

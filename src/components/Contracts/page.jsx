@@ -1,6 +1,6 @@
 import React from "react";
 import Signature from "../Signature/Signature";
-const Contract = ({ heading, prices }) => {
+const Contract = ({ heading, prices, buyerName, date }) => {
   return (
     <div className="flex w-full justify-center   ">
       <div className="flex flex-col gap-10  my-4">
@@ -12,7 +12,7 @@ const Contract = ({ heading, prices }) => {
           <div className="paragraph ">
             This Sales Agreement (“Agreement”) for the sale of consulting
             services is between Elevate Wellness and Personal Training, in
-            Partnership with <span className="underline">name</span> (the
+            Partnership with <span className="underline">{buyerName}</span> (the
             “Sellers”), and
             <span className="underline"> seller</span> (the “Buyer”).
           </div>
@@ -32,25 +32,31 @@ const Contract = ({ heading, prices }) => {
             <span className="span "> 2.Effectiveness; Date.</span>
             <span className="paragraph">
               This agreement is effective as of{" "}
-              <span className="underline">Date</span>, given both parties have
-              signed it with a time stamp within 14 calendar days after this
-              date. If the signature of either party is after 14 days of the
-              stated effective date, the date of the last signature will then be
-              used as the effective date.
+              <span className="underline">
+                {new Date().getDay() +
+                  "-" +
+                  new Date().getDate() +
+                  "-" +
+                  new Date().getFullYear()}
+              </span>
+              , given both parties have signed it with a time stamp within 14
+              calendar days after this date. If the signature of either party is
+              after 14 days of the stated effective date, the date of the last
+              signature will then be used as the effective date.
             </span>
           </div>
           <div className="paragraph1">
             <span className="span"> 3.Invoices; Payment.</span>
             <span className="paragraph">
               {/* price props start here */}
-              The Buyer agrees to pay <span className="underline">{prices} </span>
-              a payment that will occur one-time
-              upfrontfor theServices. Cash payment for the Services is due
-              within 30 days of the date of the Sellers’invoice. The Services
-              will begin immediately upon the effective date and will end
-              exactly 4 months after the beginning of the Services. Missed
-              payments may result in suspension or termination of Services with
-              no refund of pervious payments.
+              The Buyer agrees to pay{" "}
+              <span className="underline">{prices} </span>a payment that will
+              occur one-time upfrontfor theServices. Cash payment for the
+              Services is due within 30 days of the date of the Sellers’invoice.
+              The Services will begin immediately upon the effective date and
+              will end exactly 4 months after the beginning of the Services.
+              Missed payments may result in suspension or termination of
+              Services with no refund of pervious payments.
             </span>
           </div>
           <div className="paragraph1">
@@ -222,14 +228,12 @@ const Contract = ({ heading, prices }) => {
                   Buyer Signature: <Signature />
                 </span>
                 <div>
-                  <span className="underline">
-                    Buyer Name: ______________________
-                  </span>
+                  Buyer Name:
+                  <span className="underline ml-4">{buyerName}</span>
                 </div>
                 <div>
-                  <span className="underline">
-                    Buying Date: ______________________
-                  </span>
+                  Buying Date:
+                  <span className="underline ml-4"> {date}</span>
                 </div>
               </div>
               <div className="mt-20 flex flex-col w-[40%] m-auto gap-y-4">
@@ -256,5 +260,3 @@ const Contract = ({ heading, prices }) => {
 };
 
 export default Contract;
-
-
