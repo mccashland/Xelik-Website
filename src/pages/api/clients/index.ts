@@ -19,7 +19,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   //   code_verifier: codeChallenge,
   // };
   const accessToken =
-    "00DHp0000033KK3!ARUAQOJg0opaIsitAasVnv8u6OYqHVvgMpzJ_2fRV4wzhJJqJDuoaBAxab_aavVEO5GdpvDDTCKHZzjiLRXYGSjO7Ggz5Tpd";
+    "00DHp0000033KK3!ARUAQLZq5esUFEp2R9pfJwC98A5z8Lmz0yvqe.SD6tYWoygd.8vYWUJT__u2GHSUGm0susn1BqJyBLAFTU0chZtzmVCwC9y2";
   const apiUrl = `${process.env.NEXT_PUBLIC_SALSEFORCE_BASE_URL}/services/data/v59.0/query`;
   const queryHeaders = {
     Authorization: `Bearer ${accessToken}`,

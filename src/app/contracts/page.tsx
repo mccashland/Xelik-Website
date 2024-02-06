@@ -11,6 +11,17 @@ import {
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { contracts } from "@/utils/const";
+import Recuring_App_Access from "@/components/Recuring_App_Access";
+import Recuring_Bi_weekly from "@/components/Recuring_Bi_weekly";
+import Four_month_full from "@/components/Contracts_Components/four_month_full";
+import Bi_weekly_fourMonth_monthly from "@/components/Bi_weekly_fourMonth_monthly";
+import Four_month_half from "@/components/four_month_half";
+import Four_month_monthly from "@/components/four_month_monthly";
+import Six_month_full_Agrement from "@/components/Six_month_full_Agrement";
+import Bi_weekly_Six_month from "@/components/Bi_weekly_Six_month";
+import Six_month_half_Agrement from "@/components/Six_month_half_Agrement";
+import Six_month_monthly_Agrement from "@/components/Six_month_monthly_Agrement";
+import Recuring_Bi_weekly_monthly from "@/components/Recuring_Bi_weekly_monthly";
 const page = () => {
   const router = useRouter();
   const [user, setUser] = useState<CLIENT_OBJECT>();
@@ -30,6 +41,7 @@ const page = () => {
       }
       if (userEmail !== null) {
         const res = await axios.get(`/api/clients?email=${userEmail}`);
+        console.log(res);
         if (!res.data.data) {
           alert("Something went wrong!!!");
         }
@@ -38,33 +50,44 @@ const page = () => {
     };
     query();
   }, []);
-
-  useEffect(() => {
-    console.log(user);
-    const contractInfo = contracts.filter((contr) => {
-      if (
-        user?.Client_Contract_Length__c === contr.contractLength &&
-        user.Client_Contract_Type__c === contr.contractType &&
-        user.Client_Payment_Frequency__c === contr.paymentFrequency
-      ) {
-        return contr;
+  if (user?.Client_Contract_Type__c === "App Access") {
+    return <Recuring_App_Access />;
+  }
+  if (user?.Client_Contract_Type__c === "1 on 1 Coaching") {
+    if (user?.Client_Contract_Length__c === "4 Month") {
+      switch (user.Client_Payment_Frequency__c) {
+        case "Full":
+          return <Four_month_full />;
+        case "Bi-Weekly":
+          return <Bi_weekly_fourMonth_monthly />;
+        case "Half":
+          return <Four_month_half />;
+        case "Monthly":
+          return <Four_month_monthly />;
       }
-    });
-    console.log(contractInfo);
-    setContract(contractInfo[0]);
-  }, [user]);
+    }
+    if (user?.Client_Contract_Length__c === "6 Month") {
+      switch (user.Client_Payment_Frequency__c) {
+        case "Full":
+          return <Six_month_full_Agrement />;
+        case "Bi-Weekly":
+          return <Bi_weekly_Six_month />;
+        case "Half":
+          return <Six_month_half_Agrement />;
+        case "Monthly":
+          return <Six_month_monthly_Agrement />;
+      }
+    }
+    if (user?.Client_Contract_Length__c === "Monthly") {
+      switch (user.Client_Payment_Frequency__c) {
+        case "Bi-Weekly":
+          return <Recuring_Bi_weekly />;
+        case "Monthly":
+          return <Recuring_Bi_weekly_monthly />;
+      }
+    }
+  }
 
-  return (
-    <div>
-      <Contract
-        buyerName={user?.Name}
-        heading={contract?.name}
-        prices={contract?.pricing}
-        date={user?.Date_Signed_Up__c}
-      />
-      <Clients />
-    </div>
-  );
+  return <div className="font-bold  text-[white]">Loading...</div>;
 };
-
 export default page;
