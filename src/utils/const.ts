@@ -76,7 +76,6 @@ export const contracts: CONTRACT[] = [
     contractLength: "Monthly",
     contractType: "App Access",
     paymentFrequency: "Monthly",
-    Contract_Length: "12 Month",
     pricing: "$99",
   },
 ];

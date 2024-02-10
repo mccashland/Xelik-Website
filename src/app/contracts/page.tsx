@@ -14,7 +14,7 @@ import Bi_weekly_Six_month from "@/components/Contracts/Bi_weekly_Six_month";
 import Six_month_half_Agrement from "@/components/Contracts/Six_month_half_Agrement";
 import Six_month_monthly_Agrement from "@/components/Contracts/Six_month_monthly_Agrement";
 import Recuring_Bi_weekly_monthly from "@/components/Contracts/Recuring_Bi_weekly_monthly";
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const [user, setUser] = useState<CLIENT_OBJECT>();
   useEffect(() => {
@@ -101,4 +101,4 @@ const page = () => {
 
   return <div className="font-bold  text-[white]">Loading...</div>;
 };
-export default page;
+export default Page;
