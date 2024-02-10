@@ -41,5 +41,10 @@ export type CLIENT_OBJECT = {
   Client_Contract_Length__c: "Monthly" | "4 Month" | "6 Month" | "12 Month";
   Client_Contract_Type__c: "1 on 1 Coaching" | "App Access";
   Client_Payment_Frequency__c: "Full" | "Half" | "Monthly" | "Bi-Weekly";
+  Coach_payment_frequency__c:
+    | "Bi-weekly"
+    | "Monthly"
+    | "Quarterly"
+    | "Bi-annually";
   Date_Signed_Up__c: string;
 };

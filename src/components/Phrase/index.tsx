@@ -14,14 +14,13 @@ export const Phrase = ({ userType }: { userType: USER_TYPE }) => {
   const router = useRouter();
   const handlePhraseClick = async () => {
     // const data = await getFormData();
-    console.log(data);
     // validate phrase
     localStorage.setItem(EV_USER_EMAIL, data.email);
     localStorage.setItem(EV_USER_TYPE, userType);
     if (userType === "CLIENT") {
-      router.push("https://formstack.io/BFBE1");
+      router.push(`${process.env.NEXT_PUBLIC_CLIENT_FORM}`);
     } else if (userType === "COACH") {
-      router.push("https://formstack.io/7A4C3");
+      router.push(`${process.env.NEXT_PUBLIC_COACH_FORM}`);
     } else {
       alert("Something went Wrong Please try again!");
     }

@@ -1,37 +1,22 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Contract from "../../components/Contracts/page";
-import Clients from "../../components/Contracts/ClientsWaiver";
-import {
-  CLIENT_OBJECT,
-  CONTRACT,
-  EV_USER_EMAIL,
-  EV_USER_TYPE,
-} from "@/utils/TYPES";
+import { CLIENT_OBJECT, EV_USER_EMAIL, EV_USER_TYPE } from "@/utils/TYPES";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { contracts } from "@/utils/const";
-import Recuring_App_Access from "@/components/Recuring_App_Access";
-import Recuring_Bi_weekly from "@/components/Recuring_Bi_weekly";
-import Four_month_full from "@/components/Contracts_Components/four_month_full";
-import Bi_weekly_fourMonth_monthly from "@/components/Bi_weekly_fourMonth_monthly";
-import Four_month_half from "@/components/four_month_half";
-import Four_month_monthly from "@/components/four_month_monthly";
-import Six_month_full_Agrement from "@/components/Six_month_full_Agrement";
-import Bi_weekly_Six_month from "@/components/Bi_weekly_Six_month";
-import Six_month_half_Agrement from "@/components/Six_month_half_Agrement";
-import Six_month_monthly_Agrement from "@/components/Six_month_monthly_Agrement";
-import Recuring_Bi_weekly_monthly from "@/components/Recuring_Bi_weekly_monthly";
+import Recuring_App_Access from "@/components/Contracts/Recuring_App_Access";
+import Recuring_Bi_weekly from "@/components/Contracts/Recuring_Bi_weekly";
+import Four_month_full from "@/components/Contracts/four_month_full";
+import Bi_weekly_fourMonth_monthly from "@/components/Contracts/Bi_weekly_fourMonth_monthly";
+import Four_month_half from "@/components/Contracts/four_month_half";
+import Four_month_monthly from "@/components/Contracts/four_month_monthly";
+import Six_month_full_Agrement from "@/components/Contracts/Six_month_full_Agrement";
+import Bi_weekly_Six_month from "@/components/Contracts/Bi_weekly_Six_month";
+import Six_month_half_Agrement from "@/components/Contracts/Six_month_half_Agrement";
+import Six_month_monthly_Agrement from "@/components/Contracts/Six_month_monthly_Agrement";
+import Recuring_Bi_weekly_monthly from "@/components/Contracts/Recuring_Bi_weekly_monthly";
 const page = () => {
   const router = useRouter();
   const [user, setUser] = useState<CLIENT_OBJECT>();
-  const [contract, setContract] = useState<CONTRACT>({
-    name: "",
-    contractLength: "",
-    contractType: "",
-    paymentFrequency: "",
-    pricing: "",
-  });
   useEffect(() => {
     const query = async () => {
       let userEmail = localStorage.getItem(EV_USER_EMAIL);
@@ -39,17 +24,37 @@ const page = () => {
       if (!userEmail || !userType) {
         router.back();
       }
-      if (userEmail !== null) {
-        const res = await axios.get(`/api/clients?email=${userEmail}`);
-        console.log(res);
+      if (userType === "COACH") {
+        const res = await axios.get(`/api/coach?email=${userEmail}`);
+        if (!res.data.data) {
+          alert("Something went wrong!!!");
+        }
+        setUser(res.data.data);
+      } else if (userType === "CLIENT") {
+        const res = await axios.get(`/api/client?email=${userEmail}`);
         if (!res.data.data) {
           alert("Something went wrong!!!");
         }
         setUser(res.data.data);
       }
+      // }
     };
     query();
   }, []);
+  if (user?.Coach_payment_frequency__c) {
+    switch (user.Coach_payment_frequency__c) {
+      case "Bi-weekly":
+        return <Bi_weekly_fourMonth_monthly />;
+      case "Monthly":
+        return <Bi_weekly_fourMonth_monthly />;
+      case "Bi-annually":
+        return <Bi_weekly_fourMonth_monthly />;
+      case "Quarterly":
+        return <Bi_weekly_fourMonth_monthly />;
+      default:
+        return <div>Invalid data sent</div>;
+    }
+  }
   if (user?.Client_Contract_Type__c === "App Access") {
     return <Recuring_App_Access />;
   }
@@ -63,7 +68,9 @@ const page = () => {
         case "Half":
           return <Four_month_half />;
         case "Monthly":
-          return <Four_month_monthly />;
+          return <Four_month_monthly userName={user.Name} />;
+        default:
+          return <div>Invalid data sent</div>;
       }
     }
     if (user?.Client_Contract_Length__c === "6 Month") {
@@ -76,6 +83,8 @@ const page = () => {
           return <Six_month_half_Agrement />;
         case "Monthly":
           return <Six_month_monthly_Agrement />;
+        default:
+          return <div>Invalid data sent</div>;
       }
     }
     if (user?.Client_Contract_Length__c === "Monthly") {
@@ -84,6 +93,8 @@ const page = () => {
           return <Recuring_Bi_weekly />;
         case "Monthly":
           return <Recuring_Bi_weekly_monthly />;
+        default:
+          return <div>Invalid data sent</div>;
       }
     }
   }
