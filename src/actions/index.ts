@@ -42,6 +42,7 @@ export async function add_sign(formData: FormData) {
   console.log(get_ip.data.socket);
   const ip = get_ip.data.ip || "null";
   const date = formData.get("date");
+  console.log(formData);
   //   create_user({
   //     userName: "Tariq",
   //     email: "tariqbrohi@codebotx@gmail.com",

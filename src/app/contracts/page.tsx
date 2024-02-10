@@ -44,13 +44,13 @@ const page = () => {
   if (user?.Coach_payment_frequency__c) {
     switch (user.Coach_payment_frequency__c) {
       case "Bi-weekly":
-        return <Bi_weekly_fourMonth_monthly />;
+        return <Bi_weekly_fourMonth_monthly name={user.Name} />;
       case "Monthly":
-        return <Bi_weekly_fourMonth_monthly />;
+        return <Bi_weekly_fourMonth_monthly name={user.Name} />;
       case "Bi-annually":
-        return <Bi_weekly_fourMonth_monthly />;
+        return <Bi_weekly_fourMonth_monthly name={user.Name} />;
       case "Quarterly":
-        return <Bi_weekly_fourMonth_monthly />;
+        return <Bi_weekly_fourMonth_monthly name={user.Name} />;
       default:
         return <div>Invalid data sent</div>;
     }
@@ -64,7 +64,7 @@ const page = () => {
         case "Full":
           return <Four_month_full />;
         case "Bi-Weekly":
-          return <Bi_weekly_fourMonth_monthly />;
+          return <Bi_weekly_fourMonth_monthly name={user.Name} />;
         case "Half":
           return <Four_month_half />;
         case "Monthly":

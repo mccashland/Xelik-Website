@@ -1,9 +1,10 @@
 import React from "react";
 import ContractInput from "../ContractInput";
 import Link from "next/link";
+import { add_sign } from "@/actions";
 const Four_month_monthly = ({ userName }: { userName: string }) => {
   return (
-    <form>
+    <form action={add_sign}>
       <div className="flex w-full justify-center   ">
         <div className="flex flex-col gap-10  my-4 text-[#ffffff]">
           <div className="main-heading text-[1.5rem] sm:text-[3rem] 2xl:text-[5rem]  p-[3px] flex justify-center items-center text-center  font-bold">
