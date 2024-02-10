@@ -1,7 +1,7 @@
 import React from "react";
 import ContractInput from "../ContractInput";
-import Link from "next/link";
 import { add_sign } from "@/actions";
+import SubmitButton from "@/components/Submit_Button";
 const Four_month_monthly = ({ userName }: { userName: string }) => {
   return (
     <form action={add_sign}>
@@ -397,19 +397,14 @@ const Four_month_monthly = ({ userName }: { userName: string }) => {
                 <span className="underline flex items-end ">
                   Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
+                <div className="py-4">
+                  <SubmitButton />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <button type="submit">
-        <Link
-          href="https://www.trainerize.me/profile/xelik/?planGUID=938872626f5048018b3f996eb7be58e5&mode=checkout"
-          target="_blank"
-        >
-          Submit
-        </Link>
-      </button>
     </form>
   );
 };

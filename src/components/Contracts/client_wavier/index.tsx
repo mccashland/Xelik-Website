@@ -1,6 +1,8 @@
 import React from "react";
 import Signature from "../Signature";
-const Client_wavier = () => {
+import ContractInput from "../ContractInput";
+import SubmitButton from "@/components/Submit_Button";
+const Client_wavier = ({ userName }: { userName: string }) => {
   return (
     <div className="flex w-full justify-center   ">
       <div className="flex flex-col gap-10  my-4">
@@ -10,18 +12,18 @@ const Client_wavier = () => {
         </div>
         <div className="main dev flex flex-col space-y-8 text-[#ffff] text-[1rem] opacity-[0.7] font-bold w-[90%] sm:w-[80%] m-auto">
           <div>
-            __________________________ (“Buyer”), does hereby waive and release,
-            indemnify, and forever discharges Elevate Wellness and Personal
-            Training LLC (“Seller”), and its agents, employees, officers,
-            directors, affiliates, successors, members, independent contractors,
-            and assigns, of and from any and all claims, demands, debts,
-            contracts, expenses, causes of action, lawsuits, damages and
-            liabilities, of every kind and nature, whether known or unknown, in
-            law or equity, that I ever had or may have, arising from or in any
-            way related to the services (“Services”) being provided to me by the
-            Seller provided that this waiver of liability does not apply to any
-            acts of gross negligence, or intentional, willful or wanton
-            misconduct.
+            <span className="underline">{userName}</span> (the “Buyer”). does
+            hereby waive and release, indemnify, and forever discharges Elevate
+            Wellness and Personal Training LLC (“Seller”), and its agents,
+            employees, officers, directors, affiliates, successors, members,
+            independent contractors, and assigns, of and from any and all
+            claims, demands, debts, contracts, expenses, causes of action,
+            lawsuits, damages and liabilities, of every kind and nature, whether
+            known or unknown, in law or equity, that I ever had or may have,
+            arising from or in any way related to the services (“Services”)
+            being provided to me by the Seller provided that this waiver of
+            liability does not apply to any acts of gross negligence, or
+            intentional, willful or wanton misconduct.
           </div>
           <div>
             The buyer understands that all nutrition recommendations are merely
@@ -101,8 +103,11 @@ const Client_wavier = () => {
           </div>
           <div>
             <span className="underline flex items-end ">
-              Buyer Signature: <Signature />
+              Buyer Signature: <ContractInput value="A" name="signature" />
             </span>
+            <div className="py-4">
+              <SubmitButton />
+            </div>
           </div>
         </div>
       </div>
