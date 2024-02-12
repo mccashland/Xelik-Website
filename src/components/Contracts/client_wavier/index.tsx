@@ -103,10 +103,10 @@ const Client_wavier = ({ userName }: { userName: string }) => {
           </div>
           <div>
             <span className="underline flex items-end ">
-              Buyer Signature: <ContractInput value="A" name="signature" />
+              Buyer Initials: <ContractInput value="A" name="signature" />
             </span>
             <div className="py-4">
-              <SubmitButton />
+              <SubmitButton url="#" />
             </div>
           </div>
         </div>

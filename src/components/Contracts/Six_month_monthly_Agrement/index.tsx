@@ -41,7 +41,10 @@ const Six_month_monthly_Agrement = ({ userName }: { userName: string }) => {
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 This agreement is effective as of{" "}
                 <span>
-                  <ContractInput name="date" value={Date.now().toString()} />
+                  <ContractInput
+                    name="date"
+                    value={new Date().toDateString()}
+                  />
                 </span>
               </span>
             </div>
@@ -279,7 +282,7 @@ const Six_month_monthly_Agrement = ({ userName }: { userName: string }) => {
               </div>
               <div className="py-20 flex flex-col gap-y-4">
                 <span className="underline flex items-end ">
-                  Buyer Signature:{" "}
+                  Buyer Initials:{" "}
                   <ContractInput value="A" name="signature-one" />
                 </span>
                 <div>
@@ -291,7 +294,9 @@ const Six_month_monthly_Agrement = ({ userName }: { userName: string }) => {
                   </span>
                 </div>
                 <div>
-                  <span className="underline">Buying Date: {Date.now()}</span>
+                  <span className="underline">
+                    Buying Date: {new Date().toDateString()}
+                  </span>
                 </div>
               </div>
             </div>
@@ -300,15 +305,15 @@ const Six_month_monthly_Agrement = ({ userName }: { userName: string }) => {
             </div>
             <div className="main dev flex flex-col space-y-8 text-[#ffff] text-[1rem] opacity-[0.7] font-bold">
               <div>
-              <span className="underline">{userName}</span>, does hereby waive and release,
-                indemnify, and forever discharges Elevate Wellness and Personal
-                Training LLC, and its agents, employees, officers, directors,
-                affiliates, successors, members, independent contractors, and
-                assigns, of and from any and all claims, demands, debts,
-                contracts, expenses, causes of action, lawsuits, damages and
-                liabilities, of every kind and nature, whether known or unknown,
-                in law or equity, that I, the Buyer, ever had or may have,
-                arising from or in any way related to the Services being
+                <span className="underline">{userName}</span>, does hereby waive
+                and release, indemnify, and forever discharges Elevate Wellness
+                and Personal Training LLC, and its agents, employees, officers,
+                directors, affiliates, successors, members, independent
+                contractors, and assigns, of and from any and all claims,
+                demands, debts, contracts, expenses, causes of action, lawsuits,
+                damages and liabilities, of every kind and nature, whether known
+                or unknown, in law or equity, that I, the Buyer, ever had or may
+                have, arising from or in any way related to the Services being
                 provided to me by the Seller provided that this waiver of
                 liability does not apply to any acts of gross negligence, or
                 intentional, willful or wanton misconduct.
@@ -396,10 +401,10 @@ const Six_month_monthly_Agrement = ({ userName }: { userName: string }) => {
               </div>
               <div>
                 <span className="underline flex items-end ">
-                  Buyer Signature: <ContractInput value="A" name="signature" />
+                  Buyer Initials: <ContractInput value="A" name="signature" />
                 </span>
                 <div className="py-4">
-                  <SubmitButton />
+                  <SubmitButton url="https://www.trainerize.me/profile/xelik/?planGUID=295d7c3cb1ef4500a94449a68b2e36f1&mode=checkout" />
                 </div>
               </div>
             </div>

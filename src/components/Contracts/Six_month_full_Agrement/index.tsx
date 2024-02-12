@@ -1,5 +1,5 @@
 import React from "react";
-  import ContractInput from "../ContractInput";
+import ContractInput from "../ContractInput";
 import SubmitButton from "@/components/Submit_Button";
 const Six_month_full_Agrement = ({ userName }: { userName: string }) => {
   return (
@@ -39,7 +39,10 @@ const Six_month_full_Agrement = ({ userName }: { userName: string }) => {
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 This agreement is effective as of{" "}
                 <span>
-                  <ContractInput name="date" value={Date.now().toString()} />
+                  <ContractInput
+                    name="date"
+                    value={new Date().toDateString()}
+                  />
                 </span>
               </span>
             </div>
@@ -276,7 +279,7 @@ const Six_month_full_Agrement = ({ userName }: { userName: string }) => {
               </div>
               <div className="py-20 flex flex-col gap-y-4">
                 <span className="underline flex items-end ">
-                  Buyer Signature:{" "}
+                  Buyer Initials:{" "}
                   <ContractInput value="A" name="signature-one" />
                 </span>
                 <div>
@@ -288,7 +291,9 @@ const Six_month_full_Agrement = ({ userName }: { userName: string }) => {
                   </span>
                 </div>
                 <div>
-                  <span className="underline">Buying Date: {Date.now()}</span>
+                  <span className="underline">
+                    Buying Date: {new Date().toDateString()}
+                  </span>
                 </div>
               </div>
             </div>
@@ -393,10 +398,10 @@ const Six_month_full_Agrement = ({ userName }: { userName: string }) => {
               </div>
               <div>
                 <span className="underline flex items-end ">
-                  Buyer Signature: <ContractInput value="A" name="signature" />
+                  Buyer Initials: <ContractInput value="A" name="signature" />
                 </span>
                 <div className="py-4">
-                  <SubmitButton />
+                  <SubmitButton url="https://www.trainerize.me/profile/xelik/?planGUID=d4e883c293ca4a9f82aca3aa6a7e5473&mode=checkout" />
                 </div>
               </div>
             </div>

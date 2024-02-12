@@ -1,14 +1,14 @@
 import Link from "next/link";
 import React from "react";
 
-const SubmitButton = () => {
+const SubmitButton = ({ url }: { url: string }) => {
   return (
     <div>
-      <button type="submit" className="bg-[white] border border-[white] hover:bg-[#20205f] p-1 text-[black] transition-all ">
-        <Link
-          href="https://www.trainerize.me/profile/xelik/?planGUID=938872626f5048018b3f996eb7be58e5&mode=checkout"
-          target="_blank"
-        >
+      <button
+        type="submit"
+        className="bg-primary border-none text-[#fff] px-8 py-2 rounded-md transition-all "
+      >
+        <Link href={`${url}`} target="_blank">
           Submit
         </Link>
       </button>

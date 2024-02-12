@@ -35,40 +35,40 @@ const Page = () => {
         if (!res.data.data) {
           alert("Something went wrong!!!");
         }
-        console.log(res.data);
         setUser(res.data.data);
       }
       // }
     };
     query();
   }, []);
+  const handleChange = () => {};
 
   if (user?.Coach_payment_frequency__c) {
     switch (user.Coach_payment_frequency__c) {
       case "Bi-weekly":
-        return <Bi_weekly_fourMonth_monthly name={user.Name} />;
+        return <Bi_weekly_fourMonth_monthly userName={user.Name} />;
       case "Monthly":
-        return <Bi_weekly_fourMonth_monthly name={user.Name} />;
+        return <Bi_weekly_fourMonth_monthly userName={user.Name} />;
       case "Bi-annually":
-        return <Bi_weekly_fourMonth_monthly name={user.Name} />;
+        return <Bi_weekly_fourMonth_monthly userName={user.Name} />;
       case "Quarterly":
-        return <Bi_weekly_fourMonth_monthly name={user.Name} />;
+        return <Bi_weekly_fourMonth_monthly userName={user.Name} />;
       default:
         return <div>Invalid data sent</div>;
     }
   }
   if (user?.Client_contract_type__c === "App Access") {
-    return <Recuring_App_Access />;
+    return <Recuring_App_Access userName={user.Name} />;
   }
   if (user?.Client_contract_type__c === "1 on 1 Coaching") {
     if (user?.Client_contract_length__c === "4 Month") {
       switch (user.Client_payment_frequency__c) {
         case "Full":
-          return <Four_month_full />;
+          return <Four_month_full userName={user.Name} />;
         case "Bi-Weekly":
-          return <Bi_weekly_fourMonth_monthly name={user.Name} />;
+          return <Bi_weekly_fourMonth_monthly userName={user.Name} />;
         case "Half":
-          return <Four_month_half />;
+          return <Four_month_half userName={user.Name} />;
         case "Monthly":
           return <Four_month_monthly userName={user.Name} />;
         default:
@@ -78,13 +78,13 @@ const Page = () => {
     if (user?.Client_contract_length__c === "6 Month") {
       switch (user.Client_payment_frequency__c) {
         case "Full":
-          return <Six_month_full_Agrement />;
+          return <Six_month_full_Agrement userName={user.Name} />;
         case "Bi-Weekly":
-          return <Bi_weekly_Six_month />;
+          return <Bi_weekly_Six_month userName={user.Name} />;
         case "Half":
-          return <Six_month_half_Agrement />;
+          return <Six_month_half_Agrement userName={user.Name} />;
         case "Monthly":
-          return <Six_month_monthly_Agrement />;
+          return <Six_month_monthly_Agrement userName={user.Name} />;
         default:
           return <div>Invalid data sent</div>;
       }
@@ -92,9 +92,9 @@ const Page = () => {
     if (user?.Client_contract_length__c === "Monthly") {
       switch (user.Client_payment_frequency__c) {
         case "Bi-Weekly":
-          return <Recuring_Bi_weekly />;
+          return <Recuring_Bi_weekly userName={user.Name} />;
         case "Monthly":
-          return <Recuring_Bi_weekly_monthly />;
+          return <Recuring_Bi_weekly_monthly userName={user.Name} />;
         default:
           return <div>Invalid data sent</div>;
       }
