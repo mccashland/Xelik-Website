@@ -12,7 +12,7 @@ export async function GET(request: Request) {
     return Response.json({ error: "Email is required!" });
   }
   const queryParams = {
-    q: `SELECT Name, Email, Client_Contract_Length__c, Client_Contract_Type__c, Client_Payment_Frequency__c from Contact where RecordTypeId='012Hp000001yiuvIAA' and Email='${email}'`,
+    q: `SELECT Name, Email, Client_contract_length__c, Client_contract_type__c, Client_payment_frequency__c from Contact where Email='${email}'`,
   };
   try {
     const result = await axios.get(apiUrl, {

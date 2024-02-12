@@ -9,7 +9,7 @@ const getClient = async ({ email }: { email: string }) => {
     Authorization: `Bearer ${accessToken}`,
   };
   const queryParams = {
-    q: `SELECT Name, Email__c, Client_Contract_Length__c, Client_Contract_Type__c, Client_Payment_Frequency__c from Client__c where Email__c = '${email}'`,
+    q: `SELECT Name, Email__c, Client_contract_length__c, Client_contract_type__c, Client_payment_frequency__c from Client__c where Email__c = '${email}'`,
   };
   try {
     const result = await axios.get(apiUrl, {

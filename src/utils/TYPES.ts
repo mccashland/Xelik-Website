@@ -38,9 +38,9 @@ export type CLIENT_OBJECT = {
   };
   Name: string;
   Email__c: string;
-  Client_Contract_Length__c: "Monthly" | "4 Month" | "6 Month" | "12 Month";
-  Client_Contract_Type__c: "1 on 1 Coaching" | "App Access";
-  Client_Payment_Frequency__c: "Full" | "Half" | "Monthly" | "Bi-Weekly";
+  Client_contract_length__c: "Monthly" | "4 Month" | "6 Month" | "12 Month";
+  Client_contract_type__c: "1 on 1 Coaching" | "App Access";
+  Client_payment_frequency__c: "Full" | "Half" | "Monthly" | "Bi-Weekly";
   Coach_payment_frequency__c:
     | "Bi-weekly"
     | "Monthly"

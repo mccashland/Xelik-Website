@@ -35,12 +35,14 @@ const Page = () => {
         if (!res.data.data) {
           alert("Something went wrong!!!");
         }
+        console.log(res.data);
         setUser(res.data.data);
       }
       // }
     };
     query();
   }, []);
+
   if (user?.Coach_payment_frequency__c) {
     switch (user.Coach_payment_frequency__c) {
       case "Bi-weekly":
@@ -55,12 +57,12 @@ const Page = () => {
         return <div>Invalid data sent</div>;
     }
   }
-  if (user?.Client_Contract_Type__c === "App Access") {
+  if (user?.Client_contract_type__c === "App Access") {
     return <Recuring_App_Access />;
   }
-  if (user?.Client_Contract_Type__c === "1 on 1 Coaching") {
-    if (user?.Client_Contract_Length__c === "4 Month") {
-      switch (user.Client_Payment_Frequency__c) {
+  if (user?.Client_contract_type__c === "1 on 1 Coaching") {
+    if (user?.Client_contract_length__c === "4 Month") {
+      switch (user.Client_payment_frequency__c) {
         case "Full":
           return <Four_month_full />;
         case "Bi-Weekly":
@@ -73,8 +75,8 @@ const Page = () => {
           return <div>Invalid data sent</div>;
       }
     }
-    if (user?.Client_Contract_Length__c === "6 Month") {
-      switch (user.Client_Payment_Frequency__c) {
+    if (user?.Client_contract_length__c === "6 Month") {
+      switch (user.Client_payment_frequency__c) {
         case "Full":
           return <Six_month_full_Agrement />;
         case "Bi-Weekly":
@@ -87,8 +89,8 @@ const Page = () => {
           return <div>Invalid data sent</div>;
       }
     }
-    if (user?.Client_Contract_Length__c === "Monthly") {
-      switch (user.Client_Payment_Frequency__c) {
+    if (user?.Client_contract_length__c === "Monthly") {
+      switch (user.Client_payment_frequency__c) {
         case "Bi-Weekly":
           return <Recuring_Bi_weekly />;
         case "Monthly":
