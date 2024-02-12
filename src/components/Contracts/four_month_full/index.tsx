@@ -1,7 +1,9 @@
 import React from "react";
 import Signature from "../Signature";
 import Link from "next/link";
-const Four_month_full = () => {
+import ContractInput from "../ContractInput";
+import SubmitButton from "@/components/Submit_Button";
+const Four_month_full = ({ userName }: { userName: string }) => {
   return (
     <>
       <div className="flex w-full justify-center   ">
@@ -38,8 +40,9 @@ const Four_month_full = () => {
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 This agreement is effective as of{" "}
-                <span className="underline">Date Goes Here</span>
-              </span>
+                <span>
+                  <ContractInput name="date" value={Date.now().toString()} />
+                </span>              </span>
             </div>
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
@@ -286,23 +289,21 @@ const Four_month_full = () => {
                 The Buyer is signing this agreement on the date stated
                 undertheir signature.
               </div>
-              <div className="py-20 flex flex-col gap-y-4">
+             <div className="py-20 flex flex-col gap-y-4">
                 <span className="underline flex items-end ">
                   Buyer Signature:{" "}
-                  <span>
-                    <input
-                      type="text"
-                      name=""
-                      id=""
-                      className="bg-[transparent] border-b focus:outline-none"
-                    />
-                  </span>
+                  <ContractInput value="A" name="signature-one" />
                 </span>
                 <div>
-                  <span className="underline">Buyer Name:</span>
+                  <span className="underline">
+                    Buyer Name:{" "}
+                    <span>
+                      <ContractInput value={userName} name="userName" />
+                    </span>
+                  </span>
                 </div>
                 <div>
-                  <span className="underline">Buying Date:</span>
+                  <span className="underline">Buying Date: {Date.now()}</span>
                 </div>
               </div>
             </div>
@@ -311,7 +312,7 @@ const Four_month_full = () => {
             </div>
             <div className="main dev flex flex-col space-y-8 text-[#ffff] text-[1rem] opacity-[0.7] font-bold">
               <div>
-                __________________________, does hereby waive and release,
+              <span className="underline">{userName}</span>, does hereby waive and release,
                 indemnify, and forever discharges Elevate Wellness and Personal
                 Training LLC, and its agents, employees, officers, directors,
                 affiliates, successors, members, independent contractors, and
@@ -407,19 +408,16 @@ const Four_month_full = () => {
               </div>
               <div>
                 <span className="underline flex items-end ">
-                  Buyer Signature: <Signature />
+                  Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
+                <div className="py-4">
+                  <SubmitButton />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Link
-        href="https://www.trainerize.me/profile/xelik/?planGUID=7f3bbd2c16d0407190d2bde53329cd5e&mode=checkout"
-        target="_blank"
-      >
-        Submit
-      </Link>
     </>
   );
 };

@@ -1,7 +1,9 @@
 import React from "react";
 import Signature from "../Signature";
 import Link from "next/link";
-const Recuring_App_Access = () => {
+import ContractInput from "../ContractInput";
+import SubmitButton from "@/components/Submit_Button";
+const Recuring_App_Access = ({ userName }: { userName: string }) => {
   return (
     <>
       <div className="flex w-full justify-center   ">
@@ -14,7 +16,7 @@ const Recuring_App_Access = () => {
             <div className="paragraph text-[#ffffff] text-base ml-[5px] opacity-[0.7] ">
               This Sales Agreement (“Agreement”) for the sale of consulting
               services is between Elevate Wellness and Personal Training, and
-              _____________________________________ (the “Buyer”).
+              <span className="underline">{userName}</span> (the “Buyer”).
             </div>
             <div className="span text-[#ffff] text-[1rem] opacity-100 font-bold">
               The parties agree as follows:
@@ -38,7 +40,9 @@ const Recuring_App_Access = () => {
                 2.Effectiveness; Date.
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
-                This agreement is effective as of __________________.
+                This agreement is effective as of  <span>
+                  <ContractInput name="date" value={Date.now().toString()} />
+                </span>
               </span>
             </div>
             <div className="paragraph1">
@@ -263,15 +267,19 @@ const Recuring_App_Access = () => {
               </div>
               <div className="py-20 flex flex-col gap-y-4">
                 <span className="underline flex items-end ">
-                  Buyer Signature: <Signature />
+                  Buyer Signature:{" "}
+                  <ContractInput value="A" name="signature-one" />
                 </span>
                 <div>
-                  <span className="underline">Buyer Name:</span>
+                  <span className="underline">
+                    Buyer Name:{" "}
+                    <span>
+                      <ContractInput value={userName} name="userName" />
+                    </span>
+                  </span>
                 </div>
                 <div>
-                  <span className="underline">
-                    Buying Date: ______________________
-                  </span>
+                  <span className="underline">Buying Date: {Date.now()}</span>
                 </div>
               </div>
             </div>
@@ -280,7 +288,7 @@ const Recuring_App_Access = () => {
             </div>
             <div className="main dev flex flex-col space-y-8 text-[#ffff] text-[1rem] opacity-[0.7] font-bold">
               <div>
-                __________________________, does hereby waive and release,
+              <span className="underline">{userName}</span>, does hereby waive and release,
                 indemnify, and forever discharges Elevate Wellness and Personal
                 Training LLC, and its agents, employees, officers, directors,
                 affiliates, successors, members, independent contractors, and
@@ -376,19 +384,17 @@ const Recuring_App_Access = () => {
               </div>
               <div>
                 <span className="underline flex items-end ">
-                  Buyer Signature: <Signature />
+                  Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
+                <div className="py-4">
+                  <SubmitButton />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Link
-        href="https://www.trainerize.me/profile/xelik/?planGUID=397455ffe7664155a8b8ca9c6cc33b00&mode=checkout"
-        target="_blank"
-      >
-        Submit
-      </Link>
+      
     </>
   );
 };

@@ -1,7 +1,9 @@
 import React from "react";
 import Signature from "../Signature";
 import Link from "next/link";
-const Four_month_half = () => {
+import ContractInput from "../ContractInput";
+import SubmitButton from "@/components/Submit_Button";
+const Four_month_half = ({ userName }: { userName: string }) => {
   return (
     <>
       <div className="flex w-full justify-center   ">
@@ -13,7 +15,7 @@ const Four_month_half = () => {
             <div className="paragraph text-base ml-[5px] opacity-[0.7] ">
               This Sales Agreement (“Agreement”) for the sale of consulting
               services is between Elevate Wellness and Personal Training, and
-              _____________________________________ (the “Buyer”).
+              <span className="underline">{userName}</span> (the “Buyer”).
             </div>
             <div className="span text-[1rem] opacity-100 font-bold">
               The parties agree as follows:
@@ -37,7 +39,10 @@ const Four_month_half = () => {
                 2.Effectiveness; Date.
               </span>
               <span className="paragraph text-base ml-[5px] opacity-[0.7]">
-                This agreement is effective as of __________________.{" "}
+                This agreement is effective as of
+                <span>
+                  <ContractInput name="date" value={Date.now().toString()} />
+                </span>
               </span>
             </div>
             <div className="paragraph1">
@@ -274,17 +279,19 @@ const Four_month_half = () => {
               </div>
               <div className="py-20 flex flex-col gap-y-4">
                 <span className="underline flex items-end ">
-                  Buyer Signature: <Signature />
+                  Buyer Signature:{" "}
+                  <ContractInput value="A" name="signature-one" />
                 </span>
                 <div>
                   <span className="underline">
-                    Buyer Name: ______________________
+                    Buyer Name:{" "}
+                    <span>
+                      <ContractInput value={userName} name="userName" />
+                    </span>
                   </span>
                 </div>
                 <div>
-                  <span className="underline">
-                    Buying Date: ______________________
-                  </span>
+                  <span className="underline">Buying Date: {Date.now()}</span>
                 </div>
               </div>
             </div>
@@ -293,15 +300,15 @@ const Four_month_half = () => {
             </div>
             <div className="main dev flex flex-col space-y-8   text-[1rem] opacity-[0.7] font-bold">
               <div>
-                __________________________, does hereby waive and release,
-                indemnify, and forever discharges Elevate Wellness and Personal
-                Training LLC, and its agents, employees, officers, directors,
-                affiliates, successors, members, independent contractors, and
-                assigns, of and from any and all claims, demands, debts,
-                contracts, expenses, causes of action, lawsuits, damages and
-                liabilities, of every kind and nature, whether known or unknown,
-                in law or equity, that I, the Buyer, ever had or may have,
-                arising from or in any way related to the Services being
+                <span className="underline">{userName}</span>, does hereby waive
+                and release, indemnify, and forever discharges Elevate Wellness
+                and Personal Training LLC, and its agents, employees, officers,
+                directors, affiliates, successors, members, independent
+                contractors, and assigns, of and from any and all claims,
+                demands, debts, contracts, expenses, causes of action, lawsuits,
+                damages and liabilities, of every kind and nature, whether known
+                or unknown, in law or equity, that I, the Buyer, ever had or may
+                have, arising from or in any way related to the Services being
                 provided to me by the Seller provided that this waiver of
                 liability does not apply to any acts of gross negligence, or
                 intentional, willful or wanton misconduct.
@@ -389,18 +396,15 @@ const Four_month_half = () => {
               </div>
               <div>
                 <span className="underline flex items-end ">
-                  Buyer Signature: <Signature />
+                  Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
+                <div className="py-4">
+                  <SubmitButton />
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <Link
-          href="https://www.trainerize.me/profile/xelik/?planGUID=d53cc5c8e92643cab208fc9f5dbfb765&mode=checkout"
-          target="_blank"
-        >
-          Submit
-        </Link>
       </div>
     </>
   );
