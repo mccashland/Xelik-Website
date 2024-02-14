@@ -2,7 +2,6 @@ import Banner from "@/components/Banner/page";
 import Footer from "@/components/Footer/page";
 import LogoHeader from "@/components/LogoHeader/page";
 import MainContent from "@/components/MainContent/page";
-import { route } from "@/utils/Routes";
 
 export default function Clients() {
   const content = {
@@ -13,14 +12,23 @@ export default function Clients() {
     mainImage: "/assets/imgs/main-clients.svg",
     button: {
       text: "Apply to get coaching",
-      link: route.clients.passphrase,
     },
   };
+  const buttons = [
+    {
+      label: "Sign up for coaching",
+      link: "/clients/phrase?q=Sign up for coaching",
+    },
+    {
+      label: "Apply to become a client",
+      link: "/clients/phrase?q=Apply to become a client",
+    },
+  ];
   return (
     <div className="flex flex-col gap-10">
       <LogoHeader />
       <Banner text={"Clients"} />
-      <MainContent content={content} />
+      <MainContent buttons={buttons} content={content} />
       <Footer />
     </div>
   );

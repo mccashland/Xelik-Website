@@ -16,11 +16,21 @@ export default function Coaches() {
       link: route.coaches.passphrase,
     },
   };
+  const buttons = [
+    {
+      label: "Sign Up to become a coach",
+      link: "/coaches/phrase?q=Sign Up to become a coach",
+    },
+    {
+      label: "Apply to become a coach",
+      link: "/coaches/phrase?q=Apply to become a coach",
+    },
+  ];
   return (
     <div className="flex flex-col gap-10">
       <LogoHeader />
       <Banner text={"Coaches"} />
-      <MainContent content={content} />
+      <MainContent buttons={buttons} content={content} />
       <Footer />
     </div>
   );
