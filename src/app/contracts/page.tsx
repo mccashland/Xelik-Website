@@ -27,13 +27,13 @@ const Page = () => {
       if (userType === "COACH") {
         const res = await axios.get(`/api/coach?email=${userEmail}`);
         if (!res.data.data) {
-          alert("Something went wrong!!!");
+          alert("User not found!");
         }
         setUser(res.data.data);
       } else if (userType === "CLIENT") {
         const res = await axios.get(`/api/client?email=${userEmail}`);
         if (!res.data.data) {
-          alert("Something went wrong!!!");
+          alert("User not found!");
         }
         setUser(res.data.data);
       }
@@ -41,8 +41,6 @@ const Page = () => {
     };
     query();
   }, []);
-  const handleChange = () => {};
-
   if (user?.Coach_payment_frequency__c) {
     switch (user.Coach_payment_frequency__c) {
       case "Bi-weekly":

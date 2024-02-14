@@ -12,7 +12,7 @@ export async function GET(request: Request) {
     return Response.json({ error: "Email is required!" });
   }
   const queryParams = {
-    q: `SELECT Name, Email, Coach_payment_frequency__c, pi__created_date__c from Contact where Email='${email}' and RecordTypeId='012Hp000001yiv0IAA'`,
+    q: `SELECT Name, Email, Coach_payment_frequency__c from Contact where Email='${email}'`,
   };
   try {
     const result = await axios.get(apiUrl, {
@@ -22,7 +22,7 @@ export async function GET(request: Request) {
     if (result.data.records.length <= 0) {
       return Response.json({ message: "User not found" });
     }
-    return Response.json({ data: result.data.records });
+    return Response.json({ data: result.data.records[0] });
   } catch (err) {
     return Response.json({ error: err });
   }

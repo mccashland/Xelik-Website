@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, useState } from "react";
+import React from "react";
 import Button from "../Button/page";
 import {
   EV_USER_EMAIL,
@@ -7,29 +7,26 @@ import {
   FORMS_NAMES,
   USER_TYPE,
 } from "@/utils/TYPES";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { emailRegex } from "@/utils/validation";
-
-type FormData = {
-  email: string;
-  phrase: string;
-};
-
-export const Phrase = ({ userType }: { userType: USER_TYPE }) => {
+export const Phrase = ({
+  userType,
+  q,
+}: {
+  userType: USER_TYPE;
+  q: FORMS_NAMES;
+}) => {
   const {
     handleSubmit,
     register,
-    watch,
     formState: { errors },
   } = useForm();
-  // const [data, setData] = useState<FormData>({ email: "", phrase: "" });
   const router = useRouter();
-  const params = useSearchParams();
-  const q = params.get("q");
   const handlePhraseClick = async (data: any) => {
     localStorage.setItem(EV_USER_EMAIL, data.email);
     localStorage.setItem(EV_USER_TYPE, userType);
+    console.log(userType);
     if (userType === "CLIENT") {
       if (q === "Apply to become a client") {
         router.push("https://formstack.io/1A423");
@@ -41,7 +38,7 @@ export const Phrase = ({ userType }: { userType: USER_TYPE }) => {
     } else if (userType === "COACH") {
       if (q === "Apply to become a coach") {
         router.push("https://formstack.io/3DDE6");
-      } else if (q === "") {
+      } else if (q === "Sign Up to become a coach") {
         router.push("https://formstack.io/2CA02");
       } else {
         console.log("Check console!");
