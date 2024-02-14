@@ -8,6 +8,8 @@ import {
   USER_TYPE,
 } from "@/utils/TYPES";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { emailRegex } from "@/utils/validation";
 
 type FormData = {
   email: string;
@@ -15,11 +17,17 @@ type FormData = {
 };
 
 export const Phrase = ({ userType }: { userType: USER_TYPE }) => {
-  const [data, setData] = useState<FormData>({ email: "", phrase: "" });
+  const {
+    handleSubmit,
+    register,
+    watch,
+    formState: { errors },
+  } = useForm();
+  // const [data, setData] = useState<FormData>({ email: "", phrase: "" });
   const router = useRouter();
   const params = useSearchParams();
   const q = params.get("q");
-  const handlePhraseClick = async () => {
+  const handlePhraseClick = async (data: any) => {
     localStorage.setItem(EV_USER_EMAIL, data.email);
     localStorage.setItem(EV_USER_TYPE, userType);
     if (userType === "CLIENT") {
@@ -42,28 +50,36 @@ export const Phrase = ({ userType }: { userType: USER_TYPE }) => {
       alert("Something went Wrong Please try again!");
     }
   };
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setData({ ...data, [name]: value });
-  };
+  const validPhrase = () => {};
+
   return (
-    <form>
+    <form onSubmit={handleSubmit(handlePhraseClick)}>
       <div className="flex w-full flex-col gap-y-3">
         <input
           className="font-[400] outline-none text-[20px] w-full text-[#FFFFFF] opacity-60 border focus:border-[#CE0019] bg-[#FFFFFF1A]  rounded-[10px]  py-3 px-3 "
           type="text"
-          name="email"
           placeholder="Enter Your Email"
-          onChange={handleChange}
+          {...register("email", { pattern: emailRegex, required: true })}
         />
+        {errors.email && (
+          <span className="text-[red]">Please enter vaild email</span>
+        )}
         <input
           className="font-[400] outline-none text-[20px] w-full text-[#FFFFFF] opacity-60 border focus:border-[#CE0019] bg-[#FFFFFF1A]  rounded-[10px]  py-3 px-3 "
           type="text"
-          name="phrase"
           placeholder="Enter Passphrase"
-          onChange={handleChange}
+          {...register("phrase", {
+            required: true,
+            validate: (value) =>
+              (userType === "CLIENT" && value === "XelinkClient2024") ||
+              (userType === "COACH" && value === "XelinkCoach2024") ||
+              "Please enter valid phrase",
+          })}
         />
-        <Button text={"Continue"} onClick={handlePhraseClick} />
+        {errors.phrase && (
+          <span className="text-[red]">Please enter vaild phrase</span>
+        )}
+        <Button text={"Continue"} />
       </div>
     </form>
   );
