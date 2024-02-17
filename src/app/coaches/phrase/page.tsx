@@ -18,7 +18,7 @@ export default function CoachPhrase({
         />
         <div className="maincnt py-10 flex justify-center items-center flex-col gap-10 ">
           <div className="font-bold text-[40px]  text-[#FFFFFF] w-[95%] text-center">
-            Enter Your Coaches Passphrase
+            Enter Your Coach Passphrase
           </div>
           <Phrase q={q as FORMS_NAMES} userType="COACH" />
         </div>

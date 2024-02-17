@@ -8,7 +8,7 @@ const config: Config = {
   ],
   theme: {
     colors: {
-      'primary': "#CE0019",
+      primary: "#CE0019",
     },
     extend: {
       backgroundImage: {
@@ -18,6 +18,5 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
 };
 export default config;

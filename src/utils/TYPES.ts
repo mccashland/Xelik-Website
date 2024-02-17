@@ -43,6 +43,7 @@ export type CLIENT_OBJECT = {
   };
   Name: string;
   Email__c: string;
+  message?: string;
   Client_contract_length__c: "Monthly" | "4 Month" | "6 Month" | "12 Month";
   Client_contract_type__c: "1 on 1 Coaching" | "App Access";
   Client_payment_frequency__c: "Full" | "Half" | "Monthly" | "Bi-Weekly";

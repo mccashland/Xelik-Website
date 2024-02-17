@@ -10,6 +10,8 @@ import {
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { emailRegex } from "@/utils/validation";
+import { onSubmit } from "@/actions/forms";
+import Link from "next/link";
 export const Phrase = ({
   userType,
   q,
@@ -47,10 +49,8 @@ export const Phrase = ({
       alert("Something went Wrong Please try again!");
     }
   };
-  const validPhrase = () => {};
-
   return (
-    <form onSubmit={handleSubmit(handlePhraseClick)}>
+    <form action={onSubmit} onSubmit={handleSubmit(handlePhraseClick)}>
       <div className="flex w-full flex-col gap-y-3">
         <input
           className="font-[400] outline-none text-[20px] w-full text-[#FFFFFF] opacity-60 border focus:border-[#CE0019] bg-[#FFFFFF1A]  rounded-[10px]  py-3 px-3 "
@@ -68,14 +68,29 @@ export const Phrase = ({
           {...register("phrase", {
             required: true,
             validate: (value) =>
-              (userType === "CLIENT" && value === "XelinkClient2024") ||
-              (userType === "COACH" && value === "XelinkCoach2024") ||
+              (userType === "CLIENT" && value === "XelikClient2024") ||
+              (userType === "COACH" && value === "XelikCoach2024") ||
               "Please enter valid phrase",
           })}
         />
         {errors.phrase && (
           <span className="text-[red]">Please enter vaild phrase</span>
         )}
+        <p className="text-[#fff] text-sm">
+          Don't know your {userType.toLowerCase()} Passphrase?{" "}
+          <span className="text-primary underline">
+            <Link
+              target="_blank"
+              href={
+                userType === "CLIENT"
+                  ? "https://formstack.io/1A423"
+                  : "https://formstack.io/3DDE6"
+              }
+            >
+              Apply to be a {userType}
+            </Link>
+          </span>
+        </p>
         <Button text={"Continue"} />
       </div>
     </form>
