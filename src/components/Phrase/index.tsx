@@ -50,7 +50,7 @@ export const Phrase = ({
     }
   };
   return (
-    <form action={onSubmit} onSubmit={handleSubmit(handlePhraseClick)}>
+    <form onSubmit={handleSubmit(handlePhraseClick)}>
       <div className="flex w-full flex-col gap-y-3">
         <input
           className="font-[400] outline-none text-[20px] w-full text-[#FFFFFF] opacity-60 border focus:border-[#CE0019] bg-[#FFFFFF1A]  rounded-[10px]  py-3 px-3 "
@@ -77,7 +77,7 @@ export const Phrase = ({
           <span className="text-[red]">Please enter vaild phrase</span>
         )}
         <p className="text-[#fff] text-sm">
-          Don't know your {userType.toLowerCase()} Passphrase?{" "}
+          Don&apos;t know your {userType.toLowerCase()} Passphrase?{" "}
           <span className="text-primary underline">
             <Link
               target="_blank"

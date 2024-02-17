@@ -35,13 +35,13 @@ export async function get_users() {
 }
 
 export async function add_sign(formData: FormData) {
-  const userName = formData.get("userName");
-  const email = formData.get("email");
-  const signature = formData.get("signature");
-  const get_ip = await axios.get("http://localhost:3000/api/getip");
-  console.log(get_ip.data.socket);
-  const ip = get_ip.data.ip || "null";
-  const date = formData.get("date");
+  // const userName = formData.get("userName");
+  // const email = formData.get("email");
+  // const signature = formData.get("signature");
+  // const get_ip = await axios.get("http://localhost:3000/api/getip");
+  // console.log(get_ip.data.socket);
+  // const ip = get_ip.data.ip || "null";
+  // const date = formData.get("date");
   console.log(formData);
   //   create_user({
   //     userName: "Tariq",
