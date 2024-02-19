@@ -35,7 +35,7 @@ const Four_month_monthly = ({ userName }: { userName: string }) => {
             <div className="paragraph1 ">
               <span className="span text-[1rem] opacity-100 font-bold">
                 {" "}
-                2.Effectiveness; Date.
+                2. Effectiveness; Date.
               </span>
               <span className="paragraph text-base ml-[5px] opacity-[0.7]">
                 This agreement is effective as of{" "}
@@ -50,23 +50,22 @@ const Four_month_monthly = ({ userName }: { userName: string }) => {
             <div className="paragraph1">
               <span className="span text-[1rem] opacity-100 font-bold">
                 {" "}
-                3.Invoices; Payment.
+                3. Invoices; Payment.
               </span>
               <span className="paragraph text-base ml-[5px] opacity-[0.7]">
                 The Buyer agrees to pay $399 monthly, a payment that will occur
-                for 4 months over the duration of theServices. Cash payment for
-                the Services is due within 30 days of the date of any
-                givenSellers’s invoice. The Services will begin immediately upon
-                the effective date and will end exactly 4 months after the
-                beginning of the Services. Missed payments may result in
-                suspension or termination of Services with no refund of pervious
-                payments.
+                for 4 months over the duration of the Services. Cash payment for
+                the Services is due within 30 days of the date of any given
+                Sellers’s invoice. The Services will begin immediately upon the
+                effective date and will end exactly 4 months after the beginning
+                of the Services. Missed payments may result in suspension or
+                termination of Services with no refund of pervious payments.
               </span>
             </div>
             <div className="paragraph1">
               <span className="span text-[1rem] opacity-100 font-bold">
                 {" "}
-                4.Confidentiality.
+                4. Confidentiality.
               </span>
               <span className="paragraph text-base ml-[5px] opacity-[0.7]">
                 The Sellers will keep the Buyer’s information confidential and
@@ -79,7 +78,7 @@ const Four_month_monthly = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span text-[1rem] opacity-100 font-bold">
-                5.No Cancellation.
+                5. No Cancellation.
               </span>
               <span className="paragraph text-base ml-[5px] opacity-[0.7]">
                 The Buyer acknowledges that there is a no cancellation policy.
@@ -89,7 +88,7 @@ const Four_month_monthly = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span  text-[1rem] opacity-100 font-bold">
-                6.Delivery; Title; and Risk of Loss.
+                6. Delivery; Title; and Risk of Loss.
               </span>
               <span className="paragraph text-base ml-[5px] opacity-[0.7]">
                 The Sellers shall deliver the Services online. Any goods
@@ -103,7 +102,7 @@ const Four_month_monthly = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span text-[1rem] opacity-100 font-bold">
-                7.Disclaimer of Warranty;
+                7. Disclaimer of Warranty;
               </span>
               <span className="spansemibold font-bold text-base ml-[5px] opacity-[0.7] ">
                 Due Diligence. The Goods and Services are being sold “as is,”
@@ -170,9 +169,9 @@ const Four_month_monthly = ({ userName }: { userName: string }) => {
                 11. Governing Law and Designation Forum.
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
-                . (a) The laws of the State of Tennessee (without giving effect
-                to its conflicts of law principles) govern all matters arising
-                out of or relating to this agreement and the transactions it
+                (a) The laws of the State of Tennessee (without giving effect to
+                its conflicts of law principles) govern all matters arising out
+                of or relating to this agreement and the transactions it
                 contemplates, including, without limitation, its interpretation,
                 construction, validity, performance (including the details of
                 performance), and enforcement. In the event that any provision
@@ -281,7 +280,7 @@ const Four_month_monthly = ({ userName }: { userName: string }) => {
               </div>
               <div className="py-20 flex flex-col gap-y-4">
                 <span className="underline flex items-end ">
-                  Buyer Initials:{" "}
+                  Buyer Signature:{" "}
                   <ContractInput value="A" name="signature-one" />
                 </span>
                 <div>
@@ -327,7 +326,7 @@ const Four_month_monthly = ({ userName }: { userName: string }) => {
                 Training LLC in the event of illness or otherwise.{" "}
               </div>
               <div>
-                By this Waiver, Iassume any risk, and take full responsibility
+                By this Waiver, I assume any risk, and take full responsibility
                 and waive any claims of personal injury, death or damage to
                 personal property associated with such Services, including but
                 not limited to temporary or permanent damage, unsatisfactory
@@ -400,7 +399,7 @@ const Four_month_monthly = ({ userName }: { userName: string }) => {
               </div>
               <div>
                 <span className="underline flex items-end ">
-                  Buyer Initials: <ContractInput value="A" name="signature" />
+                  Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
                 <div className="py-4">
                   <SubmitButton url="https://www.trainerize.me/profile/xelik/?planGUID=938872626f5048018b3f996eb7be58e5&mode=checkout" />

@@ -35,7 +35,7 @@ const Client_wavier = ({ userName }: { userName: string }) => {
             illness or otherwise.
           </div>
           <div>
-            By this Waiver, Iassume any risk, and take full responsibility and
+            By this Waiver, I assume any risk, and take full responsibility and
             waive any claims of personal injury, death or damage to personal
             property associated with such Services, including but not limited to
             temporary or permanent damage, unsatisfactory results from said
@@ -103,7 +103,7 @@ const Client_wavier = ({ userName }: { userName: string }) => {
           </div>
           <div>
             <span className="underline flex items-end ">
-              Buyer Initials: <ContractInput value="A" name="signature" />
+              Buyer Signature: <ContractInput value="A" name="signature" />
             </span>
             <div className="py-4">
               <SubmitButton url="#" />

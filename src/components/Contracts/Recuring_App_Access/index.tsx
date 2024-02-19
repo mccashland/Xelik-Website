@@ -15,7 +15,7 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
           <div className="flex flex-col gap-10  w-[90%] sm:w-[80%] m-auto">
             <div className="paragraph text-[#ffffff] text-base ml-[5px] opacity-[0.7] ">
               This Sales Agreement (“Agreement”) for the sale of consulting
-              services is between Elevate Wellness and Personal Training, and
+              services is between Elevate Wellness and Personal Training, and{" "}
               <span className="underline">{userName}</span> (the “Buyer”).
             </div>
             <div className="span text-[#ffff] text-[1rem] opacity-100 font-bold">
@@ -37,7 +37,7 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
             <div className="paragraph1 ">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
                 {" "}
-                2.Effectiveness; Date.
+                2. Effectiveness; Date.
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 This agreement is effective as of{" "}
@@ -52,14 +52,14 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
                 {" "}
-                3.Invoices; Payment.
+                3. Invoices; Payment.
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
-                The Buyer agrees to pay $99monthly, a payment that will occur
+                The Buyer agrees to pay $99 monthly, a payment that will occur
                 for a minimum of 3 months from the effective date, then will
                 continue in perpetuity until the cancellation process has been
                 completed. Cash payment for the Services is due within 30 days
-                of the date of any givenSellers’s invoice. The Services will
+                of the date of any given Sellers’s invoice. The Services will
                 begin immediately upon the effective date. Missed payments may
                 result in suspension or termination of Services with no refund
                 of pervious payments.
@@ -68,7 +68,7 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
                 {" "}
-                4.Confidentiality.
+                4. Confidentiality.
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 The Sellers will keep the Buyer’s information confidential and
@@ -81,7 +81,7 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
-                5.Cancellation Process.
+                5. Cancellation Process.
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 After the minimum 3 months have passed from the effective date,
@@ -94,7 +94,7 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
-                6.Delivery; Title; and Risk of Loss.
+                6. Delivery; Title; and Risk of Loss.
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 The Sellers shall deliver the Services online. Any goods
@@ -108,16 +108,16 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
-                7.Disclaimer of Warranty;
+                7. Disclaimer of Warranty;
               </span>
               <span className="spansemibold text-[#ffff] font-bold text-base ml-[5px] opacity-[0.7] ">
-                ; Due Diligence. The Goods and Services are being sold “as is,”
+                Due Diligence. The Goods and Services are being sold “as is,”
                 and the Sellers disclaim all warranties of quality, whether
                 express or implied, including the warranties of merchantability
                 and fitness for particular purpose.
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
-                . The Buyer acknowledges that it has not been induced by any
+                The Buyer acknowledges that it has not been induced by any
                 statements or representations of any person with respect to the
                 quality or condition of the Services and that no such statements
                 or representations have been made. The Sellers make no
@@ -161,7 +161,7 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
                 10. Security Interest.
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
-                . The Buyer hereby grants to the Sellers a security interest in
+                The Buyer hereby grants to the Sellers a security interest in
                 the Goods and Services sold to the Buyer under this agreement
                 and any proceeds therefrom (including accounts receivable),
                 until payment in full for the Goods and Services has been
@@ -271,7 +271,7 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
               </div>
               <div className="py-20 flex flex-col gap-y-4">
                 <span className="underline flex items-end ">
-                  Buyer Initials:{" "}
+                  Buyer Signature:{" "}
                   <ContractInput value="A" name="signature-one" />
                 </span>
                 <div>
@@ -317,7 +317,7 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
                 Training LLC in the event of illness or otherwise.{" "}
               </div>
               <div>
-                By this Waiver, Iassume any risk, and take full responsibility
+                By this Waiver, I assume any risk, and take full responsibility
                 and waive any claims of personal injury, death or damage to
                 personal property associated with such Services, including but
                 not limited to temporary or permanent damage, unsatisfactory
@@ -390,7 +390,7 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
               </div>
               <div>
                 <span className="underline flex items-end ">
-                  Buyer Initials: <ContractInput value="A" name="signature" />
+                  Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
                 <div className="py-4">
                   <SubmitButton url="https://www.trainerize.me/profile/xelik/?planGUID=397455ffe7664155a8b8ca9c6cc33b00&mode=checkout" />

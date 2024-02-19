@@ -22,7 +22,7 @@ const Four_month_full = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
-                1. <span className="ml-1"> Sale of Services.</span>
+                1. Sale of Services.
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 The Sellers shall sell to the Buyer and the Buyer shall purchase
@@ -36,7 +36,7 @@ const Four_month_full = ({ userName }: { userName: string }) => {
             <div className="paragraph1 ">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
                 {" "}
-                2. <span className="ml-1">Effectiveness; Date.</span>
+                2. Effectiveness; Date.
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 This agreement is effective as of{" "}
@@ -51,11 +51,11 @@ const Four_month_full = ({ userName }: { userName: string }) => {
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
                 {" "}
-                3. <span className="ml-1">Invoices; Payment.</span>
+                3. Invoices; Payment.
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 The Buyer agrees to pay $1,400, a payment that will occur
-                one-time upfrontfor theServices. Cash payment for the Services
+                one-time upfrontfor the Services. Cash payment for the Services
                 is due within 30 days of the date of the Sellers’invoice. The
                 Services will begin immediately upon the effective date and will
                 end exactly 4 months after the beginning of the Services. Missed
@@ -66,7 +66,7 @@ const Four_month_full = ({ userName }: { userName: string }) => {
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
                 {" "}
-                4.<span className="ml-1">Confidentiality.</span>
+                4. Confidentiality.
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 The Sellers will keep the Buyer’s information confidential and
@@ -79,7 +79,7 @@ const Four_month_full = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
-                5.<span className="ml-1">No Cancellation.</span>
+                5. No Cancellation.
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 The Buyer acknowledges that there is a no cancellation policy.
@@ -88,7 +88,7 @@ const Four_month_full = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
-                6.Delivery; Title; and Risk of Loss.
+                6. Delivery; Title; and Risk of Loss.
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 TheSellers shall deliver the Services online. Any goods
@@ -102,7 +102,7 @@ const Four_month_full = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
-                7.Disclaimer of Warranty;
+                7. Disclaimer of Warranty;
               </span>
               <span className="spansemibold text-[#ffff] font-bold text-base ml-[5px] opacity-[0.7] ">
                 Diligence. The Goods and Services are being sold “as is,” and
@@ -295,7 +295,7 @@ const Four_month_full = ({ userName }: { userName: string }) => {
               </div>
               <div className="py-20 flex flex-col gap-y-4">
                 <span className="underline flex items-end ">
-                  Buyer Initials:{" "}
+                  Buyer Signature:{" "}
                   <ContractInput value="A" name="signature-one" />
                 </span>
                 <div>
@@ -341,7 +341,7 @@ const Four_month_full = ({ userName }: { userName: string }) => {
                 Training LLC in the event of illness or otherwise.{" "}
               </div>
               <div>
-                By this Waiver, Iassume any risk, and take full responsibility
+                By this Waiver, I assume any risk, and take full responsibility
                 and waive any claims of personal injury, death or damage to
                 personal property associated with such Services, including but
                 not limited to temporary or permanent damage, unsatisfactory
@@ -414,7 +414,7 @@ const Four_month_full = ({ userName }: { userName: string }) => {
               </div>
               <div>
                 <span className="underline flex items-end ">
-                  Buyer Initials: <ContractInput value="A" name="signature" />
+                  Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
                 <div className="py-4">
                   <SubmitButton url="https://www.trainerize.me/profile/xelik/?planGUID=7f3bbd2c16d0407190d2bde53329cd5e&mode=checkout" />
