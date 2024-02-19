@@ -28,18 +28,22 @@ export default function Purpose() {
             What are you looking for?
           </div>
           <div className="text-center font-normal text-base text-[#fff] opacity-60">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod.
           </div>
           <div className="imgs justify-center items-center md:flex md:gap-10 ">
             <div className="border border-[#FFFFFF1A] hover:border-[#CE0019]  cursor-pointer rounded-[18px] bg-[#FFFFFF08] w-[350px] h-[330px] justify-center items-center flex flex-col gap-6 transition duration-300 mb-8">
-                <img src="/assets/imgs/client-lookingFor-connection.svg" alt="" />
-                <div className="font-semibold text-xl text-[#fff]">1 on 1 Coaching</div>
+              <img src="/assets/imgs/client-lookingFor-connection.svg" alt="" />
+              <div className="font-semibold text-xl text-[#fff]">
+                1 on 1 Coaching
+              </div>
             </div>
             <div className="border border-[#FFFFFF1A] hover:border-[#CE0019] cursor-pointer rounded-[18px] w-[350px] h-[330px] justify-center  bg-[#FFFFFF08] items-center flex flex-col gap-6 transition duration-300 mb-8">
-                <img src="/assets/imgs/client-lookingFor-key.svg" alt="" />
-                <div className="font-semibold text-xl text-[#fff]">App Access (Programming)</div>
+              <img src="/assets/imgs/client-lookingFor-key.svg" alt="" />
+              <div className="font-semibold text-xl text-[#fff]">
+                App Access (Programming)
+              </div>
             </div>
-
           </div>
         </div>
         <Button text={content.button.text} onClick={handleButtonClick} />

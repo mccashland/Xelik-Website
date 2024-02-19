@@ -9,7 +9,7 @@ interface Props {
     description: any;
     button: any;
   };
-  buttons: { label: string; link: string }[];
+  buttons?: { label: string; link: string }[];
 }
 export default function MainContent({ content, buttons }: Props) {
   const { mainImage, text1, text2, description, button } = content;
@@ -44,7 +44,7 @@ export default function MainContent({ content, buttons }: Props) {
         </div>
       </div>
       <div className="flex gap-x-4">
-        {buttons.map((btn) => {
+        {buttons?.map((btn) => {
           return (
             <Link
               key={btn.label}

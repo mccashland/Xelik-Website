@@ -1,4 +1,5 @@
 "use client";
+import { add_sign } from "@/actions";
 import { SignContext } from "@/context";
 import { useState } from "react";
 
@@ -10,7 +11,7 @@ export default function RootLayout({
   const [signature, setSignature] = useState("");
   return (
     <SignContext.Provider value={{ signature, setSignature }}>
-      {children}
+      <form action={add_sign}>{children}</form>
     </SignContext.Provider>
   );
 }

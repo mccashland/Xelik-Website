@@ -5,9 +5,6 @@ import Six_month_full_Agrement from "@/components/Contracts/Six_month_full_Agrem
 import Six_month_half_Agrement from "@/components/Contracts/Six_month_half_Agrement";
 import Six_month_monthly_Agrement from "@/components/Contracts/Six_month_monthly_Agrement";
 import Client_wavier from "@/components/Contracts/client_wavier";
-import Four_month_full from "@/components/Contracts/four_month_full";
-import Four_month_half from "@/components/Contracts/four_month_half";
-import Four_month_monthly from "@/components/Contracts/four_month_monthly";
 import React from "react";
 
 const Test = () => {

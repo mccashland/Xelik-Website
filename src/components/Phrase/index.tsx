@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, useState } from "react";
+import React from "react";
 import Button from "../Button/page";
 import {
   EV_USER_EMAIL,
@@ -7,21 +7,28 @@ import {
   FORMS_NAMES,
   USER_TYPE,
 } from "@/utils/TYPES";
-import { useRouter, useSearchParams } from "next/navigation";
-
-type FormData = {
-  email: string;
-  phrase: string;
-};
-
-export const Phrase = ({ userType }: { userType: USER_TYPE }) => {
-  const [data, setData] = useState<FormData>({ email: "", phrase: "" });
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { emailRegex } from "@/utils/validation";
+import { onSubmit } from "@/actions/forms";
+import Link from "next/link";
+export const Phrase = ({
+  userType,
+  q,
+}: {
+  userType: USER_TYPE;
+  q: FORMS_NAMES;
+}) => {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
   const router = useRouter();
-  const params = useSearchParams();
-  const q = params.get("q");
-  const handlePhraseClick = async () => {
+  const handlePhraseClick = async (data: any) => {
     localStorage.setItem(EV_USER_EMAIL, data.email);
     localStorage.setItem(EV_USER_TYPE, userType);
+    console.log(userType);
     if (userType === "CLIENT") {
       if (q === "Apply to become a client") {
         router.push("https://formstack.io/1A423");
@@ -33,7 +40,7 @@ export const Phrase = ({ userType }: { userType: USER_TYPE }) => {
     } else if (userType === "COACH") {
       if (q === "Apply to become a coach") {
         router.push("https://formstack.io/3DDE6");
-      } else if (q === "") {
+      } else if (q === "Sign Up to become a coach") {
         router.push("https://formstack.io/2CA02");
       } else {
         console.log("Check console!");
@@ -42,28 +49,49 @@ export const Phrase = ({ userType }: { userType: USER_TYPE }) => {
       alert("Something went Wrong Please try again!");
     }
   };
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setData({ ...data, [name]: value });
-  };
   return (
-    <form>
+    <form onSubmit={handleSubmit(handlePhraseClick)}>
       <div className="flex w-full flex-col gap-y-3">
         <input
           className="font-[400] outline-none text-[20px] w-full text-[#FFFFFF] opacity-60 border focus:border-[#CE0019] bg-[#FFFFFF1A]  rounded-[10px]  py-3 px-3 "
           type="text"
-          name="email"
           placeholder="Enter Your Email"
-          onChange={handleChange}
+          {...register("email", { pattern: emailRegex, required: true })}
         />
+        {errors.email && (
+          <span className="text-[red]">Please enter vaild email</span>
+        )}
         <input
           className="font-[400] outline-none text-[20px] w-full text-[#FFFFFF] opacity-60 border focus:border-[#CE0019] bg-[#FFFFFF1A]  rounded-[10px]  py-3 px-3 "
           type="text"
-          name="phrase"
           placeholder="Enter Passphrase"
-          onChange={handleChange}
+          {...register("phrase", {
+            required: true,
+            validate: (value) =>
+              (userType === "CLIENT" && value === "XelikClient2024") ||
+              (userType === "COACH" && value === "XelikCoach2024") ||
+              "Please enter valid phrase",
+          })}
         />
-        <Button text={"Continue"} onClick={handlePhraseClick} />
+        {errors.phrase && (
+          <span className="text-[red]">Please enter vaild phrase</span>
+        )}
+        <p className="text-[#fff] text-sm">
+          Don&apos;t know your {userType.toLowerCase()} Passphrase?{" "}
+          <span className="text-primary underline">
+            <Link
+              target="_blank"
+              href={
+                userType === "CLIENT"
+                  ? "https://formstack.io/1A423"
+                  : "https://formstack.io/3DDE6"
+              }
+            >
+              Apply to be a {userType}
+            </Link>
+          </span>
+        </p>
+        <Button text={"Continue"} />
       </div>
     </form>
   );

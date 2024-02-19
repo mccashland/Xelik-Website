@@ -21,7 +21,7 @@ const ContractInput = ({
         value={signature}
         id={name}
         onChange={(e) => setSignature(e.target.value)}
-        className="bg-[transparent] underline focus:outline-none"
+        className="bg-[transparent] border ml-2 underline focus:outline-none"
       />
     );
   }

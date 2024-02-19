@@ -1,6 +1,12 @@
 import LogoHeader from "@/components/LogoHeader/page";
 import { Phrase } from "@/components/Phrase";
-export default function CoachPhrase() {
+import { FORMS_NAMES } from "@/utils/TYPES";
+export default function CoachPhrase({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const { q } = searchParams;
   return (
     <div className="mb-10 mx-3">
       <LogoHeader />
@@ -12,9 +18,9 @@ export default function CoachPhrase() {
         />
         <div className="maincnt py-10 flex justify-center items-center flex-col gap-10 ">
           <div className="font-bold text-[40px]  text-[#FFFFFF] w-[95%] text-center">
-            Enter Your Coaches Passphrase
+            Enter Your Coach Passphrase
           </div>
-          <Phrase userType="COACH" />
+          <Phrase q={q as FORMS_NAMES} userType="COACH" />
         </div>
         <img
           className="rotate-180 h-[20vh]"
