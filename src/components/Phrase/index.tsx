@@ -29,7 +29,7 @@ export const Phrase = ({
     localStorage.setItem(EV_USER_EMAIL, data.email);
     localStorage.setItem(EV_USER_TYPE, userType);
     console.log(userType);
-    if (userType === "CLIENT") {
+    if (userType === "Client") {
       if (q === "Apply to become a client") {
         router.push("https://formstack.io/1A423");
       } else if (q === "Sign up for coaching") {
@@ -37,7 +37,7 @@ export const Phrase = ({
       } else {
         console.log("Check console");
       }
-    } else if (userType === "COACH") {
+    } else if (userType === "Coach") {
       if (q === "Apply to become a coach") {
         router.push("https://formstack.io/3DDE6");
       } else if (q === "Sign Up to become a coach") {
@@ -68,8 +68,8 @@ export const Phrase = ({
           {...register("phrase", {
             required: true,
             validate: (value) =>
-              (userType === "CLIENT" && value === "XelikClient2024") ||
-              (userType === "COACH" && value === "XelikCoach2024") ||
+              (userType === "Client" && value === "XelikClient2024") ||
+              (userType === "Coach" && value === "XelikCoach2024") ||
               "Please enter valid phrase",
           })}
         />
@@ -82,7 +82,7 @@ export const Phrase = ({
             <Link
               target="_blank"
               href={
-                userType === "CLIENT"
+                userType === "Client"
                   ? "https://formstack.io/1A423"
                   : "https://formstack.io/3DDE6"
               }

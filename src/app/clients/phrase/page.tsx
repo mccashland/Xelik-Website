@@ -21,7 +21,7 @@ export default function ClientPhrase({
           <div className="font-bold text-[40px]  text-[#FFFFFF] w-[95%] text-center">
             Enter Your Client Passphrase
           </div>
-          <Phrase q={q as FORMS_NAMES} userType="CLIENT" />
+          <Phrase q={q as FORMS_NAMES} userType="Client" />
         </div>
         <img
           className="rotate-180 h-[20vh]"

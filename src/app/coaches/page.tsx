@@ -23,7 +23,7 @@ export default function Coaches() {
     },
     {
       label: "Apply to become a coach",
-      link: "/coaches/phrase?q=Apply to become a coach",
+      link: "https://formstack.io/3DDE6",
     },
   ];
   return (

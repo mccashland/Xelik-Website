@@ -15,11 +15,21 @@ export default function ContactUs() {
       link: "https://api.leadconnectorhq.com/widget/survey/lMNWOuJq3hLZugzjmcv1",
     },
   };
+  const buttons = [
+    {
+      label: "Help for Coaches",
+      link: "https://formstack.io/17285",
+    },
+    {
+      label: "Help for Clients",
+      link: "https://formstack.io/D9D30",
+    },
+  ];
   return (
     <div className="flex flex-col gap-10">
       <LogoHeader />
       <Banner text={"Contact Us"} />
-      <MainContent content={content} />
+      <MainContent content={content} buttons={buttons} />
       <Footer />
     </div>
   );

@@ -20,7 +20,7 @@ export default function CoachPhrase({
           <div className="font-bold text-[40px]  text-[#FFFFFF] w-[95%] text-center">
             Enter Your Coach Passphrase
           </div>
-          <Phrase q={q as FORMS_NAMES} userType="COACH" />
+          <Phrase q={q as FORMS_NAMES} userType="Coach" />
         </div>
         <img
           className="rotate-180 h-[20vh]"

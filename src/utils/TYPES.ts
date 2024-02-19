@@ -1,6 +1,6 @@
 export const EV_USER_EMAIL = "EV_USER_MAIL";
 export const EV_USER_TYPE = "EV_USER_TYPE";
-export type USER_TYPE = "CLIENT" | "COACH";
+export type USER_TYPE = "Client" | "Coach";
 export type FORMS_NAMES =
   | "Sign Up to become a coach"
   | "Apply to become a coach"

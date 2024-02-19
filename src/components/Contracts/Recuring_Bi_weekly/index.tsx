@@ -408,7 +408,7 @@ const Recuring_Bi_weekly = ({ userName }: { userName: string }) => {
                   Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
                 <div className="py-4">
-                  <SubmitButton url="https://www.trainerize.me/profile/xelik/?planGUID=402ddae43e75465184475b42fc943f10&mode=checkout" />
+                  <SubmitButton url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=402ddae43e75465184475b42fc943f10&mode=checkout" />
                 </div>
               </div>
             </div>

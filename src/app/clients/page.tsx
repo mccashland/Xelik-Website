@@ -21,7 +21,7 @@ export default function Clients() {
     },
     {
       label: "Apply to become a client",
-      link: "/clients/phrase?q=Apply to become a client",
+      link: "https://formstack.io/1A423",
     },
   ];
   return (

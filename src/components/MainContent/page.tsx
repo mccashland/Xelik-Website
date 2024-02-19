@@ -44,7 +44,7 @@ export default function MainContent({ content, buttons }: Props) {
         </div>
       </div>
       <div className="flex gap-x-4">
-        {buttons?.map((btn) => {
+        {buttons?.map((btn: any) => {
           return (
             <Link
               key={btn.label}
