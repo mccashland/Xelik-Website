@@ -14,12 +14,15 @@
 <path d="M868 76H847V97H868V76Z" fill="white"/>
 </mask>
 <g mask="url(#mask1_389_168)">
-<path d="M857.5 97C857.196 87.0525 856.947 86.8055 847 86.5C856.947 86.196 857.194 85.9475 857.5 76C857.804 85.9475 858.053 86.1945 868 86.5C858.053 86.8055 857.806 87.0495 857.5 97Z" fill="#CE0019"/>
 </g>
 </g>
 <defs>
 <clipPath id="clip0_389_168">
 <rect width="21" height="21" fill="white" transform="translate(847 76)"/>
-</clipPath>
-</defs>
-</svg>
+=======
+<mask id="mask1_360_162" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="847" y="76" width="21" height="21">
+<path d="M868 76H847V97H868V76Z" fill="white"/>
+</mask>
+<g mask="url(#mask1_360_162)">
+<path d="M857.5 97C857.196 87.0525 856.947 86.8055 847 86.5C856.947 86.196 857.194 85.9475 857.5 76C857.804 85.9475 858.053 86.1945 868 86.5C858.053 86.8055 857.806 87.0495 857.5 97Z" fill="#CE0019"/>
+</g>

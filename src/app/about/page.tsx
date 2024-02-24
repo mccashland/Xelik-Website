@@ -20,8 +20,8 @@ export default function About() {
       <LogoHeader />
       <Banner text={"We Are XE"} />
       <OurFounder />
-      <OurValues/>
-      <Health/>
+      <OurValues />
+      <Health />
       <OurStory content={content} />
       <Footer />
     </div>

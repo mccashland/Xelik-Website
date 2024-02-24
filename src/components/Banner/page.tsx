@@ -1,5 +1,4 @@
 import Image from "next/image";
-
 interface Props {
   text: any;
 }
