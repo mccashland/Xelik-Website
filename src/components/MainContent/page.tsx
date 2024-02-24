@@ -12,7 +12,7 @@ interface Props {
   buttons?: { label: string; link: string }[];
 }
 export default function MainContent({ content, buttons }: Props) {
-  const { mainImage, text1, text2, description, button } = content;
+  const { mainImage, text1, text2, description } = content;
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <div className="xl:flex lg:flex-row flex flex-col items-center xl:gap-10 gap-12 w-[85%]">

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import BannerImg from "../../../public/assets/imgs/Banner.svg";
 interface Props {
   text: any;
 }
@@ -8,7 +8,7 @@ export default function Banner({ text }: Props) {
       <div className="rounded-lg w-[90%] relative h-[90%]">
         <img
           className="object-cover rounded-lg w-full h-full"
-          src="/assets/imgs/Banner.svg"
+          src="/assets/imgs/Banner.png"
           alt="banner"
         />
         <div className="font-bold translate-x-[-50%]  translate-y-[-50%] left-[50%] top-[50%] absolute text-[7.5vw] text-[#fff]">
