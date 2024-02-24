@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-import LogoHeader from "@/components/LogoHeader/page";
->>>>>>> 6b02110 (working)
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
