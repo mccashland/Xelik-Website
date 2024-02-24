@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: rgb(18, 28, 47);
+}
+.founder {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+}
+/* .main-heading {
+  font-size: 1rem;
+  padding: 3px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+}
+.span {
+  color: #ffff;
+  font-size: 1rem;
+  opacity: 1;
+  font-weight: bold;
+}
+.paragraph {
+  color: #fff;
+  font-size: 16px;
+  opacity: 0.7;
+  margin-left: 5px;
+}
+.spansemibold {
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  opacity: 0.7;
+  margin-left: 5px;
+} */
+/* @layer components {
+  .paragraph {
+    @apply text-[#fff] text-base sm:text-[20px] opacity-70;
+  }
+} */
