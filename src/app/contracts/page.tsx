@@ -15,6 +15,10 @@ import Six_month_half_Agrement from "@/components/Contracts/Six_month_half_Agrem
 import Six_month_monthly_Agrement from "@/components/Contracts/Six_month_monthly_Agrement";
 import Recuring_Bi_weekly_monthly from "@/components/Contracts/Recuring_Bi_weekly_monthly";
 import { CircularProgress } from "@mui/material";
+import Bi_weekly_fourMonth_biweekly from "@/components/Contracts/Bi_weekly_fourMonth_biweekly";
+import Bi_weekly_Six_Month_biWeekly from "@/components/Contracts/Bi_weekly_Six_Month_biWeekly";
+import Half_yearly from "@/components/Contracts/Half_year";
+import Full_yearly from "@/components/Contracts/Full_year";
 const ContractPopulte = () => {
   const router = useRouter();
   const [user, setUser] = useState<CLIENT_OBJECT>();
@@ -22,16 +26,18 @@ const ContractPopulte = () => {
     const query = async () => {
       let userEmail = localStorage.getItem(EV_USER_EMAIL);
       let userType = localStorage.getItem(EV_USER_TYPE);
+      console.log(userEmail);
+      // console.log(userType);
       if (!userEmail || !userType) {
         router.back();
       }
-      if (userType === "COACH") {
+      if (userType === "Coach") {
         const res = await axios.get(`/api/coach?email=${userEmail}`);
         if (!res.data.data) {
           console.log(res.data.message);
         }
         setUser(res.data.data);
-      } else if (userType === "CLIENT") {
+      } else if (userType === "Client") {
         const res = await axios.get(`/api/client?email=${userEmail}`);
         if (!res.data.data) {
           setUser(res.data.message);
@@ -73,6 +79,15 @@ const ContractPopulte = () => {
           return <div>Invalid data sent</div>;
       }
     }
+    if (user?.Client_contract_length__c === "4 Month (Bi-Weekly)") {
+      switch (user.Client_payment_frequency__c) {
+        case "Bi-Weekly":
+          return <Bi_weekly_fourMonth_biweekly userName={user.Name} />;
+
+        default:
+          return <div>Invalid data sent</div>;
+      }
+    }
     if (user?.Client_contract_length__c === "6 Month") {
       switch (user.Client_payment_frequency__c) {
         case "Full":
@@ -87,12 +102,30 @@ const ContractPopulte = () => {
           return <div>Invalid data sent</div>;
       }
     }
+    if (user?.Client_contract_length__c === "6 Month (Bi-Weekly)") {
+      switch (user.Client_payment_frequency__c) {
+        case "Bi-Weekly":
+          return <Bi_weekly_Six_Month_biWeekly userName={user.Name} />;
+        default:
+          return <div>Invalid data sent</div>;
+      }
+    }
     if (user?.Client_contract_length__c === "Monthly") {
       switch (user.Client_payment_frequency__c) {
         case "Bi-Weekly":
           return <Recuring_Bi_weekly userName={user.Name} />;
         case "Monthly":
           return <Recuring_Bi_weekly_monthly userName={user.Name} />;
+        default:
+          return <div>Invalid data sent</div>;
+      }
+    }
+    if (user?.Client_contract_length__c === "12 Month") {
+      switch (user.Client_payment_frequency__c) {
+        case "Half":
+          return <Half_yearly userName={user.Name} />;
+        case "Full":
+          return <Full_yearly userName={user.Name} />;
         default:
           return <div>Invalid data sent</div>;
       }

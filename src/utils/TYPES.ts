@@ -20,7 +20,16 @@ export type CONTRACT = {
     | "Recurring Bi-Weekly Coaching Agreement (Bi-Weekly)"
     | "Recurring Bi-Weekly Coaching Agreement (Monthly)"
     | "Recurring App Access Agreement (Monthly)";
-  contractLength: "" | "Monthly" | "4 Month" | "6 Month" | "12 Month";
+  contractLength:
+    | ""
+    | "Monthly"
+    | "4 Month"
+    | "4 Month (Bi-Weekly)"
+    | "6 Month"
+    | "6 Month (Bi-Weekly)"
+    | "12 Month"
+    | "Recurring"
+    | "Recurring (Bi-Weekly)";
   contractType: "" | "1 on 1 Coaching" | "App Access";
   paymentFrequency: "" | "Full" | "Half" | "Monthly" | "Bi-Weekly";
   pricing:
@@ -44,7 +53,15 @@ export type CLIENT_OBJECT = {
   Name: string;
   Email__c: string;
   message?: string;
-  Client_contract_length__c: "Monthly" | "4 Month" | "6 Month" | "12 Month";
+  Client_contract_length__c:
+    | "Monthly"
+    | "4 Month"
+    | "4 Month (Bi-Weekly)"
+    | "6 Month"
+    | "6 Month (Bi-Weekly)"
+    | "12 Month"
+    | "Recurring"
+    | "Recurring (Bi-Weekly)";
   Client_contract_type__c: "1 on 1 Coaching" | "App Access";
   Client_payment_frequency__c: "Full" | "Half" | "Monthly" | "Bi-Weekly";
   Coach_payment_frequency__c:
