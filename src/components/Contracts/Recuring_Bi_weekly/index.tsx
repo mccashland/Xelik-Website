@@ -1,6 +1,4 @@
 import React from "react";
-import Signature from "../Signature";
-import Link from "next/link";
 import ContractInput from "../ContractInput";
 import SubmitButton from "@/components/Submit_Button";
 const Recuring_Bi_weekly = ({ userName }: { userName: string }) => {

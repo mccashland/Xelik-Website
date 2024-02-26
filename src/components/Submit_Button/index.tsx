@@ -2,17 +2,19 @@ import { SignContext } from "@/context";
 import { useRouter } from "next/navigation";
 import React, { useContext } from "react";
 
-const SubmitButton = ({ url }: { url: string }) => {
+const SubmitButton = ({ url, userName }: { url: string; userName: string }) => {
   const router = useRouter();
   const { signature } = useContext(SignContext);
   const handleClick = () => {
-    // alert("Please enter your initials at least two characters to continue!");
-    router.push(url);
+    if (userName === signature) {
+      router.push(url);
+    } else {
+      alert("Signature must match with your name!");
+    }
   };
   return (
     <div>
       <button
-        disabled={signature.length < 2}
         type="submit"
         onClick={handleClick}
         className="bg-primary border-none text-[#fff] px-8 py-2 rounded-md transition-all "

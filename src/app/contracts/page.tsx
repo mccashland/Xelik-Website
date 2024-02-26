@@ -66,65 +66,68 @@ const ContractPopulte = () => {
   }
   if (user?.Client_contract_type__c === "1 on 1 Coaching") {
     if (user?.Client_contract_length__c === "4 Month") {
-      switch (user.Client_payment_frequency__c) {
-        case "Full":
+      switch (user.Client_payment_frequency__c.toLowerCase()) {
+        case "full":
           return <Four_month_full userName={user.Name} />;
-        case "Bi-Weekly":
+        case "bi-weekly":
           return <Bi_weekly_fourMonth_monthly userName={user.Name} />;
-        case "Half":
+        case "half":
           return <Four_month_half userName={user.Name} />;
-        case "Monthly":
+        case "monthly":
           return <Four_month_monthly userName={user.Name} />;
         default:
           return <div>Invalid data sent</div>;
       }
     }
-    if (user?.Client_contract_length__c === "4 Month (Bi-Weekly)") {
-      switch (user.Client_payment_frequency__c) {
-        case "Bi-Weekly":
+    if (
+      user?.Client_contract_length__c.toLowerCase() === "4 month (bi-weekly)"
+    ) {
+      switch (user.Client_payment_frequency__c.toLowerCase()) {
+        case "bi-weekly":
           return <Bi_weekly_fourMonth_biweekly userName={user.Name} />;
-
         default:
           return <div>Invalid data sent</div>;
       }
     }
-    if (user?.Client_contract_length__c === "6 Month") {
-      switch (user.Client_payment_frequency__c) {
-        case "Full":
+    if (user?.Client_contract_length__c.toLowerCase() === "6 month") {
+      switch (user.Client_payment_frequency__c.toLowerCase()) {
+        case "full":
           return <Six_month_full_Agrement userName={user.Name} />;
-        case "Bi-Weekly":
+        case "bi-weekly":
           return <Bi_weekly_Six_month userName={user.Name} />;
-        case "Half":
+        case "half":
           return <Six_month_half_Agrement userName={user.Name} />;
-        case "Monthly":
+        case "monthly":
           return <Six_month_monthly_Agrement userName={user.Name} />;
         default:
           return <div>Invalid data sent</div>;
       }
     }
-    if (user?.Client_contract_length__c === "6 Month (Bi-Weekly)") {
-      switch (user.Client_payment_frequency__c) {
-        case "Bi-Weekly":
+    if (
+      user?.Client_contract_length__c.toLowerCase() === "6 month (bi-weekly)"
+    ) {
+      switch (user.Client_payment_frequency__c.toLowerCase()) {
+        case "bi-weekly":
           return <Bi_weekly_Six_Month_biWeekly userName={user.Name} />;
         default:
           return <div>Invalid data sent</div>;
       }
     }
-    if (user?.Client_contract_length__c === "Monthly") {
-      switch (user.Client_payment_frequency__c) {
-        case "Bi-Weekly":
+    if (user?.Client_contract_length__c.toLowerCase() === "recuring") {
+      switch (user.Client_payment_frequency__c.toLowerCase()) {
+        case "bi-weekly":
           return <Recuring_Bi_weekly userName={user.Name} />;
-        case "Monthly":
+        case "monthly":
           return <Recuring_Bi_weekly_monthly userName={user.Name} />;
         default:
           return <div>Invalid data sent</div>;
       }
     }
-    if (user?.Client_contract_length__c === "12 Month") {
-      switch (user.Client_payment_frequency__c) {
-        case "Half":
+    if (user?.Client_contract_length__c.toLowerCase() === "12 month") {
+      switch (user.Client_payment_frequency__c.toLowerCase()) {
+        case "half":
           return <Half_yearly userName={user.Name} />;
-        case "Full":
+        case "full":
           return <Full_yearly userName={user.Name} />;
         default:
           return <div>Invalid data sent</div>;

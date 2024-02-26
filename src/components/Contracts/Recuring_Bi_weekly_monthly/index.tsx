@@ -1,6 +1,4 @@
 import React from "react";
-import Signature from "../Signature";
-import Link from "next/link";
 import SubmitButton from "@/components/Submit_Button";
 import ContractInput from "../ContractInput";
 const Recuring_Bi_weekly_monthly = ({ userName }: { userName: string }) => {
@@ -408,7 +406,10 @@ const Recuring_Bi_weekly_monthly = ({ userName }: { userName: string }) => {
                   Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
                 <div className="py-4">
-                  <SubmitButton url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=f6777e6acdea44578b6a326c4f044460&mode=checkout" />
+                  <SubmitButton
+                    userName={userName}
+                    url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=f6777e6acdea44578b6a326c4f044460&mode=checkout"
+                  />
                 </div>
               </div>
             </div>
