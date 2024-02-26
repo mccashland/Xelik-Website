@@ -393,7 +393,10 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
                   Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
                 <div className="py-4">
-                  <SubmitButton url="https://www.trainerize.me/profile/xelik/?planGUID=397455ffe7664155a8b8ca9c6cc33b00&mode=checkout" />
+                  <SubmitButton
+                    url="https://www.trainerize.me/profile/xelik/?planGUID=397455ffe7664155a8b8ca9c6cc33b00&mode=checkout"
+                    userName={userName}
+                  />
                 </div>
               </div>
             </div>

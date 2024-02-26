@@ -106,7 +106,7 @@ const Client_wavier = ({ userName }: { userName: string }) => {
               Buyer Signature: <ContractInput value="A" name="signature" />
             </span>
             <div className="py-4">
-              <SubmitButton url="#" />
+              <SubmitButton url="#" userName={userName} />
             </div>
           </div>
         </div>

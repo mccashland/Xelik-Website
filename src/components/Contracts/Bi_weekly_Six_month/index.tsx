@@ -419,7 +419,10 @@ const Bi_weekly_Six_month = ({ userName }: { userName: string }) => {
                   Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
                 <div className="py-4">
-                  <SubmitButton url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=c6fb8b900b844f6caabc3b9d0547b262&mode=checkout" />
+                  <SubmitButton
+                    url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=c6fb8b900b844f6caabc3b9d0547b262&mode=checkout"
+                    userName={userName}
+                  />
                 </div>
               </div>
             </div>

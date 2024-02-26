@@ -113,7 +113,7 @@ const ContractPopulte = () => {
           return <div>Invalid data sent</div>;
       }
     }
-    if (user?.Client_contract_length__c.toLowerCase() === "recuring") {
+    if (user?.Client_contract_length__c.toLowerCase() === "recurring") {
       switch (user.Client_payment_frequency__c.toLowerCase()) {
         case "bi-weekly":
           return <Recuring_Bi_weekly userName={user.Name} />;

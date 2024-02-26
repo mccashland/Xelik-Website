@@ -415,7 +415,10 @@ const Four_month_full = ({ userName }: { userName: string }) => {
                   Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
                 <div className="py-4">
-                  <SubmitButton url="https://www.trainerize.me/profile/xelik/?planGUID=7f3bbd2c16d0407190d2bde53329cd5e&mode=checkout" />
+                  <SubmitButton
+                    url="https://www.trainerize.me/profile/xelik/?planGUID=7f3bbd2c16d0407190d2bde53329cd5e&mode=checkout"
+                    userName={userName}
+                  />
                 </div>
               </div>
             </div>

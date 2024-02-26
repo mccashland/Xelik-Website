@@ -403,7 +403,10 @@ const Six_month_monthly_Agrement = ({ userName }: { userName: string }) => {
                   Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
                 <div className="py-4">
-                  <SubmitButton url="https://www.trainerize.me/profile/xelik/?planGUID=295d7c3cb1ef4500a94449a68b2e36f1&mode=checkout" />
+                  <SubmitButton
+                    url="https://www.trainerize.me/profile/xelik/?planGUID=295d7c3cb1ef4500a94449a68b2e36f1&mode=checkout"
+                    userName={userName}
+                  />
                 </div>
               </div>
             </div>

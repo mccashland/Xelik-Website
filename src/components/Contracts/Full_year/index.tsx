@@ -403,7 +403,10 @@ const Full_yearly = ({ userName }: { userName: string }) => {
                   Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
                 <div className="py-4">
-                  <SubmitButton url="https://www.trainerize.me/profile/xelik/?planGUID=108eb8f61fae478281cf5e935b51cb28&mode=checkout" />
+                  <SubmitButton
+                    url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=86c3c1ae72f04ab9923430e04b4eeed2&mode=checkout"
+                    userName={userName}
+                  />
                 </div>
               </div>
             </div>
