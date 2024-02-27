@@ -8,7 +8,7 @@ const Recuring_Bi_weekly = ({ userName }: { userName: string }) => {
         <div className="flex flex-col gap-10  my-4">
           <div className="main-heading text-[1.5rem] sm:text-[3rem] 2xl:text-[5rem]  p-[3px] flex justify-center items-center text-center text-[#ffffff] font-bold">
             {/* heading start here  */}
-            Recurring Bi-Weekly 1-on-1 Coaching Agreement (Bi-Weekly)
+            Recurring 1 on 1 Coaching Agreement (Bi-Weekly)
           </div>
           <div className="flex flex-col gap-10  w-[90%] sm:w-[80%] m-auto">
             <div className="paragraph text-[#ffffff] text-base ml-[5px] opacity-[0.7] ">
@@ -407,7 +407,7 @@ const Recuring_Bi_weekly = ({ userName }: { userName: string }) => {
                 </span>
                 <div className="py-4">
                   <SubmitButton
-                    url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=402ddae43e75465184475b42fc943f10&mode=checkout"
+                    url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=812a5c05b25a434daaf57e5ec843e442&mode=checkout"
                     userName={userName}
                   />
                 </div>

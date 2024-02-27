@@ -1,6 +1,4 @@
 import React from "react";
-import Signature from "../Signature";
-import Link from "next/link";
 import ContractInput from "../ContractInput";
 import SubmitButton from "@/components/Submit_Button";
 const Recuring_App_Access = ({ userName }: { userName: string }) => {
@@ -394,7 +392,7 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
                 </span>
                 <div className="py-4">
                   <SubmitButton
-                    url="https://www.trainerize.me/profile/xelik/?planGUID=397455ffe7664155a8b8ca9c6cc33b00&mode=checkout"
+                    url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=397455ffe7664155a8b8ca9c6cc33b00&mode=checkout"
                     userName={userName}
                   />
                 </div>

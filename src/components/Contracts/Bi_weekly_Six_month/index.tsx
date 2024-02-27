@@ -9,8 +9,7 @@ const Bi_weekly_Six_month = ({ userName }: { userName: string }) => {
       <div className="flex w-full justify-center   ">
         <div className="flex flex-col gap-10  my-4">
           <div className="main-heading text-[1.5rem] sm:text-[3rem] 2xl:text-[5rem]  p-[3px] flex justify-center items-center text-center text-[#ffffff] font-bold">
-            {/* heading start here  */}
-            Bi-Weekly 6 Month 1-on-1 Coaching Agreement
+            6 Month 1 on 1 coaching (Bi-Weekly)
           </div>
           <div className="flex flex-col gap-10  w-[90%] sm:w-[80%] m-auto">
             <div className="paragraph text-[#ffffff] text-base ml-[5px] opacity-[0.7] ">
@@ -420,7 +419,7 @@ const Bi_weekly_Six_month = ({ userName }: { userName: string }) => {
                 </span>
                 <div className="py-4">
                   <SubmitButton
-                    url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=c6fb8b900b844f6caabc3b9d0547b262&mode=checkout"
+                    url="https://www.trainerize.me/profile/xelik/?planGUID=56ada657abbd4b3e9ccbd87dba3e8e0e&mode=checkout"
                     userName={userName}
                   />
                 </div>

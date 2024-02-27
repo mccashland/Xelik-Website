@@ -14,7 +14,7 @@ const Full_yearly = ({ userName }: { userName: string }) => {
           <div className="flex flex-col gap-10  w-[90%] sm:w-[80%] m-auto">
             <div className="paragraph text-[#ffffff] text-base ml-[5px] opacity-[0.7] ">
               This Sales Agreement (“Agreement”) for the sale of consulting
-              services is between Elevate Wellness and Personal Training, and
+              services is between Elevate Wellness and Personal Training, and{" "}
               <span className="underline">{userName}</span> (the “Buyer”).
             </div>
             <div className="span text-[#ffff] text-[1rem] opacity-100 font-bold">

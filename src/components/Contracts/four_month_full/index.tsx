@@ -13,7 +13,7 @@ const Four_month_full = ({ userName }: { userName: string }) => {
             <div className="paragraph text-[#ffffff] text-base ml-[5px] opacity-[0.7] ">
               This Sales Agreement (“Agreement”) for the sale of consulting
               services is between Elevate Wellness and Personal Training, and{" "}
-              <span className="underline">Buyer Name</span> (the “Buyer”).
+              <span className="underline">{userName}</span> (the “Buyer”).
             </div>
             <div className="span text-[#ffff] text-[1rem] opacity-100 font-bold">
               The parties agree as follows:

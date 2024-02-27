@@ -8,13 +8,12 @@ const Bi_weekly_Six_Month_biWeekly = ({ userName }: { userName: string }) => {
       <div className="flex w-full justify-center   ">
         <div className="flex flex-col gap-10  my-4">
           <div className="main-heading text-[1.5rem] sm:text-[3rem] 2xl:text-[5rem]  p-[3px] flex justify-center items-center text-center text-[#ffffff] font-bold">
-            {/* heading start here  */}6 Month 1-on-1 Coaching Agreement
-            (Biweekly)
+            Bi-Weekly 6 Month 1 on 1 coaching (Bi-Weekly)
           </div>
           <div className="flex flex-col gap-10  w-[90%] sm:w-[80%] m-auto">
             <div className="paragraph text-[#ffffff] text-base ml-[5px] opacity-[0.7] ">
               This Sales Agreement (“Agreement”) for the sale of consulting
-              services is between Elevate Wellness and Personal Training, and
+              services is between Elevate Wellness and Personal Training, and{" "}
               <span className="underline">{userName}</span> (the “Buyer”).
             </div>
             <div className="span text-[#ffff] text-[1rem] opacity-100 font-bold">
