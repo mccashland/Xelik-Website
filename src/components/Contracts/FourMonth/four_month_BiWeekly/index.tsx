@@ -52,7 +52,7 @@ const FourMonth_BiWeekly = ({ userName }: { userName: string }) => {
                 3. Invoices; Payment.
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
-                The Buyer agrees to pay $250 monthly, a payment that will occur
+                The Buyer agrees to pay $199 monthly, a payment that will occur
                 for 4 months over the duration of the Services. Cash payment for
                 the Services is due within 30 days of the date of any given
                 Sellers’s invoice. The Services will begin immediately upon the
