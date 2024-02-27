@@ -8,7 +8,7 @@ const Recuring_Monthly = ({ userName }: { userName: string }) => {
         <div className="flex flex-col gap-10  my-4">
           <div className="main-heading text-[1.5rem] sm:text-[3rem] 2xl:text-[5rem]  p-[3px] flex justify-center items-center text-center text-[#ffffff] font-bold">
             {/* heading start here  */}
-            Recurring 1 on 1 Coaching Agreement (Monthly)
+            Recurring Bi-Weekly Coaching Agreement (Monthly)
           </div>
           <div className="flex flex-col gap-10  w-[90%] sm:w-[80%] m-auto">
             <div className="paragraph text-[#ffffff] text-base ml-[5px] opacity-[0.7] ">
