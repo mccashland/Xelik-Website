@@ -1,4 +1,4 @@
-import Four_month_full from "@/components/Contracts/four_month_full";
+import Four_month_full from "@/components/Contracts/FourMonth/four_month_full";
 import React from "react";
 
 const Test = () => {

@@ -3,22 +3,30 @@ import React, { useEffect, useState } from "react";
 import { CLIENT_OBJECT, EV_USER_EMAIL, EV_USER_TYPE } from "@/utils/TYPES";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import Recuring_App_Access from "@/components/Contracts/Recuring_App_Access";
-import Recuring_Bi_weekly from "@/components/Contracts/Recuring_Bi_weekly";
-import Four_month_full from "@/components/Contracts/four_month_full";
-import Bi_weekly_fourMonth_monthly from "@/components/Contracts/Bi_weekly_fourMonth_monthly";
-import Four_month_half from "@/components/Contracts/four_month_half";
-import Four_month_monthly from "@/components/Contracts/four_month_monthly";
-import Six_month_full_Agrement from "@/components/Contracts/Six_month_full_Agrement";
-import Bi_weekly_Six_month from "@/components/Contracts/Bi_weekly_Six_month";
-import Six_month_half_Agrement from "@/components/Contracts/Six_month_half_Agrement";
-import Six_month_monthly_Agrement from "@/components/Contracts/Six_month_monthly_Agrement";
-import Recuring_Bi_weekly_monthly from "@/components/Contracts/Recuring_Bi_weekly_monthly";
+import Recuring_App_Access from "@/components/Contracts/AppAccess/Recuring_App_Access";
+import Recuring_Bi_weekly from "@/components/Contracts/Recurring/Recuring_Bi_weekly";
+import Four_month_full from "@/components/Contracts/FourMonth/four_month_full";
+import Four_month_half from "@/components/Contracts/FourMonth/four_month_half";
+import Four_month_monthly from "@/components/Contracts/FourMonth/four_month_monthly";
+import Recuring_Bi_weekly_monthly from "@/components/Contracts/Recurring/Recuring_Monthly";
 import { CircularProgress } from "@mui/material";
-import Bi_weekly_fourMonth_biweekly from "@/components/Contracts/Bi_weekly_fourMonth_biweekly";
-import Bi_weekly_Six_Month_biWeekly from "@/components/Contracts/Bi_weekly_Six_Month_biWeekly";
-import Half_yearly from "@/components/Contracts/Half_year";
-import Full_yearly from "@/components/Contracts/Full_year";
+import FourMonth_BiWeekly from "@/components/Contracts/FourMonth/four_month_BiWeekly";
+import SixMonth_Bi_Weekly_Monthly from "@/components/Contracts/SixMonth(Bi-Weekly)/SixMonth_Bi-Weekly_Monthly";
+import FourMonth_Bi_Weekly_BiWeekly from "@/components/Contracts/FourMonth(Bi-Weekly)/FourMonth_Bi_Weekly_BiWeekly";
+import FourMonth_Bi_Weekly_Monthly from "@/components/Contracts/FourMonth(Bi-Weekly)/FourMonth_Bi_Weekly_Monthly";
+import Six_Month_BiWeekly from "@/components/Contracts/SixMonth/Six_Month_BiWeekly";
+import Six_month_monthly from "@/components/Contracts/SixMonth/Six_month_monthly";
+import Six_month_half from "@/components/Contracts/SixMonth/Six_month_half";
+import Six_month_full from "@/components/Contracts/SixMonth/Six_month_full";
+import SixMonth_Bi_Weekly_BiWeekly from "@/components/Contracts/SixMonth(Bi-Weekly)/SixMonth_Bi_Weekly_BiWeekly";
+import Recuring_Monthly from "@/components/Contracts/Recurring/Recuring_Monthly";
+import Recuring_Bi_Weekly_BiWeekly from "@/components/Contracts/Recurring(Bi-Weekly)/Recuring_Bi_Weekly_BiWeekly";
+import Half_Year from "@/components/Contracts/Years/Half_year";
+import Full_Year from "@/components/Contracts/Years/Full_year";
+import Coach_BiWeekly from "@/components/Contracts/Coaches_Contracts/Coach_BiWeekly";
+import Coach_Monthly from "@/components/Contracts/Coaches_Contracts/Coach_Monthly";
+import Coach_Bi_annually from "@/components/Contracts/Coaches_Contracts/Coach_Bi-annually";
+import Coach_Quarterly from "@/components/Contracts/Coaches_Contracts/Coach_Quarterly";
 const ContractPopulte = () => {
   const router = useRouter();
   const [user, setUser] = useState<CLIENT_OBJECT>();
@@ -47,34 +55,36 @@ const ContractPopulte = () => {
     };
     query();
   }, []);
+
   if (user?.Coach_payment_frequency__c) {
     switch (user.Coach_payment_frequency__c) {
       case "Bi-weekly":
-        return <Bi_weekly_fourMonth_monthly userName={user.Name} />;
+        return <Coach_BiWeekly userName={user.Name} />;
       case "Monthly":
-        return <Bi_weekly_fourMonth_monthly userName={user.Name} />;
+        return <Coach_Monthly userName={user.Name} />;
       case "Bi-annually":
-        return <Bi_weekly_fourMonth_monthly userName={user.Name} />;
+        return <Coach_Bi_annually userName={user.Name} />;
       case "Quarterly":
-        return <Bi_weekly_fourMonth_monthly userName={user.Name} />;
+        return <Coach_Quarterly userName={user.Name} />;
       default:
         return <div>Invalid data sent</div>;
     }
   }
+
   if (user?.Client_contract_type__c === "App Access") {
     return <Recuring_App_Access userName={user.Name} />;
   }
   if (user?.Client_contract_type__c === "1 on 1 Coaching") {
-    if (user?.Client_contract_length__c === "4 Month") {
+    if (user?.Client_contract_length__c.toLowerCase() === "4 Month") {
       switch (user.Client_payment_frequency__c.toLowerCase()) {
-        case "full":
-          return <Four_month_full userName={user.Name} />;
-        case "bi-weekly":
-          return <Bi_weekly_fourMonth_monthly userName={user.Name} />;
+        case "bi-weeky":
+          return <FourMonth_BiWeekly userName={user.Name} />;
+        case "monthy":
+          return <Four_month_monthly userName={user.Name} />;
         case "half":
           return <Four_month_half userName={user.Name} />;
-        case "monthly":
-          return <Four_month_monthly userName={user.Name} />;
+        case "full":
+          return <Four_month_full userName={user.Name} />;
         default:
           return <div>Invalid data sent</div>;
       }
@@ -84,21 +94,23 @@ const ContractPopulte = () => {
     ) {
       switch (user.Client_payment_frequency__c.toLowerCase()) {
         case "bi-weekly":
-          return <Bi_weekly_fourMonth_biweekly userName={user.Name} />;
+          return <FourMonth_Bi_Weekly_BiWeekly userName={user.Name} />;
+        case "monthly":
+          return <FourMonth_Bi_Weekly_Monthly userName={user.Name} />;
         default:
           return <div>Invalid data sent</div>;
       }
     }
     if (user?.Client_contract_length__c.toLowerCase() === "6 month") {
       switch (user.Client_payment_frequency__c.toLowerCase()) {
-        case "full":
-          return <Six_month_full_Agrement userName={user.Name} />;
-        case "bi-weekly":
-          return <Bi_weekly_Six_month userName={user.Name} />;
+        case "bi-weeky":
+          return <Six_Month_BiWeekly userName={user.Name} />;
+        case "monthy":
+          return <Six_month_monthly userName={user.Name} />;
         case "half":
-          return <Six_month_half_Agrement userName={user.Name} />;
-        case "monthly":
-          return <Six_month_monthly_Agrement userName={user.Name} />;
+          return <Six_month_half userName={user.Name} />;
+        case "full":
+          return <Six_month_full userName={user.Name} />;
         default:
           return <div>Invalid data sent</div>;
       }
@@ -108,7 +120,9 @@ const ContractPopulte = () => {
     ) {
       switch (user.Client_payment_frequency__c.toLowerCase()) {
         case "bi-weekly":
-          return <Bi_weekly_Six_Month_biWeekly userName={user.Name} />;
+          return <SixMonth_Bi_Weekly_BiWeekly userName={user.Name} />;
+        case "monthly":
+          return <SixMonth_Bi_Weekly_Monthly userName={user.Name} />;
         default:
           return <div>Invalid data sent</div>;
       }
@@ -118,6 +132,18 @@ const ContractPopulte = () => {
         case "bi-weekly":
           return <Recuring_Bi_weekly userName={user.Name} />;
         case "monthly":
+          return <Recuring_Monthly userName={user.Name} />;
+        default:
+          return <div>Invalid data sent</div>;
+      }
+    }
+    if (
+      user?.Client_contract_length__c.toLowerCase() === "recurring (bi-weekly)"
+    ) {
+      switch (user.Client_payment_frequency__c.toLowerCase()) {
+        case "bi-weekly":
+          return <Recuring_Bi_Weekly_BiWeekly userName={user.Name} />;
+        case "monthly":
           return <Recuring_Bi_weekly_monthly userName={user.Name} />;
         default:
           return <div>Invalid data sent</div>;
@@ -126,9 +152,9 @@ const ContractPopulte = () => {
     if (user?.Client_contract_length__c.toLowerCase() === "12 month") {
       switch (user.Client_payment_frequency__c.toLowerCase()) {
         case "half":
-          return <Half_yearly userName={user.Name} />;
-        case "full":
-          return <Full_yearly userName={user.Name} />;
+          return <Half_Year userName={user.Name} />;
+        case "monthly":
+          return <Full_Year userName={user.Name} />;
         default:
           return <div>Invalid data sent</div>;
       }
