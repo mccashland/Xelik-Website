@@ -63,7 +63,7 @@ export type CLIENT_OBJECT = {
     | "Recurring"
     | "Recurring (Bi-Weekly)";
   Client_contract_type__c: "1 on 1 Coaching" | "App Access";
-  Client_payment_frequency__c: "Full" | "Half" | "Monthly" | "Bi-Weekly";
+  Client_payment_frequency__c: "Full" | "Half" | "Monthly" | "Bi-weekly";
   Coach_payment_frequency__c:
     | "Bi-weekly"
     | "Monthly"
