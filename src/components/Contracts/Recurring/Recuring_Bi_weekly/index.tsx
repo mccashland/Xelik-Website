@@ -53,7 +53,7 @@ const Recuring_Bi_weekly = ({ userName }: { userName: string }) => {
                 3. Invoices; Payment.
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
-                The Buyer agrees to pay $129 bi-weekly, a payment that will
+                The Buyer agrees to pay $175 bi-weekly, a payment that will
                 occur for a minimum of 4 months from the effective date, then
                 will continue in perpetuity until the cancellation process has
                 been completed. Cash payment for the Services is due within 30
