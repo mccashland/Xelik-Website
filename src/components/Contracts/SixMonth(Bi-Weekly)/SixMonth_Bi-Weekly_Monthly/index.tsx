@@ -8,7 +8,7 @@ const SixMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
       <div className="flex w-full justify-center   ">
         <div className="flex flex-col gap-10  my-4">
           <div className="main-heading text-[1.5rem] sm:text-[3rem] 2xl:text-[5rem]  p-[3px] flex justify-center items-center text-center text-[#ffffff] font-bold">
-            Bi-Weekly 6 Month 1 on 1 coaching (Monthly)
+            Bi-Weekly 6 Month 1-on-1 Coaching Agreement
           </div>
           <div className="flex flex-col gap-10  w-[90%] sm:w-[80%] m-auto">
             <div className="paragraph text-[#ffffff] text-base ml-[5px] opacity-[0.7] ">
@@ -21,7 +21,7 @@ const SixMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
-                1. Sale of Services.
+                1. Sale of Services.{" "}
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 The Sellers shall sell to the Buyer and the Buyer shall purchase
@@ -35,7 +35,7 @@ const SixMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
             <div className="paragraph1 ">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
                 {" "}
-                2. Effectiveness; Date.
+                2. Effectiveness; Date.{" "}
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 This agreement is effective as of{" "}
@@ -50,10 +50,10 @@ const SixMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
                 {" "}
-                3. Invoices; Payment.
+                3. Invoices; Payment.{" "}
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
-                The Buyer agrees to pay $250 biweekly, a payment that will occur
+                The Buyer agrees to pay $250 monthly, a payment that will occur
                 for 6 months over the duration of the Services. Cash payment for
                 the Services is due within 30 days of the date of any given
                 Sellers’s invoice. The Services will begin immediately upon the
@@ -65,7 +65,7 @@ const SixMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
                 {" "}
-                4. Confidentiality.
+                4. Confidentiality.{" "}
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 The Sellers will keep the Buyer’s information confidential and
@@ -78,7 +78,7 @@ const SixMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
-                5. No Cancellation.
+                5. No Cancellation.{" "}
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 The Buyer acknowledges that there is a no cancellation policy.
@@ -88,7 +88,7 @@ const SixMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
-                6. Delivery; Title; and Risk of Loss.
+                6. Delivery; Title; and Risk of Loss.{" "}
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 The Sellers shall deliver the Services online. Any goods
@@ -102,7 +102,7 @@ const SixMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
-                7. Disclaimer of Warranty;
+                7. Disclaimer of Warranty; Due Diligence{" "}
               </span>
               <span className="spansemibold text-[#ffff] font-bold text-base ml-[5px] opacity-[0.7] ">
                 The Goods and Services are being sold “as is,” and the Sellers
@@ -125,7 +125,7 @@ const SixMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
-                8. Limitation of Liability.
+                8. Limitation of Liability.{" "}
               </span>
               <span className="spansemibold text-[#ffff] font-bold text-base ml-[5px] opacity-[0.7] ">
                 The Sellers will not be liable for any indirect, special,
@@ -141,7 +141,7 @@ const SixMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
-                9. Limitation of Actions.
+                9. Limitation of Actions.{" "}
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 No action arising out of or relating to this agreement or the
@@ -152,7 +152,7 @@ const SixMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
-                10. Security Interest.
+                10. Security Interest.{" "}
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 The Buyer hereby grants to the Sellers a security interest in
@@ -166,7 +166,7 @@ const SixMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
-                11. Governing Law and Designation Forum.
+                11. Governing Law and Designation Forum.{" "}
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 (a) The laws of the State of Tennessee (without giving effect to
@@ -190,7 +190,7 @@ const SixMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
-                12. Unforeseen Circumstances.
+                12. Unforeseen Circumstances.{" "}
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 The Sellers will not be liable for delays in performance or for
@@ -257,8 +257,8 @@ const SixMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
               <div className=" opacity-[0.7]">
                 The Sellers have a range of services to fulfill various wellness
                 goals the Buyer may have. The Buyer will have the option to
-                receive an average of one weekly personal training call that is
-                set for at least 30 minutes, throughout the duration of the
+                receive an average of one bi-weekly personal training call that
+                is set for at least 30 minutes, throughout the duration of the
                 contract. This call may be rescheduled by the Sellers or the
                 Buyer with 48 hours of notice or given written consent of the
                 other party through email or text message it may be rescheduled
@@ -403,7 +403,7 @@ const SixMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
                 </span>
                 <div className="py-4">
                   <SubmitButton
-                    url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=c6fb8b900b844f6caabc3b9d0547b262&mode=checkout"
+                    url="https://www.trainerize.me/profile/xelik/?planGUID=c6fb8b900b844f6caabc3b9d0547b262&mode=checkout"
                     userName={userName}
                   />
                 </div>
