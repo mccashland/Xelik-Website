@@ -173,7 +173,7 @@ const Coach_Bi_annually = ({ userName }: { userName: string }) => {
             </div>
             <div className="paragraph flex flex-col items-center justify-start text-[#ffffff] text-base ml-[5px]">
               <div className="text-[#fff] font-normal underline">
-                Finder's Fee
+                Finder&apos;s Fee
               </div>
               <div className="flex gap-11">
                 <div>Default</div>
