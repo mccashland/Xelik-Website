@@ -58,8 +58,8 @@ const ContractPopulte = () => {
 
   if (user?.Coach_payment_frequency__c) {
     switch (user.Coach_payment_frequency__c) {
-      case "Bi-weekly":
-        return <Coach_BiWeekly userName={user.Name} />;
+      // case "Bi-weekly":
+      //   return <Coach_BiWeekly userName={user.Name} />;
       case "Monthly":
         return <Coach_Monthly userName={user.Name} />;
       case "Bi-annually":

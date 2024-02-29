@@ -480,19 +480,23 @@ const Coach_Bi_annually = ({ userName }: { userName: string }) => {
             </div>
             <div className="main dev flex flex-col space-y-8 text-[#ffff] text-[1rem] opacity-[0.7] font-bold">
               <div>
-                <span className="underline">{userName}</span>(“Coach”), does
-                hereby waive and release, indemnify, and forever discharges
-                Elevate Wellness and Personal Training LLC (“Seller”), and its
-                agents, employees, officers, directors, affiliates, successors,
-                members, independent Coachs, and assigns, of and from any and
-                all claims, demands, debts, contracts, expenses, causes of
-                action, lawsuits, damages and liabilities, of every kind and
-                nature, whether known or unknown, in law or equity, that I ever
-                had or may have, arising from or in any way related to the
-                products and services (“Product”) being provided to me by the
-                Seller provided that this waiver of liability does not apply to
-                any acts of gross negligence, or intentional, willful or wanton
-                misconduct.
+                <span className="underline">{userName}</span>{" "}
+                <span>
+                  {" "}
+                  (“Coach”), does hereby waive and release, indemnify, and
+                  forever discharges Elevate Wellness and Personal Training LLC
+                  (“Seller”), and its agents, employees, officers, directors,
+                  affiliates, successors, members, independent Coachs, and
+                  assigns, of and from any and all claims, demands, debts,
+                  contracts, expenses, causes of action, lawsuits, damages and
+                  liabilities, of every kind and nature, whether known or
+                  unknown, in law or equity, that I ever had or may have,
+                  arising from or in any way related to the products and
+                  services (“Product”) being provided to me by the Seller
+                  provided that this waiver of liability does not apply to any
+                  acts of gross negligence, or intentional, willful or wanton
+                  misconduct.
+                </span>
               </div>
               <div>
                 The Coach understands that all nutrition recommendations are
