@@ -23,7 +23,6 @@ import Recuring_Monthly from "@/components/Contracts/Recurring/Recuring_Monthly"
 import Recuring_Bi_Weekly_BiWeekly from "@/components/Contracts/Recurring(Bi-Weekly)/Recuring_Bi_Weekly_BiWeekly";
 import Half_Year from "@/components/Contracts/Years/Half_year";
 import Full_Year from "@/components/Contracts/Years/Full_year";
-import Coach_BiWeekly from "@/components/Contracts/Coaches_Contracts/Coach_BiWeekly";
 import Coach_Monthly from "@/components/Contracts/Coaches_Contracts/Coach_Monthly";
 import Coach_Bi_annually from "@/components/Contracts/Coaches_Contracts/Coach_Bi-annually";
 import Coach_Quarterly from "@/components/Contracts/Coaches_Contracts/Coach_Quarterly";
@@ -34,7 +33,6 @@ const ContractPopulte = () => {
     const query = async () => {
       let userEmail = localStorage.getItem(EV_USER_EMAIL);
       let userType = localStorage.getItem(EV_USER_TYPE);
-      console.log(userEmail);
       // console.log(userType);
       if (!userEmail || !userType) {
         router.back();
@@ -47,6 +45,7 @@ const ContractPopulte = () => {
         setUser(res.data.data);
       } else if (userType === "Client") {
         const res = await axios.get(`/api/client?email=${userEmail}`);
+        console.log(res);
         if (!res.data.data) {
           setUser(res.data.message);
         }

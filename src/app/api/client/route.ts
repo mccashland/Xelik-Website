@@ -19,6 +19,7 @@ export async function GET(request: Request) {
       params: queryParams,
       headers: queryHeaders,
     });
+    console.log(result);
     if (result.data.records.length <= 0) {
       return Response.json({ message: "User not found" });
     }
