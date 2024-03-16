@@ -26,6 +26,7 @@ import Full_Year from "@/components/Contracts/Years/Full_year";
 import Coach_Monthly from "@/components/Contracts/Coaches_Contracts/Coach_Monthly";
 import Coach_Bi_annually from "@/components/Contracts/Coaches_Contracts/Coach_Bi-annually";
 import Coach_Quarterly from "@/components/Contracts/Coaches_Contracts/Coach_Quarterly";
+import { getClient } from "@/actions/getClient";
 const ContractPopulte = () => {
   const router = useRouter();
   const [user, setUser] = useState<CLIENT_OBJECT>();
@@ -33,7 +34,6 @@ const ContractPopulte = () => {
     const query = async () => {
       let userEmail = localStorage.getItem(EV_USER_EMAIL);
       let userType = localStorage.getItem(EV_USER_TYPE);
-      // console.log(userType);
       if (!userEmail || !userType) {
         router.back();
       }
@@ -44,12 +44,14 @@ const ContractPopulte = () => {
         }
         setUser(res.data.data);
       } else if (userType === "Client") {
-        const res = await axios.get(`/api/client?email=${userEmail}`);
+        console.log("Here");
+        const res = await getClient(userEmail);
         console.log(res);
-        if (!res.data.data) {
-          setUser(res.data.message);
-        }
-        setUser(res.data.data);
+        // const res = await axios.get(`/api/client?email=${userEmail}`);
+        // if (!res.data.data) {
+        //   setUser(res.data.message);
+        // }
+        // setUser(res.data.data);
       }
     };
     query();

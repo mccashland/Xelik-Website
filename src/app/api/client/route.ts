@@ -1,29 +1,51 @@
-import axios from "axios";
+import { PrismaClient } from "@prisma/client";
 
+var jsforce = require("jsforce");
 export async function GET(request: Request) {
-  const accessToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
-  const apiUrl = `${process.env.NEXT_PUBLIC_SALSEFORCE_BASE_URL}/services/data/v59.0/query`;
-  const queryHeaders = {
-    Authorization: `Bearer ${accessToken}`,
-  };
+  const prismaClient = new PrismaClient();
+  const accessToken = await prismaClient.token.findFirst();
+
   const { searchParams } = new URL(request.url);
   let email = searchParams.get("email");
   if (!email) {
     return Response.json({ error: "Email is required!" });
   }
-  const queryParams = {
-    q: `SELECT Name, Email, Client_contract_length__c, Client_contract_type__c, Client_payment_frequency__c from Contact where Email='${email}'`,
-  };
   try {
-    const result = await axios.get(apiUrl, {
-      params: queryParams,
-      headers: queryHeaders,
+    var conn = new jsforce.Connection({
+      oauth2: {
+        clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
+        clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET,
+        redirectUri: process.env.NEXT_PUBLIC_REDIRECT_URL,
+      },
+      instanceUrl: process.env.NEXT_PUBLIC_SALSEFORCE_BASE_URL,
+      accessToken: accessToken?.accessToken,
+      refreshToken: process.env.NEXT_PUBLIC_REFRESH_TOKEN,
     });
-    console.log(result);
-    if (result.data.records.length <= 0) {
-      return Response.json({ message: "User not found" });
-    }
-    return Response.json({ data: result.data.records[0] });
+    conn.on("refresh", function (newToken: any, res: any) {
+      prismaClient.token.update({
+        where: {
+          id: accessToken?.id,
+        },
+        data: {
+          accessToken: newToken,
+        },
+      });
+      // Refresh event will be fired when renewed access token
+      // to store it in your storage for next request
+    });
+    var res;
+    await conn.query(
+      `SELECT Name, Email, Client_contract_length__c, Client_contract_type__c, Client_payment_frequency__c from Contact where Email='${email}'`,
+      function (err: any, result: any) {
+        if (err) {
+          return Response.json({ error: err });
+        }
+        res = result.records[0];
+        return Response.json({ data: result.records[0] });
+      }
+    );
+    // This line will only be executed after the query completes
+    return Response.json({ data: res });
   } catch (err) {
     return Response.json({ error: err });
   }
