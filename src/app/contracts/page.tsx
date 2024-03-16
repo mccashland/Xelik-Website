@@ -40,18 +40,15 @@ const ContractPopulte = () => {
       if (userType === "Coach") {
         const res = await axios.get(`/api/coach?email=${userEmail}`);
         if (!res.data.data) {
-          console.log(res.data.message);
+          setUser(res.data.message);
         }
         setUser(res.data.data);
       } else if (userType === "Client") {
-        console.log("Here");
-        const res = await getClient(userEmail);
-        console.log(res);
-        // const res = await axios.get(`/api/client?email=${userEmail}`);
-        // if (!res.data.data) {
-        //   setUser(res.data.message);
-        // }
-        // setUser(res.data.data);
+        const res = await axios.get(`/api/client?email=${userEmail}`);
+        if (!res.data.data) {
+          setUser(res.data.message);
+        }
+        setUser(res.data.data);
       }
     };
     query();
