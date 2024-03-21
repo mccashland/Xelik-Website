@@ -4,7 +4,6 @@ var jsforce = require("jsforce");
 export async function GET(request: Request) {
   const prismaClient = new PrismaClient();
   const accessToken = await prismaClient.token.findFirst();
-
   const { searchParams } = new URL(request.url);
   let email = searchParams.get("email");
   if (!email) {
@@ -30,8 +29,6 @@ export async function GET(request: Request) {
           accessToken: newToken,
         },
       });
-      // Refresh event will be fired when renewed access token
-      // to store it in your storage for next request
     });
     var res;
     await conn.query(
