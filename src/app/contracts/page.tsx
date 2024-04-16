@@ -26,7 +26,6 @@ import Full_Year from "@/components/Contracts/Years/Full_year";
 import Coach_Monthly from "@/components/Contracts/Coaches_Contracts/Coach_Monthly";
 import Coach_Bi_annually from "@/components/Contracts/Coaches_Contracts/Coach_Bi-annually";
 import Coach_Quarterly from "@/components/Contracts/Coaches_Contracts/Coach_Quarterly";
-import { getClient } from "@/actions/getClient";
 const ContractPopulte = () => {
   const router = useRouter();
   const [user, setUser] = useState<CLIENT_OBJECT>();
@@ -56,8 +55,6 @@ const ContractPopulte = () => {
 
   if (user?.Coach_payment_frequency__c) {
     switch (user.Coach_payment_frequency__c) {
-      // case "Bi-weekly":
-      //   return <Coach_BiWeekly userName={user.Name} />;
       case "Monthly":
         return <Coach_Monthly userName={user.Name} />;
       case "Bi-annually":
