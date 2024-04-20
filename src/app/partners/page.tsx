@@ -31,8 +31,8 @@ export default function Clients() {
                 At Elite Nutrition, we carry true tried, and tested professional
                 grade products that are proven to produce results and get you
                 the edge you need to achieve your fitness goals. Brands that are
-                trusted and verified ensuring you're getting exactly what you
-                expect!
+                trusted and verified ensuring you&apos;re getting exactly what
+                you expect!
               </p>
             </div>
           </Link>
