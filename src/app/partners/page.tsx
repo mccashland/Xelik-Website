@@ -13,7 +13,7 @@ export default function Clients() {
         <div className="w-[50%]">
           We believe in helping others succeed and take pride in our partners.
         </div>
-        <div className="w-[40%] mx-auto border">
+        <div className="w-[40%] mx-auto border mt-10">
           <Link
             target="_blank"
             href="https://www.elitenutritionomaha.com/xelik/"
