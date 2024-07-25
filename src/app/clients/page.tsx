@@ -19,10 +19,10 @@ export default function Clients() {
       label: "Sign up for coaching",
       link: "/clients/phrase?q=Sign up for coaching",
     },
-    {
-      label: "Apply to become a client",
-      link: "https://formstack.io/1A423",
-    },
+    // {
+    //   label: "Apply to become a client",
+    //   link: "https://formstack.io/1A423",
+    // },
   ];
   return (
     <div className="flex flex-col gap-10">

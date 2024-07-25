@@ -21,10 +21,10 @@ export default function Coaches() {
       label: "Sign Up to become a coach",
       link: "/coaches/phrase?q=Sign Up to become a coach",
     },
-    {
-      label: "Apply to become a coach",
-      link: "https://formstack.io/3DDE6",
-    },
+    // {
+    //   label: "Apply to become a coach",
+    //   link: "https://formstack.io/3DDE6",
+    // },
   ];
   return (
     <div className="flex flex-col gap-10">

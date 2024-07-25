@@ -1,11 +1,63 @@
-import React from "react";
-
+"use client";
 import ContractInput from "../../ContractInput";
-import SubmitButton from "@/components/Submit_Button";
+import React, { useRef } from "react";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+// import GeneratePDFButton from "@/app/test/GeneratePDFButton";
 const FourMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
+  const pdfRef = useRef<HTMLDivElement>(null);
+
+  const generatePDF = async (event: any) => {
+    event.preventDefault();
+
+    if (!pdfRef.current) {
+      alert("pdfRef is null");
+      return;
+    }
+
+    try {
+      (pdfRef.current as HTMLElement).style.backgroundColor = "#fff";
+      const childElements = pdfRef.current.getElementsByTagName("*");
+      for (let i = 0; i < childElements.length; i++) {
+        (childElements[i] as HTMLElement).style.color = "#000";
+      }
+
+      const canvas = await html2canvas(pdfRef.current, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: "#fff",
+      });
+
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "mm", "a4");
+      const imgWidth = 210;
+      const pageHeight = 297;
+      let imgHeight = (canvas.height * imgWidth) / canvas.width;
+      let heightLeft = imgHeight;
+
+      let position = 0;
+
+      pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+
+      while (heightLeft > 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+      }
+      const pdfDataUri = pdf.output("datauristring");
+      console.log(pdfDataUri);
+      
+      pdf.save("coach_agreement.pdf");
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+    }
+  };
+
   return (
     <>
-      <div className="flex w-full justify-center   ">
+      <div ref={pdfRef} className="flex w-full justify-center ">
         <div className="flex flex-col gap-10  my-4">
           <div className="main-heading text-[1.5rem] sm:text-[3rem] 2xl:text-[5rem]  p-[3px] flex justify-center items-center text-center text-[#ffffff] font-bold">
             4 Month Bi-Weekly 1 on 1 coaching (Monthly)
@@ -402,10 +454,12 @@ const FourMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
                   Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
                 <div className="py-4">
-                  <SubmitButton
+                  {/* <SubmitButton
                     url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=108eb8f61fae478281cf5e935b51cb28&mode=checkout"
                     userName={userName}
-                  />
+                   
+                  /> */}
+                  <button onClick={generatePDF}>Submit</button>
                 </div>
               </div>
             </div>
