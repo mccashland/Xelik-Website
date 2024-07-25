@@ -1,10 +1,25 @@
-import React from "react";
-
+import React, { useRef } from "react";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 import ContractInput from "../../ContractInput";
 import SubmitButton from "@/components/Submit_Button";
 import Link from "next/link";
 import Image from "next/image";
 const Coach_monthly = ({ userName }: { userName: string }) => {
+  const pdfRef = useRef<HTMLDivElement>(null);
+
+  const generatePDF = async () => {
+    if (!pdfRef.current) return;
+
+    const canvas = await html2canvas(pdfRef.current);
+    const imgData = canvas.toDataURL("image/png");
+    const pdf = new jsPDF("p", "mm", "a4");
+    const imgWidth = 210;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+    console.log("pdf pdf pdf pdf pdf pdf")
+    pdf.save("coach_agreement.pdf");
+  };
   return (
     <>
       <div className="flex w-full justify-center   ">
@@ -591,6 +606,7 @@ const Coach_monthly = ({ userName }: { userName: string }) => {
                   <SubmitButton
                     url="https://buy.stripe.com/dR6bMx0zD6Lm9LG14A"
                     userName={userName}
+                    oNClick={generatePDF}
                   />
                 </div>
               </div>
