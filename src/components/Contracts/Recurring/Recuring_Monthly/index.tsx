@@ -3,11 +3,12 @@ import SubmitButton from "@/components/Submit_Button";
 import ContractInput from "../../ContractInput";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import { useRouter } from 'next/navigation'
 const Recuring_Monthly = ({ userName }: { userName: string }) => {
   const [loading, setLoading] = useState(false);
   const pdfRef = useRef<HTMLDivElement>(null);
   const submitButtonRef = useRef<HTMLButtonElement>(null);
-
+  const router = useRouter()
   const generatePDF = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setLoading(true);
@@ -30,30 +31,30 @@ const Recuring_Monthly = ({ userName }: { userName: string }) => {
       }
   
       const canvas = await html2canvas(pdfRef.current, {
-        scale: 2,
+        scale: 1.1, 
         useCORS: true,
         backgroundColor: "#fff",
       });
   
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
+      const imgData = canvas.toDataURL("image/jpeg", 0.5); 
+  
+      const pdf = new jsPDF("p", "mm", "a4", true); 
       const imgWidth = 210;
       const pageHeight = 297;
       let imgHeight = (canvas.height * imgWidth) / canvas.width;
       let heightLeft = imgHeight;
       let position = 0;
   
-      pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+      pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight, undefined, 'FAST'); 
       heightLeft -= pageHeight;
   
       while (heightLeft > 0) {
         position = heightLeft - imgHeight;
         pdf.addPage();
-        pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+        pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight, undefined, 'FAST'); 
         heightLeft -= pageHeight;
       }
   
-      pdf.save("coach_agreement.pdf")
       const pdfBlob = pdf.output("blob");
       const formData = new FormData();
       formData.append(
@@ -66,18 +67,20 @@ const Recuring_Monthly = ({ userName }: { userName: string }) => {
       setTimeout(() => {
         setLoading(false);
       }, 3000);
-      const response = await fetch("http://localhost:3000/api/upload-pdf", {
+  
+      const response = await fetch(`${process.env.HOST_URL}/api/upload-pdf`, {
         method: "POST",
         body: formData,
       });
   
       if (response.ok) {
         console.log("PDF uploaded successfully.");
+        router.push("https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=bd4402b3df6f454694f4a4d40fe8dfd4")
       } else {
         console.error("Failed to upload PDF.");
       }
   
-      pdf.save("coach_agreement.pdf");
+      // pdf.save("coach_agreement.pdf");
     } catch (error) {
       console.error("Error generating or uploading PDF:", error);
     } finally {
@@ -87,6 +90,7 @@ const Recuring_Monthly = ({ userName }: { userName: string }) => {
       setLoading(false);
     }
   };
+  
   return (
     <>
       <div ref={pdfRef } className="flex w-full justify-center   ">

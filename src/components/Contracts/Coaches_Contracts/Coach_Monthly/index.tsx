@@ -71,7 +71,7 @@ const Coach_monthly = ({ userName }: { userName: string }) => {
         setLoading(false);
       }, 3000);
   
-      const response = await fetch("http://localhost:3000/api/upload-pdf", {
+      const response = await fetch(`${process.env.HOST_URL}/api/upload-pdf`, {
         method: "POST",
         body: formData,
       });
@@ -83,7 +83,7 @@ const Coach_monthly = ({ userName }: { userName: string }) => {
         console.error("Failed to upload PDF.");
       }
   
-      pdf.save("coach_agreement.pdf");
+      // pdf.save("coach_agreement.pdf");
     } catch (error) {
       console.error("Error generating or uploading PDF:", error);
     } finally {
