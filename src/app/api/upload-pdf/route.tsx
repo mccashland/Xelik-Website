@@ -22,12 +22,12 @@ export async function GET(request: NextRequest) {
 }
 
 
-export async function createFormObj(formData: FormData) {
-    const FormObj: { [key: string]: any } = {};
+async function createFormObj(formData: FormData) {
+    const formObj: { [key: string]: any } = {};
     formData.forEach((value, key) => {
-        FormObj[key.trim()] = value;
+        formObj[key.trim()] = value;
     });
-    return FormObj;
+    return formObj;
 }
 
 export async function POST(request: NextRequest) {

@@ -1,3 +1,4 @@
+'use client'
 import { SignContext } from "@/context";
 import React, { useContext, forwardRef, Ref } from "react";
 import { useRouter } from 'next/navigation'
@@ -29,13 +30,8 @@ const SubmitButton = forwardRef<HTMLButtonElement, SubmitButtonProps>(
 
     return (
       <div>
-        {/* <div className="pb-3 underline">
-          <span>Signature: </span>
-          {userName}
-        </div> */}
-
         <button
-          ref={ref} // Attach ref here
+          ref={ref} 
           type="button"
           onClick={handleClick}
           className="bg-primary border-none text-white px-8 py-2 rounded-md transition-all"
@@ -46,5 +42,7 @@ const SubmitButton = forwardRef<HTMLButtonElement, SubmitButtonProps>(
     );
   }
 );
+
+SubmitButton.displayName = "SubmitButton";
 
 export default SubmitButton;
