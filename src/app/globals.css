@@ -43,3 +43,10 @@ body {
     @apply text-[#fff] text-base sm:text-[20px] opacity-70;
   }
 } */
+.hide-text {
+  position: absolute;
+  visibility: hidden;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}

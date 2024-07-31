@@ -14,3 +14,10 @@ model Token {
   id       String    @id @default(auto()) @map("_id") @db.ObjectId
   accessToken String
 }
+
+model PDF {
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  pdfFile    String
+  userName   String
+  createdAt  DateTime @default(now())
+}

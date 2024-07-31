@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     "src/app/clients/phrase/page.tsx",
     "src/app/contracts/[email]"
-  ],
+, "src/utils/-services/uploadFile.js"  ],
   "exclude": ["node_modules"]
 }
