@@ -1,7 +1,97 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import ContractInput from "../../ContractInput";
 import SubmitButton from "@/components/Submit_Button";
+import html2canvas from "html2canvas";
+import { useRouter } from "next/navigation";
+import jsPDF from "jspdf";
 const Coach_BiWeekly = ({ userName }: { userName: string }) => {
+  const router = useRouter()
+  const [loading, setLoading] = useState(false);
+  const pdfRef = useRef<HTMLDivElement>(null);
+  const submitButtonRef = useRef<HTMLButtonElement>(null);
+
+  const generatePDF = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setLoading(true);
+  
+    if (!pdfRef.current) {
+      alert("pdfRef is null");
+      setLoading(false);
+      return;
+    }
+  
+    try {
+      if (submitButtonRef.current) {
+        submitButtonRef.current.style.display = "none";
+      }
+  
+      (pdfRef.current as HTMLElement).style.backgroundColor = "#fff";
+      const childElements = pdfRef.current.getElementsByTagName("*");
+      for (let i = 0; i < childElements.length; i++) {
+        (childElements[i] as HTMLElement).style.color = "#000";
+      }
+  
+      const canvas = await html2canvas(pdfRef.current, {
+        scale: 1.1, 
+        useCORS: true,
+        backgroundColor: "#fff",
+      });
+  
+      const imgData = canvas.toDataURL("image/jpeg", 0.5); 
+  
+      const pdf = new jsPDF("p", "mm", "a4", true); 
+      const imgWidth = 210;
+      const pageHeight = 297;
+      let imgHeight = (canvas.height * imgWidth) / canvas.width;
+      let heightLeft = imgHeight;
+      let position = 0;
+  
+      pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight, undefined, 'FAST'); 
+      heightLeft -= pageHeight;
+  
+      while (heightLeft > 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight, undefined, 'FAST'); 
+        heightLeft -= pageHeight;
+      }
+  
+      const pdfBlob = pdf.output("blob");
+      const formData = new FormData();
+      formData.append(
+        "pdfFile",
+        pdfBlob,
+        `${userName}_${new Date().toISOString().replace(/[:.]/g, "-")}.pdf`
+      );
+      formData.append("userName", userName);
+  
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
+  
+      const response = await fetch(`${process.env.HOST_URL}/api/upload-pdf`, {
+        method: "POST",
+        body: formData,
+      });
+  
+      if (response.ok) {
+        console.log("PDF uploaded successfully.");
+        router.push("https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=bd4402b3df6f454694f4a4d40fe8dfd4")
+      } else {
+        console.error("Failed to upload PDF.");
+      }
+  
+      // pdf.save("coach_agreement.pdf");
+    } catch (error) {
+      console.error("Error generating or uploading PDF:", error);
+    } finally {
+      if (submitButtonRef.current) {
+        submitButtonRef.current.style.display = "block";
+      }
+      setLoading(false);
+    }
+  };
+  
   return (
     <>
       <div className="flex w-full justify-center   ">
@@ -416,10 +506,7 @@ const Coach_BiWeekly = ({ userName }: { userName: string }) => {
                   Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
                 <div className="py-4">
-                  <SubmitButton
-                    url="https://buy.stripe.com/8wM6sdgyB3zaf603cN"
-                    userName={userName}
-                  />
+                <SubmitButton ref={submitButtonRef} loading={loading} userName={userName}  url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=bd4402b3df6f454694f4a4d40fe8dfd4" onClick={generatePDF} />
                 </div>
               </div>
             </div>
