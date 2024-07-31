@@ -69,7 +69,7 @@ const FourMonth_Bi_Weekly_BiWeekly = ({ userName }: { userName: string }) => {
         setLoading(false);
       }, 3000);
   
-      const response = await fetch(`${process.env.HOST_URL}/api/upload-pdf`, {
+      const response = await fetch(`/api/upload-pdf`, {
         method: "POST",
         body: formData,
       });
