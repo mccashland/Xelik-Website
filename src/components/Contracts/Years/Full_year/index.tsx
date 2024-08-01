@@ -24,10 +24,10 @@ const Full_Year = ({ userName }: { userName: string }) => {
         submitButtonRef.current.style.display = "none";
       }
   
-      (pdfRef.current as HTMLElement).style.backgroundColor = "#fff";
+      (pdfRef.current as HTMLElement).style.backgroundColor = "#121c2f";
       const childElements = pdfRef.current.getElementsByTagName("*");
       for (let i = 0; i < childElements.length; i++) {
-        (childElements[i] as HTMLElement).style.color = "#000";
+        (childElements[i] as HTMLElement).style.color = "#fff";
       }
   
       const canvas = await html2canvas(pdfRef.current, {
@@ -68,7 +68,7 @@ const Full_Year = ({ userName }: { userName: string }) => {
         setLoading(false);
       }, 3000);
   
-      const response = await fetch(`${process.env.HOST_URL}/api/upload-pdf`, {
+      const response = await fetch(`/api/upload-pdf`, {
         method: "POST",
         body: formData,
       });
@@ -387,7 +387,7 @@ const Full_Year = ({ userName }: { userName: string }) => {
                 </div>
               </div>
             </div>
-            <div className="pt-10 text-[1rem] sm:text-[1.5rem] 2xl:text-[5rem] text-[#ffffff] font-bold m-auto ">
+            <div className="pt-5 text-[1rem] sm:text-[1.5rem] 2xl:text-[5rem] text-[#ffffff] font-bold m-auto ">
               Release from Liability for Services
             </div>
             <div className="main dev flex flex-col space-y-5 text-[#ffff] text-[1rem] opacity-[0.7] font-bold">
