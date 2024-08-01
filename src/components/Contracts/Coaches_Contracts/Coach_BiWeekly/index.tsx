@@ -25,10 +25,10 @@ const Coach_BiWeekly = ({ userName }: { userName: string }) => {
         submitButtonRef.current.style.display = "none";
       }
   
-      (pdfRef.current as HTMLElement).style.backgroundColor = "#fff";
+      (pdfRef.current as HTMLElement).style.backgroundColor = "#121c2f";
       const childElements = pdfRef.current.getElementsByTagName("*");
       for (let i = 0; i < childElements.length; i++) {
-        (childElements[i] as HTMLElement).style.color = "#000";
+        (childElements[i] as HTMLElement).style.color = "#fff";
       }
   
       const canvas = await html2canvas(pdfRef.current, {
@@ -69,7 +69,7 @@ const Coach_BiWeekly = ({ userName }: { userName: string }) => {
         setLoading(false);
       }, 3000);
   
-      const response = await fetch(`${process.env.HOST_URL}/api/upload-pdf`, {
+      const response = await fetch(`/api/upload-pdf`, {
         method: "POST",
         body: formData,
       });
@@ -355,7 +355,7 @@ const Coach_BiWeekly = ({ userName }: { userName: string }) => {
               </div> */}
               </span>
             </div>
-            <div className="space-y-6 py-20 text-[#ffff] text-[1rem] opacity-100 font-bold">
+            <div className="space-y-6 py-5 text-[#ffff] text-[1rem] opacity-100 font-bold">
               <div className="">Exhibit A</div>
               <div className="">Services</div>
               <div className=" opacity-[0.7]">
@@ -378,7 +378,7 @@ const Coach_BiWeekly = ({ userName }: { userName: string }) => {
                 wishes to add them, the Sellers must provide the Buyer with the
                 supplemental service within a reasonable time upon request.
               </div>
-              <div className="py-7 ">
+              <div className="py-5 ">
                 The Buyer is signing this agreement on the date stated
                 undertheir signature.
               </div>
@@ -402,10 +402,10 @@ const Coach_BiWeekly = ({ userName }: { userName: string }) => {
                 </div>
               </div>
             </div>
-            <div className="pt-20 text-[1rem] sm:text-[1.5rem] 2xl:text-[5rem] text-[#ffffff] font-bold m-auto ">
+            <div className="pt-10 text-[1rem] sm:text-[1.5rem] 2xl:text-[5rem] text-[#ffffff] font-bold m-auto ">
               Release from Liability for Services
             </div>
-            <div className="main dev flex flex-col space-y-8 text-[#ffff] text-[1rem] opacity-[0.7] font-bold">
+            <div className="main dev flex flex-col space-y-5 text-[#ffff] text-[1rem] opacity-[0.7] font-bold">
               <div>
                 <span className="underline">{userName}</span>, does hereby waive
                 and release, indemnify, and forever discharges Elevate Wellness

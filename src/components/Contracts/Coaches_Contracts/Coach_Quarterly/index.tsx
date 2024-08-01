@@ -28,10 +28,10 @@ const Coach_Quarterly = ({ userName }: { userName: string }) => {
         submitButtonRef.current.style.display = "none";
       }
   
-      (pdfRef.current as HTMLElement).style.backgroundColor = "#fff";
+      (pdfRef.current as HTMLElement).style.backgroundColor = "#121c2f";
       const childElements = pdfRef.current.getElementsByTagName("*");
       for (let i = 0; i < childElements.length; i++) {
-        (childElements[i] as HTMLElement).style.color = "#000";
+        (childElements[i] as HTMLElement).style.color = "#fff";
       }
   
       const canvas = await html2canvas(pdfRef.current, {
@@ -72,7 +72,7 @@ const Coach_Quarterly = ({ userName }: { userName: string }) => {
         setLoading(false);
       }, 3000);
   
-      const response = await fetch(`${process.env.HOST_URL}/api/upload-pdf`, {
+      const response = await fetch(`/api/upload-pdf`, {
         method: "POST",
         body: formData,
       });
