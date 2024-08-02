@@ -75,7 +75,7 @@ const Full_Year = ({ userName }: { userName: string }) => {
   
       if (response.ok) {
         console.log("PDF uploaded successfully.");
-        router.push("https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=bd4402b3df6f454694f4a4d40fe8dfd4")
+        router.push("https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=86c3c1ae72f04ab9923430e04b4eeed2&mode=checkout")
       } else {
         console.error("Failed to upload PDF.");
       }

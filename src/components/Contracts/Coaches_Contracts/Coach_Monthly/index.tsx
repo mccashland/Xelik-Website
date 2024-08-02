@@ -78,13 +78,14 @@ const Coach_monthly = ({ userName }: { userName: string }) => {
   
       if (response.ok) {
         console.log("PDF uploaded successfully.");
-        router.push("https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=bd4402b3df6f454694f4a4d40fe8dfd4")
+        router.push("https://buy.stripe.com/dR6bMx0zD6Lm9LG14A")
       } else {
         console.error("Failed to upload PDF.");
       }
   
       // pdf.save("coach_agreement.pdf");
     } catch (error) {
+      console.log(error)
       console.error("Error generating or uploading PDF:", error);
     } finally {
       if (submitButtonRef.current) {
@@ -96,7 +97,7 @@ const Coach_monthly = ({ userName }: { userName: string }) => {
   
   return (
     <>
-      <div className="flex w-full justify-center   ">
+      <div ref={pdfRef} className="flex w-full justify-center   ">
         <div className="flex flex-col gap-10  my-4">
           <div className="main-heading text-[1.5rem] sm:text-[3rem] 2xl:text-[5rem]  p-[3px] flex justify-center items-center text-center text-[#ffffff] font-bold">
             Coach Agreement (Monthly)
