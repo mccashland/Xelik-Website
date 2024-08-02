@@ -76,7 +76,7 @@ const Coach_BiWeekly = ({ userName }: { userName: string }) => {
   
       if (response.ok) {
         console.log("PDF uploaded successfully.");
-        router.push("https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=bd4402b3df6f454694f4a4d40fe8dfd4")
+        router.push("https://buy.stripe.com/8wM6sdgyB3zaf603cN")
       } else {
         console.error("Failed to upload PDF.");
       }
@@ -94,7 +94,7 @@ const Coach_BiWeekly = ({ userName }: { userName: string }) => {
   
   return (
     <>
-      <div className="flex w-full justify-center   ">
+      <div  ref={pdfRef} className="flex w-full justify-center   ">
         <div className="flex flex-col gap-10  my-4">
           <div className="main-heading text-[1.5rem] sm:text-[3rem] 2xl:text-[5rem]  p-[3px] flex justify-center items-center text-center text-[#ffffff] font-bold">
             {/* heading start here  */}Xelik Coach Bi-Weekly Payments

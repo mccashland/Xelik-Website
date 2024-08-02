@@ -75,7 +75,7 @@ const Six_month_monthly = ({ userName }: { userName: string }) => {
   
       if (response.ok) {
         console.log("PDF uploaded successfully.");
-        router.push("https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=bd4402b3df6f454694f4a4d40fe8dfd4")
+        router.push("https://www.trainerize.me/profile/xelik/?planGUID=295d7c3cb1ef4500a94449a68b2e36f1&mode=checkout")
       } else {
         console.error("Failed to upload PDF.");
       }

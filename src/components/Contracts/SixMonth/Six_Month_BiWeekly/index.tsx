@@ -77,7 +77,7 @@ const Six_Month_BiWeekly = ({ userName }: { userName: string }) => {
   
       if (response.ok) {
         console.log("PDF uploaded successfully.");
-        router.push("https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=bd4402b3df6f454694f4a4d40fe8dfd4")
+        router.push("https://www.trainerize.me/profile/xelik/?planGUID=56ada657abbd4b3e9ccbd87dba3e8e0e&mode=checkout")
       } else {
         console.error("Failed to upload PDF.");
       }

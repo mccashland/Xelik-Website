@@ -76,7 +76,7 @@ const Recuring_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
   
       if (response.ok) {
         console.log("PDF uploaded successfully.");
-        router.push("https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=bd4402b3df6f454694f4a4d40fe8dfd4")
+        router.push("https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=f3e747726a27408da3faf044f3fc5d7f&mode=checkout")
       } else {
         console.error("Failed to upload PDF.");
       }
