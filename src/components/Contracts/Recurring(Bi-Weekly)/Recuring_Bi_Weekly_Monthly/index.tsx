@@ -4,8 +4,16 @@ import ContractInput from "../../ContractInput";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { useRouter } from "next/navigation";
-const Recuring_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
-  const router = useRouter()
+const Recuring_Bi_Weekly_Monthly = ({
+  userName,
+  email,
+  IP,
+}: {
+  userName: string;
+  email: string;
+  IP: any;
+}) => {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const pdfRef = useRef<HTMLDivElement>(null);
   const submitButtonRef = useRef<HTMLButtonElement>(null);
@@ -13,49 +21,67 @@ const Recuring_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
   const generatePDF = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setLoading(true);
-  
+
     if (!pdfRef.current) {
       alert("pdfRef is null");
       setLoading(false);
       return;
     }
-  
+
     try {
       if (submitButtonRef.current) {
         submitButtonRef.current.style.display = "none";
       }
-  
+
       (pdfRef.current as HTMLElement).style.backgroundColor = "#121c2f";
       const childElements = pdfRef.current.getElementsByTagName("*");
       for (let i = 0; i < childElements.length; i++) {
         (childElements[i] as HTMLElement).style.color = "#fff";
       }
-  
+
       const canvas = await html2canvas(pdfRef.current, {
-        scale: 1.1, 
+        scale: 1.1,
         useCORS: true,
         backgroundColor: "#fff",
       });
-  
-      const imgData = canvas.toDataURL("image/jpeg", 0.5); 
-  
-      const pdf = new jsPDF("p", "mm", "a4", true); 
+
+      const imgData = canvas.toDataURL("image/jpeg", 0.5);
+
+      const pdf = new jsPDF("p", "mm", "a4", true);
       const imgWidth = 210;
       const pageHeight = 297;
       let imgHeight = (canvas.height * imgWidth) / canvas.width;
       let heightLeft = imgHeight;
       let position = 0;
-  
-      pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight, undefined, 'FAST'); 
+
+      pdf.addImage(
+        imgData,
+        "JPEG",
+        0,
+        position,
+        imgWidth,
+        imgHeight,
+        undefined,
+        "FAST"
+      );
       heightLeft -= pageHeight;
-  
+
       while (heightLeft > 0) {
         position = heightLeft - imgHeight;
         pdf.addPage();
-        pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight, undefined, 'FAST'); 
+        pdf.addImage(
+          imgData,
+          "JPEG",
+          0,
+          position,
+          imgWidth,
+          imgHeight,
+          undefined,
+          "FAST"
+        );
         heightLeft -= pageHeight;
       }
-  
+
       const pdfBlob = pdf.output("blob");
       const formData = new FormData();
       formData.append(
@@ -64,23 +90,26 @@ const Recuring_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
         `${userName}_${new Date().toISOString().replace(/[:.]/g, "-")}.pdf`
       );
       formData.append("userName", userName);
-  
+      formData.append("email", email);
+      formData.append("ipAdress", IP);
+
       setTimeout(() => {
         setLoading(false);
       }, 3000);
-  
+
       const response = await fetch(`/api/upload-pdf`, {
         method: "POST",
         body: formData,
       });
-  
+
       if (response.ok) {
-        console.log("PDF uploaded successfully.");
-        router.push("https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=f3e747726a27408da3faf044f3fc5d7f&mode=checkout")
+        router.push(
+          "https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=f3e747726a27408da3faf044f3fc5d7f&mode=checkout"
+        );
       } else {
         console.error("Failed to upload PDF.");
       }
-  
+
       // pdf.save("coach_agreement.pdf");
     } catch (error) {
       console.error("Error generating or uploading PDF:", error);
@@ -91,7 +120,7 @@ const Recuring_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
       setLoading(false);
     }
   };
-  
+
   return (
     <>
       <div className="flex w-full justify-center   ">
@@ -496,7 +525,13 @@ const Recuring_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
                   Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
                 <div className="py-4">
-                <SubmitButton ref={submitButtonRef} loading={loading} userName={userName}  url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=bd4402b3df6f454694f4a4d40fe8dfd4" onClick={generatePDF} />
+                  <SubmitButton
+                    ref={submitButtonRef}
+                    loading={loading}
+                    userName={userName}
+                    url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=bd4402b3df6f454694f4a4d40fe8dfd4"
+                    onClick={generatePDF}
+                  />
                 </div>
               </div>
             </div>

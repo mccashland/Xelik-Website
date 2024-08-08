@@ -2,9 +2,17 @@ import React, { useEffect, useRef, useState } from "react";
 import ContractInput from "../../ContractInput";
 import SubmitButton from "@/components/Submit_Button";
 import jsPDF from "jspdf";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 import html2canvas from "html2canvas";
-const FourMonth_BiWeekly = ({ userName,IP }: { userName: string ,IP:any}) => {
+const FourMonth_BiWeekly = ({
+  userName,
+  IP,
+  email,
+}: {
+  userName: string;
+  IP: any;
+  email: string;
+}) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const pdfRef = useRef<HTMLDivElement>(null);
@@ -45,32 +53,50 @@ const FourMonth_BiWeekly = ({ userName,IP }: { userName: string ,IP:any}) => {
       for (let i = 0; i < childElements.length; i++) {
         (childElements[i] as HTMLElement).style.color = "#fff";
       }
-  
+
       const canvas = await html2canvas(pdfRef.current, {
-        scale: 1.1, 
+        scale: 1.1,
         useCORS: true,
         backgroundColor: "#fff",
       });
-  
-      const imgData = canvas.toDataURL("image/jpeg", 0.5); 
-  
-      const pdf = new jsPDF("p", "mm", "a4", true); 
+
+      const imgData = canvas.toDataURL("image/jpeg", 0.5);
+
+      const pdf = new jsPDF("p", "mm", "a4", true);
       const imgWidth = 210;
       const pageHeight = 297;
       let imgHeight = (canvas.height * imgWidth) / canvas.width;
       let heightLeft = imgHeight;
       let position = 0;
-  
-      pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight, undefined, 'FAST'); 
+
+      pdf.addImage(
+        imgData,
+        "JPEG",
+        0,
+        position,
+        imgWidth,
+        imgHeight,
+        undefined,
+        "FAST"
+      );
       heightLeft -= pageHeight;
-  
+
       while (heightLeft > 0) {
         position = heightLeft - imgHeight;
         pdf.addPage();
-        pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight, undefined, 'FAST'); 
+        pdf.addImage(
+          imgData,
+          "JPEG",
+          0,
+          position,
+          imgWidth,
+          imgHeight,
+          undefined,
+          "FAST"
+        );
         heightLeft -= pageHeight;
       }
-  
+
       const pdfBlob = pdf.output("blob");
       const formData = new FormData();
       formData.append(
@@ -80,22 +106,25 @@ const FourMonth_BiWeekly = ({ userName,IP }: { userName: string ,IP:any}) => {
       );
       formData.append("userName", userName);
       formData.append("ipAddress", IP);
+      formData.append("email", email);
+
       // setTimeout(() => {
       //   setLoading(false);
       // }, 3000);
-  
+
       const response = await fetch(`/api/upload-pdf`, {
         method: "POST",
         body: formData,
       });
-  
+
       if (response.ok) {
-        console.log("PDF uploaded successfully.");
-        router.push("https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=3bfaac4b80f64b59928e7e4453a349c3&mode=checkout")
+        router.push(
+          "https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=3bfaac4b80f64b59928e7e4453a349c3&mode=checkout"
+        );
       } else {
         console.error("Failed to upload PDF.");
       }
-  
+
       // pdf.save("coach_agreement.pdf");
     } catch (error) {
       console.error("Error generating or uploading PDF:", error);
@@ -115,10 +144,10 @@ const FourMonth_BiWeekly = ({ userName,IP }: { userName: string ,IP:any}) => {
       setLoading(false);
     }
   };
-  
+
   return (
     <>
-      <div ref={pdfRef } className="flex w-full justify-center   ">
+      <div ref={pdfRef} className="flex w-full justify-center   ">
         <div className="flex flex-col gap-10  my-4">
           <div className="main-heading text-[1.5rem] sm:text-[3rem] 2xl:text-[5rem]  p-[3px] flex justify-center items-center text-center text-[#ffffff] font-bold">
             {/* heading start here  */}4 Month 1-on-1 Coaching (Bi-Weekly)
@@ -421,7 +450,8 @@ const FourMonth_BiWeekly = ({ userName,IP }: { userName: string ,IP:any}) => {
                 </div>
                 <div>
                   <span className="underline">
-                    Buying Date: {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
+                    Buying Date:{" "}
+                    {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
                   </span>
                 </div>
               </div>
@@ -526,23 +556,33 @@ const FourMonth_BiWeekly = ({ userName,IP }: { userName: string ,IP:any}) => {
                 AND DAMAGE TO PROPERTY.
               </div>
               <div>
-                <span ref={inputFieldSignatureRef} className="underline flex items-end ">
+                <span
+                  ref={inputFieldSignatureRef}
+                  className="underline flex items-end "
+                >
                   Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
                 <span ref={hideText} className="underline">
-                    Buyer Name:{" "}
-                    <span>
-                      <ContractInput value={userName} name="userName" />
-                    </span>
+                  Buyer Name:{" "}
+                  <span>
+                    <ContractInput value={userName} name="userName" />
                   </span>
-                  <div className="pt-3 pb-2">IP : {IP}</div>
-                  <div>
+                </span>
+                <div className="pt-3 pb-2">IP : {IP}</div>
+                <div>
                   <span className="underline">
-                    Buying Date: {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
+                    Buying Date:{" "}
+                    {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
                   </span>
                 </div>
                 <div className="py-4">
-                <SubmitButton ref={submitButtonRef} loading={loading} userName={userName}  url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=bd4402b3df6f454694f4a4d40fe8dfd4" onClick={generatePDF} />
+                  <SubmitButton
+                    ref={submitButtonRef}
+                    loading={loading}
+                    userName={userName}
+                    url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=bd4402b3df6f454694f4a4d40fe8dfd4"
+                    onClick={generatePDF}
+                  />
                 </div>
               </div>
             </div>

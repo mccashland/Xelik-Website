@@ -4,7 +4,15 @@ import SubmitButton from "@/components/Submit_Button";
 import html2canvas from "html2canvas";
 import { useRouter } from "next/navigation";
 import jsPDF from "jspdf";
-const Recuring_App_Access = ({ userName,IP }: { userName: string ,IP:any}) => {
+const Recuring_App_Access = ({
+  userName,
+  IP,
+  email,
+}: {
+  userName: string;
+  IP: any;
+  email: string;
+}) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const pdfRef = useRef<HTMLDivElement>(null);
@@ -99,13 +107,14 @@ const Recuring_App_Access = ({ userName,IP }: { userName: string ,IP:any}) => {
       );
       formData.append("userName", userName);
       formData.append("ipAddress", IP);
+      formData.append("email", email);
+
       const response = await fetch(`/api/upload-pdf`, {
         method: "POST",
         body: formData,
       });
 
       if (response.ok) {
-        console.log("PDF uploaded successfully.");
         router.push(
           "https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=397455ffe7664155a8b8ca9c6cc33b00&mode=checkout"
         );
@@ -413,7 +422,8 @@ const Recuring_App_Access = ({ userName,IP }: { userName: string ,IP:any}) => {
                 </div>
                 <div>
                   <span className="underline">
-                    Buying Date: {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
+                    Buying Date:{" "}
+                    {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
                   </span>
                 </div>
               </div>
@@ -524,17 +534,18 @@ const Recuring_App_Access = ({ userName,IP }: { userName: string ,IP:any}) => {
                 >
                   Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
-           
-                  <span ref={hideText} className="underline">
-                    Buyer Name:{" "}
-                    <span>
-                      <ContractInput value={userName} name="userName" />
-                    </span>
+
+                <span ref={hideText} className="underline">
+                  Buyer Name:{" "}
+                  <span>
+                    <ContractInput value={userName} name="userName" />
                   </span>
-                  <div className="pt-3 pb-2">IP : {IP}</div>
-                  <div>
+                </span>
+                <div className="pt-3 pb-2">IP : {IP}</div>
+                <div>
                   <span className="underline">
-                    Buying Date: {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
+                    Buying Date:{" "}
+                    {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
                   </span>
                 </div>
                 <div className="py-4">

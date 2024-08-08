@@ -12,7 +12,6 @@ const emailSchema = z.object({
 });
 export const onSubmit = async (formData: any) => {
   // const { email, userType, phrase } = formData;
-  console.log(formData);
   //   const email = formData.get("email");
   //   const userType = formData.get("userType");
   //   const phrase = formData.get("phrase");

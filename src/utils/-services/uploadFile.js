@@ -13,10 +13,8 @@ const s3Client = new S3Client({
 });
 
 const uploadFile = async (file) => {
-console.log("upload file",file)
   try {
     const fileContent = fs.readFileSync(file.path);
-    console.log("file content",fileContent)
     const uploadParams = {
       Bucket: process.env.DO_SPACES_NAME,
       Key: Date.now() + "-" + file.originalname,
@@ -30,13 +28,10 @@ console.log("upload file",file)
       params: uploadParams,
     });
 
-    parallelUploads3.on("httpUploadProgress", (progress) => {
-      console.log("progress",progress);
-    });
+    parallelUploads3.on("httpUploadProgress", (progress) => {});
 
     const data = await parallelUploads3.done();
     fs.unlinkSync(file.path);
-    console.log("this",data)
     return data.Location;
   } catch (error) {
     console.error("Error uploading file:", error);

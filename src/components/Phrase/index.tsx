@@ -28,8 +28,7 @@ export const Phrase = ({
   const handlePhraseClick = async (data: any) => {
     localStorage.setItem(EV_USER_EMAIL, data.email);
     localStorage.setItem(EV_USER_TYPE, userType);
-    console.log(data.email);
-    console.log(userType);
+
     if (userType === "Client") {
       if (q === "Apply to become a client") {
         router.push("https://formstack.io/1A423");

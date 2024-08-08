@@ -4,9 +4,17 @@ import React, { useEffect, useRef, useState } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import SubmitButton from "@/components/Submit_Button";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 // import GeneratePDFButton from "@/app/test/GeneratePDFButton";
-const FourMonth_Bi_Weekly_Monthly = ({ userName,IP }: { userName: string ,IP:any}) => {
+const FourMonth_Bi_Weekly_Monthly = ({
+  userName,
+  IP,
+  email,
+}: {
+  userName: string;
+  IP: any;
+  email: string;
+}) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const pdfRef = useRef<HTMLDivElement>(null);
@@ -47,32 +55,50 @@ const FourMonth_Bi_Weekly_Monthly = ({ userName,IP }: { userName: string ,IP:any
       for (let i = 0; i < childElements.length; i++) {
         (childElements[i] as HTMLElement).style.color = "#fff";
       }
-  
+
       const canvas = await html2canvas(pdfRef.current, {
-        scale: 1.1, 
+        scale: 1.1,
         useCORS: true,
         backgroundColor: "#fff",
       });
-  
-      const imgData = canvas.toDataURL("image/jpeg", 0.5); 
-  
-      const pdf = new jsPDF("p", "mm", "a4", true); 
+
+      const imgData = canvas.toDataURL("image/jpeg", 0.5);
+
+      const pdf = new jsPDF("p", "mm", "a4", true);
       const imgWidth = 210;
       const pageHeight = 297;
       let imgHeight = (canvas.height * imgWidth) / canvas.width;
       let heightLeft = imgHeight;
       let position = 0;
-  
-      pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight, undefined, 'FAST'); 
+
+      pdf.addImage(
+        imgData,
+        "JPEG",
+        0,
+        position,
+        imgWidth,
+        imgHeight,
+        undefined,
+        "FAST"
+      );
       heightLeft -= pageHeight;
-  
+
       while (heightLeft > 0) {
         position = heightLeft - imgHeight;
         pdf.addPage();
-        pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight, undefined, 'FAST'); 
+        pdf.addImage(
+          imgData,
+          "JPEG",
+          0,
+          position,
+          imgWidth,
+          imgHeight,
+          undefined,
+          "FAST"
+        );
         heightLeft -= pageHeight;
       }
-  
+
       const pdfBlob = pdf.output("blob");
       const formData = new FormData();
       formData.append(
@@ -82,24 +108,23 @@ const FourMonth_Bi_Weekly_Monthly = ({ userName,IP }: { userName: string ,IP:any
       );
       formData.append("userName", userName);
       formData.append("ipAddress", IP);
+      formData.append("email", email);
       // setTimeout(() => {
       //   setLoading(false);
       // }, 3000);
-  
+
       const response = await fetch(`/api/upload-pdf`, {
         method: "POST",
         body: formData,
       });
-  
+
       if (response.ok) {
-       
-        console.log("PDF uploaded successfully.");
-        router.push("https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=108eb8f61fae478281cf5e935b51cb28&mode=checkout")
+        router.push(
+          "https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=108eb8f61fae478281cf5e935b51cb28&mode=checkout"
+        );
       } else {
         console.error("Failed to upload PDF.");
       }
-  
-    
     } catch (error) {
       console.error("Error generating or uploading PDF:", error);
     } finally {
@@ -118,8 +143,6 @@ const FourMonth_Bi_Weekly_Monthly = ({ userName,IP }: { userName: string ,IP:any
       setLoading(false);
     }
   };
-  ;
-
   return (
     <>
       <div ref={pdfRef} className="flex w-full justify-center ">
@@ -410,7 +433,8 @@ const FourMonth_Bi_Weekly_Monthly = ({ userName,IP }: { userName: string ,IP:any
                 </div>
                 <div>
                   <span className="underline">
-                    Buying Date: {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
+                    Buying Date:{" "}
+                    {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
                   </span>
                 </div>
               </div>
@@ -515,27 +539,31 @@ const FourMonth_Bi_Weekly_Monthly = ({ userName,IP }: { userName: string ,IP:any
                 AND DAMAGE TO PROPERTY.
               </div>
               <div>
-                  <div>
-                    <span ref={inputFieldSignatureRef} className="underline flex items-end ">
-                      Buyer Signature:{" "}
-                      <ContractInput value="A" name="signature" />
-                    </span>
-                  </div>
-                  <span ref={hideText} className="underline">
-                    Buyer Name:{" "}
-                    <span>
-                      <ContractInput value={userName} name="userName" />
-                    </span>
+                <div>
+                  <span
+                    ref={inputFieldSignatureRef}
+                    className="underline flex items-end "
+                  >
+                    Buyer Signature:{" "}
+                    <ContractInput value="A" name="signature" />
                   </span>
-                  <div className="pt-3 pb-2">IP : {IP}</div>
-                  <div>
+                </div>
+                <span ref={hideText} className="underline">
+                  Buyer Name:{" "}
+                  <span>
+                    <ContractInput value={userName} name="userName" />
+                  </span>
+                </span>
+                <div className="pt-3 pb-2">IP : {IP}</div>
+                <div>
                   <span className="underline">
-                    Buying Date: {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
+                    Buying Date:{" "}
+                    {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
                   </span>
                 </div>
                 <div className="py-4">
                   <SubmitButton
-                  ref={submitButtonRef}
+                    ref={submitButtonRef}
                     loading={loading}
                     userName={userName}
                     url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=bd4402b3df6f454694f4a4d40fe8dfd4"

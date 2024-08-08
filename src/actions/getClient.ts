@@ -26,7 +26,6 @@ export const getClient = async (email: string | null) => {
           console.log(err);
           return { error: "Time Outdd" };
         }
-        console.log(result.records[0]);
         return { data: result.records[0] };
       }
     );
