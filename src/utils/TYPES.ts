@@ -53,6 +53,7 @@ export type CLIENT_OBJECT = {
   Name: string;
   Email__c: string;
   message?: string;
+  IP_Address__c?:any;
   Client_contract_length__c:
     | "Monthly"
     | "4 Month"

@@ -17,3 +17,29 @@ export async function GET(request: Request) {
   );
   return Response.json({ data: res.data.records[0] });
 }
+
+// export async function createContact(pdfUrl:any) {
+//   console.log("pdf url",pdfUrl)
+//   const token = await getAccessToken();
+//   console.log("token",token.data)
+//   try {
+//     const res = await axios.post(
+//       "https://data-enterprise-9179.my.salesforce.com/services/data/v59.0/sobjects/Contact",
+//       JSON.stringify({
+//         Name:pdfUrl,
+           
+//       }),
+//       {
+//         headers: {
+//           Authorization: `Bearer ${token.data.access_token}`,
+//           "Content-Type": "application/json",
+//         },
+//       }
+//     );
+//     console.log("responsecdff",res.data)
+//     return res.data;
+//   } catch (error) {
+//     console.error("Error creating contact:", error);
+//     throw error;
+//   }
+// }

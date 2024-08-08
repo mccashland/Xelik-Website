@@ -19,5 +19,6 @@ model PDF {
   id       String    @id @default(auto()) @map("_id") @db.ObjectId
   pdfFile    String
   userName   String
+  ipAddress  String
   createdAt  DateTime @default(now())
 }

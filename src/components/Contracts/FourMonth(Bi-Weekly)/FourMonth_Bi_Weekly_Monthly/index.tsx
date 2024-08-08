@@ -1,31 +1,47 @@
 "use client";
 import ContractInput from "../../ContractInput";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import SubmitButton from "@/components/Submit_Button";
 import { useRouter } from 'next/navigation'
 // import GeneratePDFButton from "@/app/test/GeneratePDFButton";
-const FourMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
+const FourMonth_Bi_Weekly_Monthly = ({ userName,IP }: { userName: string ,IP:any}) => {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const pdfRef = useRef<HTMLDivElement>(null);
   const submitButtonRef = useRef<HTMLButtonElement>(null);
-  const router = useRouter()
+  const inputFieldRef = useRef<HTMLButtonElement>(null);
+  const inputFieldSignatureRef = useRef<HTMLButtonElement>(null);
+  const hideText = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (hideText.current) {
+      hideText.current.style.display = "none";
+    }
+  }, []);
   const generatePDF = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setLoading(true);
-  
+
     if (!pdfRef.current) {
       alert("pdfRef is null");
       setLoading(false);
       return;
     }
-  
+
     try {
       if (submitButtonRef.current) {
         submitButtonRef.current.style.display = "none";
       }
-  
+      if (inputFieldRef.current) {
+        inputFieldRef.current.style.display = "none";
+      }
+      if (inputFieldSignatureRef.current) {
+        inputFieldSignatureRef.current.style.display = "none";
+      }
+      if (hideText.current) {
+        hideText.current.style.display = "block";
+      }
       (pdfRef.current as HTMLElement).style.backgroundColor = "#121c2f";
       const childElements = pdfRef.current.getElementsByTagName("*");
       for (let i = 0; i < childElements.length; i++) {
@@ -65,10 +81,10 @@ const FourMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
         `${userName}_${new Date().toISOString().replace(/[:.]/g, "-")}.pdf`
       );
       formData.append("userName", userName);
-  
-      setTimeout(() => {
-        setLoading(false);
-      }, 3000);
+      formData.append("ipAddress", IP);
+      // setTimeout(() => {
+      //   setLoading(false);
+      // }, 3000);
   
       const response = await fetch(`/api/upload-pdf`, {
         method: "POST",
@@ -89,6 +105,15 @@ const FourMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
     } finally {
       if (submitButtonRef.current) {
         submitButtonRef.current.style.display = "block";
+      }
+      if (inputFieldRef.current) {
+        inputFieldRef.current.style.display = "block";
+      }
+      if (inputFieldSignatureRef.current) {
+        inputFieldSignatureRef.current.style.display = "block";
+      }
+      if (hideText.current) {
+        hideText.current.style.display = "none";
       }
       setLoading(false);
     }
@@ -134,7 +159,7 @@ const FourMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
                 <span>
                   <ContractInput
                     name="date"
-                    value={new Date().toDateString()}
+                    value={`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
                   />
                 </span>
               </span>
@@ -371,7 +396,7 @@ const FourMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
                 their signature.
               </div>
               <div className="py-10 flex flex-col gap-y-4">
-                <span className="underline flex items-end ">
+                <span ref={inputFieldRef} className="underline flex items-end ">
                   Buyer Signature:{" "}
                   <ContractInput value="A" name="signature-one" />
                 </span>
@@ -385,7 +410,7 @@ const FourMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
                 </div>
                 <div>
                   <span className="underline">
-                    Buying Date: {new Date().toDateString()}
+                    Buying Date: {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
                   </span>
                 </div>
               </div>
@@ -491,11 +516,23 @@ const FourMonth_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
               </div>
               <div>
                   <div>
-                    <span className="underline flex items-end ">
+                    <span ref={inputFieldSignatureRef} className="underline flex items-end ">
                       Buyer Signature:{" "}
                       <ContractInput value="A" name="signature" />
                     </span>
                   </div>
+                  <span ref={hideText} className="underline">
+                    Buyer Name:{" "}
+                    <span>
+                      <ContractInput value={userName} name="userName" />
+                    </span>
+                  </span>
+                  <div className="pt-3 pb-2">IP : {IP}</div>
+                  <div>
+                  <span className="underline">
+                    Buying Date: {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
+                  </span>
+                </div>
                 <div className="py-4">
                   <SubmitButton
                   ref={submitButtonRef}
