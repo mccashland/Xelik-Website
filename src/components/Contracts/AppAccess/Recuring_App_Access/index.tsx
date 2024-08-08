@@ -1,61 +1,95 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ContractInput from "../../ContractInput";
 import SubmitButton from "@/components/Submit_Button";
 import html2canvas from "html2canvas";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 import jsPDF from "jspdf";
-const Recuring_App_Access = ({ userName }: { userName: string }) => {
+const Recuring_App_Access = ({ userName,IP }: { userName: string ,IP:any}) => {
   const [loading, setLoading] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
   const pdfRef = useRef<HTMLDivElement>(null);
   const submitButtonRef = useRef<HTMLButtonElement>(null);
-
+  const inputFieldRef = useRef<HTMLButtonElement>(null);
+  const inputFieldSignatureRef = useRef<HTMLButtonElement>(null);
+  const hideText = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (hideText.current) {
+      hideText.current.style.display = "none";
+    }
+  }, []);
   const generatePDF = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setLoading(true);
-  
+
     if (!pdfRef.current) {
       alert("pdfRef is null");
       setLoading(false);
       return;
     }
-  
+
     try {
       if (submitButtonRef.current) {
         submitButtonRef.current.style.display = "none";
       }
-  
+      if (inputFieldRef.current) {
+        inputFieldRef.current.style.display = "none";
+      }
+      if (inputFieldSignatureRef.current) {
+        inputFieldSignatureRef.current.style.display = "none";
+      }
+      if (hideText.current) {
+        hideText.current.style.display = "block";
+      }
+
       (pdfRef.current as HTMLElement).style.backgroundColor = "#121c2f";
       const childElements = pdfRef.current.getElementsByTagName("*");
       for (let i = 0; i < childElements.length; i++) {
         (childElements[i] as HTMLElement).style.color = "#fff";
       }
-  
+
       const canvas = await html2canvas(pdfRef.current, {
-        scale: 1.1, 
+        scale: 1.1,
         useCORS: true,
         backgroundColor: "#fff",
       });
-  
-      const imgData = canvas.toDataURL("image/jpeg", 0.5); 
-  
-      const pdf = new jsPDF("p", "mm", "a4", true); 
+
+      const imgData = canvas.toDataURL("image/jpeg", 0.5);
+
+      const pdf = new jsPDF("p", "mm", "a4", true);
       const imgWidth = 210;
       const pageHeight = 297;
       let imgHeight = (canvas.height * imgWidth) / canvas.width;
       let heightLeft = imgHeight;
       let position = 0;
-  
-      pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight, undefined, 'FAST'); 
+
+      pdf.addImage(
+        imgData,
+        "JPEG",
+        0,
+        position,
+        imgWidth,
+        imgHeight,
+        undefined,
+        "FAST"
+      );
       heightLeft -= pageHeight;
-  
+
       while (heightLeft > 0) {
         position = heightLeft - imgHeight;
         pdf.addPage();
-        pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight, undefined, 'FAST'); 
+        pdf.addImage(
+          imgData,
+          "JPEG",
+          0,
+          position,
+          imgWidth,
+          imgHeight,
+          undefined,
+          "FAST"
+        );
         heightLeft -= pageHeight;
       }
-  
+
       const pdfBlob = pdf.output("blob");
       const formData = new FormData();
       formData.append(
@@ -64,23 +98,21 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
         `${userName}_${new Date().toISOString().replace(/[:.]/g, "-")}.pdf`
       );
       formData.append("userName", userName);
-  
-      setTimeout(() => {
-        setLoading(false);
-      }, 3000);
-  
+      formData.append("ipAddress", IP);
       const response = await fetch(`/api/upload-pdf`, {
         method: "POST",
         body: formData,
       });
-  
+
       if (response.ok) {
         console.log("PDF uploaded successfully.");
-        router.push("https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=397455ffe7664155a8b8ca9c6cc33b00&mode=checkout")
+        router.push(
+          "https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=397455ffe7664155a8b8ca9c6cc33b00&mode=checkout"
+        );
       } else {
         console.error("Failed to upload PDF.");
       }
-  
+
       // pdf.save("coach_agreement.pdf");
     } catch (error) {
       console.error("Error generating or uploading PDF:", error);
@@ -88,13 +120,22 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
       if (submitButtonRef.current) {
         submitButtonRef.current.style.display = "block";
       }
+      if (inputFieldRef.current) {
+        inputFieldRef.current.style.display = "block";
+      }
+      if (inputFieldSignatureRef.current) {
+        inputFieldSignatureRef.current.style.display = "block";
+      }
+      if (hideText.current) {
+        hideText.current.style.display = "none";
+      }
       setLoading(false);
     }
   };
-  
+
   return (
     <>
-      <div ref={pdfRef } className="flex w-full justify-center   ">
+      <div ref={pdfRef} className="flex w-full justify-center   ">
         <div className="flex flex-col gap-10  my-4">
           <div className="main-heading text-[1.5rem] sm:text-[3rem] 2xl:text-[5rem]  p-[3px] flex justify-center items-center text-center text-[#ffffff] font-bold">
             {/* heading start here  */}
@@ -132,7 +173,7 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
                 <span>
                   <ContractInput
                     name="date"
-                    value={new Date().toDateString()}
+                    value={`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
                   />
                 </span>
               </span>
@@ -358,7 +399,7 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
                 their signature.
               </div>
               <div className="py-4 flex flex-col gap-y-4">
-                <span className="underline flex items-end ">
+                <span ref={inputFieldRef} className="underline flex items-end ">
                   Buyer Signature:{" "}
                   <ContractInput value="A" name="signature-one" />
                 </span>
@@ -372,7 +413,7 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
                 </div>
                 <div>
                   <span className="underline">
-                    Buying Date: {new Date().toDateString()}
+                    Buying Date: {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
                   </span>
                 </div>
               </div>
@@ -477,11 +518,33 @@ const Recuring_App_Access = ({ userName }: { userName: string }) => {
                 AND DAMAGE TO PROPERTY.
               </div>
               <div>
-                <span className="underline flex items-end ">
+                <span
+                  ref={inputFieldSignatureRef}
+                  className="underline flex items-end "
+                >
                   Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
+           
+                  <span ref={hideText} className="underline">
+                    Buyer Name:{" "}
+                    <span>
+                      <ContractInput value={userName} name="userName" />
+                    </span>
+                  </span>
+                  <div className="pt-3 pb-2">IP : {IP}</div>
+                  <div>
+                  <span className="underline">
+                    Buying Date: {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
+                  </span>
+                </div>
                 <div className="py-4">
-                <SubmitButton ref={submitButtonRef} loading={loading} userName={userName}  url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=bd4402b3df6f454694f4a4d40fe8dfd4" onClick={generatePDF} />
+                  <SubmitButton
+                    ref={submitButtonRef}
+                    loading={loading}
+                    userName={userName}
+                    url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=bd4402b3df6f454694f4a4d40fe8dfd4"
+                    onClick={generatePDF}
+                  />
                 </div>
               </div>
             </div>

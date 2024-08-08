@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import ContractInput from "../../ContractInput";
@@ -6,25 +6,41 @@ import SubmitButton from "@/components/Submit_Button";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from 'next/navigation'
-const Coach_monthly = ({ userName }: { userName: string }) => {
-  const router = useRouter()
+const Coach_monthly = ({ userName,IP }: { userName: string ,IP:any}) => {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const pdfRef = useRef<HTMLDivElement>(null);
   const submitButtonRef = useRef<HTMLButtonElement>(null);
-
+  const inputFieldRef = useRef<HTMLButtonElement>(null);
+  const inputFieldSignatureRef = useRef<HTMLButtonElement>(null);
+  const hideText = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (hideText.current) {
+      hideText.current.style.display = "none";
+    }
+  }, []);
   const generatePDF = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setLoading(true);
-  
+
     if (!pdfRef.current) {
       alert("pdfRef is null");
       setLoading(false);
       return;
     }
-  
+
     try {
       if (submitButtonRef.current) {
         submitButtonRef.current.style.display = "none";
+      }
+      if (inputFieldRef.current) {
+        inputFieldRef.current.style.display = "none";
+      }
+      if (inputFieldSignatureRef.current) {
+        inputFieldSignatureRef.current.style.display = "none";
+      }
+      if (hideText.current) {
+        hideText.current.style.display = "block";
       }
   
       (pdfRef.current as HTMLElement).style.backgroundColor = "#121c2f";
@@ -66,10 +82,11 @@ const Coach_monthly = ({ userName }: { userName: string }) => {
         `${userName}_${new Date().toISOString().replace(/[:.]/g, "-")}.pdf`
       );
       formData.append("userName", userName);
+      formData.append("ipAddress", IP);
   
-      setTimeout(() => {
-        setLoading(false);
-      }, 3000);
+      // setTimeout(() => {
+      //   setLoading(false);
+      // }, 3000);
   
       const response = await fetch(`/api/upload-pdf`, {
         method: "POST",
@@ -90,6 +107,15 @@ const Coach_monthly = ({ userName }: { userName: string }) => {
     } finally {
       if (submitButtonRef.current) {
         submitButtonRef.current.style.display = "block";
+      }
+      if (inputFieldRef.current) {
+        inputFieldRef.current.style.display = "block";
+      }
+      if (inputFieldSignatureRef.current) {
+        inputFieldSignatureRef.current.style.display = "block";
+      }
+      if (hideText.current) {
+        hideText.current.style.display = "none";
       }
       setLoading(false);
     }
@@ -155,7 +181,7 @@ const Coach_monthly = ({ userName }: { userName: string }) => {
                 <span>
                   <ContractInput
                     name="date"
-                    value={new Date().toDateString()}
+                    value={`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
                   />
                 </span>
               </span>
@@ -546,7 +572,7 @@ const Coach_monthly = ({ userName }: { userName: string }) => {
             </div>
             <div className="space-y-6 py-5 text-[#ffff] text-[1rem] opacity-100 font-bold">
               <div className="py-16 flex flex-col gap-y-4">
-                <span className="underline flex items-end ">
+                <span ref={inputFieldRef} className="underline flex items-end ">
                   Coach Signature:{" "}
                   <ContractInput value="A" name="signature-one" />
                 </span>
@@ -669,12 +695,20 @@ const Coach_monthly = ({ userName }: { userName: string }) => {
                 PROPERTY.
               </div>
               <div>
-                <span className="underline flex items-end ">
+                <span  ref={inputFieldSignatureRef} className="underline flex items-end ">
                   Coach Signature: <ContractInput value="A" name="signature" />
                 </span>
-                <div className="py-3">
+                
+                <span ref={hideText} className="underline">
+                    Coach Name:{" "}
+                    <span>
+                      <ContractInput value={userName} name="userName" />
+                    </span>
+                  </span>
+                  <div className="pt-3 pb-2">IP : {IP}</div>
+                  <div>
                   <span className="underline">
-                    Date: {new Date().toDateString()}
+                   Date: {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
                   </span>
                 </div>
                 <div className="py-4">

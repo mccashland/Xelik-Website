@@ -36,7 +36,7 @@ const SubmitButton = forwardRef<HTMLButtonElement, SubmitButtonProps>(
           onClick={handleClick}
           className="bg-primary border-none text-white px-8 py-2 rounded-md transition-all"
         >
-          submit
+         {loading? "submitting " :"submit"} 
         </button>
       </div>
     );

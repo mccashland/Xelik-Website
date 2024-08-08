@@ -56,30 +56,30 @@ const ContractPopulte = () => {
   if (user?.Coach_payment_frequency__c) {
     switch (user.Coach_payment_frequency__c) {
       case "Monthly":
-        return <Coach_Monthly userName={user.Name} />;
+        return <Coach_Monthly userName={user.Name} IP={user.IP_Address__c}/>;
       case "Bi-annually":
-        return <Coach_Bi_annually userName={user.Name} />;
+        return <Coach_Bi_annually userName={user.Name} IP={user.IP_Address__c}/>;
       case "Quarterly":
-        return <Coach_Quarterly userName={user.Name} />;
+        return <Coach_Quarterly userName={user.Name} IP={user.IP_Address__c}/>;
       default:
         return <div>Invalid data sent</div>;
     }
   }
 
   if (user?.Client_contract_type__c === "App Access") {
-    return <Recuring_App_Access userName={user.Name} />;
+    return <Recuring_App_Access userName={user.Name} IP={user.IP_Address__c} />;
   }
   if (user?.Client_contract_type__c === "1 on 1 Coaching") {
     if (user?.Client_contract_length__c === "4 Month") {
       switch (user.Client_payment_frequency__c) {
         case "Bi-weekly":
-          return <FourMonth_BiWeekly userName={user.Name} />;
+          return <FourMonth_BiWeekly userName={user.Name} IP={user.IP_Address__c}/>;
         case "Monthly":
-          return <Four_month_monthly userName={user.Name} />;
+          return <Four_month_monthly userName={user.Name} IP={user.IP_Address__c}/>;
         case "Half":
-          return <Four_month_half userName={user.Name} />;
+          return <Four_month_half userName={user.Name} IP={user.IP_Address__c}/>;
         case "Full":
-          return <Four_month_full userName={user.Name} />;
+          return <Four_month_full userName={user.Name} IP={user.IP_Address__c}/>;
         default:
           return <div>Invalid data sent</div>;
       }
@@ -87,9 +87,9 @@ const ContractPopulte = () => {
     if (user?.Client_contract_length__c === "4 Month (Bi-Weekly)") {
       switch (user.Client_payment_frequency__c) {
         case "Bi-weekly":
-          return <FourMonth_Bi_Weekly_BiWeekly userName={user.Name} />;
+          return <FourMonth_Bi_Weekly_BiWeekly userName={user.Name} IP={user.IP_Address__c}/>;
         case "Monthly":
-          return <FourMonth_Bi_Weekly_Monthly userName={user.Name} />;
+          return <FourMonth_Bi_Weekly_Monthly userName={user.Name} IP={user.IP_Address__c}/>;
         default:
           return <div>Invalid data sent</div>;
       }
@@ -97,13 +97,13 @@ const ContractPopulte = () => {
     if (user?.Client_contract_length__c === "6 Month") {
       switch (user.Client_payment_frequency__c) {
         case "Bi-weekly":
-          return <Six_Month_BiWeekly userName={user.Name} />;
+          return <Six_Month_BiWeekly userName={user.Name} IP={user.IP_Address__c}/>;
         case "Monthly":
-          return <Six_month_monthly userName={user.Name} />;
+          return <Six_month_monthly userName={user.Name} IP={user.IP_Address__c}/>;
         case "Half":
-          return <Six_month_half userName={user.Name} />;
+          return <Six_month_half userName={user.Name} IP={user.IP_Address__c}/>;
         case "Full":
-          return <Six_month_full userName={user.Name} />;
+          return <Six_month_full userName={user.Name} IP={user.IP_Address__c}/>;
         default:
           return <div>Invalid data sent</div>;
       }
@@ -111,9 +111,9 @@ const ContractPopulte = () => {
     if (user?.Client_contract_length__c === "6 Month (Bi-Weekly)") {
       switch (user.Client_payment_frequency__c) {
         case "Bi-weekly":
-          return <SixMonth_Bi_Weekly_BiWeekly userName={user.Name} />;
+          return <SixMonth_Bi_Weekly_BiWeekly userName={user.Name} IP={user.IP_Address__c}/>;
         case "Monthly":
-          return <SixMonth_Bi_Weekly_Monthly userName={user.Name} />;
+          return <SixMonth_Bi_Weekly_Monthly userName={user.Name} IP={user.IP_Address__c}/>;
         default:
           return <div>Invalid data sent</div>;
       }
@@ -121,9 +121,9 @@ const ContractPopulte = () => {
     if (user?.Client_contract_length__c === "Recurring") {
       switch (user.Client_payment_frequency__c) {
         case "Bi-weekly":
-          return <Recuring_Bi_weekly userName={user.Name} />;
+          return <Recuring_Bi_weekly userName={user.Name} IP={user.IP_Address__c}/>;
         case "Monthly":
-          return <Recuring_Monthly userName={user.Name} />;
+          return <Recuring_Monthly userName={user.Name} IP={user.IP_Address__c}/>;
         default:
           return <div>Invalid data sent</div>;
       }
@@ -131,9 +131,9 @@ const ContractPopulte = () => {
     if (user?.Client_contract_length__c === "Recurring (Bi-Weekly)") {
       switch (user.Client_payment_frequency__c) {
         case "Bi-weekly":
-          return <Recuring_Bi_Weekly_BiWeekly userName={user.Name} />;
+          return <Recuring_Bi_Weekly_BiWeekly userName={user.Name} IP={user.IP_Address__c}/>;
         case "Monthly":
-          return <Recuring_Bi_weekly_monthly userName={user.Name} />;
+          return <Recuring_Bi_weekly_monthly userName={user.Name} IP={user.IP_Address__c}/>;
         default:
           return <div>Invalid data sent</div>;
       }
@@ -141,9 +141,9 @@ const ContractPopulte = () => {
     if (user?.Client_contract_length__c === "12 Month") {
       switch (user.Client_payment_frequency__c) {
         case "Half":
-          return <Half_Year userName={user.Name} />;
+          return <Half_Year userName={user.Name} IP={user.IP_Address__c}/>;
         case "Full":
-          return <Full_Year userName={user.Name} />;
+          return <Full_Year userName={user.Name} IP={user.IP_Address__c}/>;
         default:
           return <div>Invalid data sent</div>;
       }

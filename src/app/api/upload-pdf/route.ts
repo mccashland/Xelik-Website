@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/utils/prisma_client';
 import { uploadFileOnDigitalOcean } from '@/utils/-services/helpper';
-
+import { getAccessToken } from "@/actions/getAccessToken";
 export async function GET(request: NextRequest) {
-    console.log("Received GET request");
 
     try {
         const pdfRecords = await prisma.pDF.findMany({
@@ -11,8 +10,6 @@ export async function GET(request: NextRequest) {
                 createdAt: 'desc',
             },
         });
-
-        console.log("PDF records:", pdfRecords);
 
         return NextResponse.json({ data: pdfRecords }, { status: 200 });
     } catch (error) {
@@ -31,24 +28,17 @@ async function createFormObj(formData: FormData) {
 }
 
 export async function POST(request: NextRequest) {
-    console.log("Received POST request");
     try {
         const formData = await request.formData();
-        console.log("FormData received:", formData);
         const formObj = await createFormObj(formData);
-        console.log("FormObject:", formObj);
-
         const pdfile = formObj.pdfFile as File;
         const userName = formObj.userName;
-        console.log("UserName:", userName);
-        console.log("PDF File:", pdfile);
+        const ipAddress=formObj.ipAddress
 
         if (!pdfile) {
             return NextResponse.json({ error: 'No file provided' }, { status: 400 });
         }
-
         const fileUrl = await uploadFileOnDigitalOcean(pdfile);
-
         if (!fileUrl) {
             return NextResponse.json({ error: 'File upload failed' }, { status: 500 });
         }
@@ -57,9 +47,12 @@ export async function POST(request: NextRequest) {
             data: {
                 pdfFile :  fileUrl,
                 userName,
+                ipAddress,
             },
         });
-              console.log("pdf record",pdfRecord)
+    //  const pdfurl=  await createContact(fileUrl)
+    //  console.log("pdfurl",pdfurl)
+       
         return NextResponse.json({ data: pdfRecord }, { status: 200 });
     } catch (error) {
         console.log(error)
@@ -67,3 +60,31 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
     }
 }
+
+
+// async function createContact(pdfUrl:any) {
+//     console.log("pdf url",pdfUrl)
+//     const token = await getAccessToken();
+//     console.log("token",token.data)
+//     try {
+//       const res = await axios.post(
+//         "https://data-enterprise-9179.my.salesforce.com/services/data/v59.0/sobjects/Contact",
+//         pdfUrl,
+//         {
+//           headers: {
+//             Authorization: `Bearer ${token.data.access_token}`,
+//             "Content-Type": "application/json",
+//           },
+//         }
+//       );
+//       console.log("response",res.data)
+//       return res.data;
+//     } catch (error) {
+//       console.error("Error creating contact:", error);
+//       throw error;
+//     }
+//   }
+  
+
+
+
