@@ -24,7 +24,7 @@ export default function OurValues() {
       Image: "/assets/imgs/value-shape4.svg",
       heading: "Empowerment",
       description:
-        "We aim to provide the means for people to achieve their highest version of themselves, and we look to provide novel solutions that address challenges and improve aspects of life.",
+        "we aim to provide the means for people to achieve the highest version of themselves, and we look to provide novel solutions that address challenges hindering life quality.",
     },
   ];
 

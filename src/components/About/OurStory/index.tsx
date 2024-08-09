@@ -1,11 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 
 interface Props {
   content: {
     mainImage: any;
     text1: any;
-
     description1: any;
     description2: any;
   };
@@ -32,7 +30,7 @@ export default function OurStory({ content }: Props) {
             <div className="text-[rgba(255,255,255,1)] opacity-70 text-[24px]">
               {description1}
             </div>
-            <br/>
+            <br />
             <div className="text-[rgba(255,255,255,1)] opacity-70 text-[24px]">
               {description2}
             </div>

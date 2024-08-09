@@ -10,7 +10,7 @@ export default function About() {
   const content = {
     text1: "Our Story",
     description1:
-      "Xelik is a marketplace that provides technology and consulting services to enable coaches to give the highest quality product to their clients.",
+      "Xelik is a platform that provides technology and consulting services to enable coaches to give the highest quality product to their clients.",
     description2:
       " We go above and beyond to help increase our community's health and performance.",
     mainImage: "/assets/imgs/main-about.svg",
