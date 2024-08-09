@@ -77,7 +77,7 @@ export const Phrase = ({
           <span className="text-[red]">Please enter vaild phrase</span>
         )}
         <p className="text-[#fff] text-sm">
-          Don&apos;t have a {userType.toLowerCase()} Passphrase?{" "}
+          Don&apos;t have a {userType} Passphrase?...{" "}
           <span className="text-primary underline">
             <Link
               target="_blank"
