@@ -1,15 +1,158 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ContractInput from "../../ContractInput";
 import SubmitButton from "@/components/Submit_Button";
-const Four_month_full = ({ userName }: { userName: string }) => {
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import { useRouter } from "next/navigation";
+const Four_month_full = ({
+  userName,
+  IP,
+  email,
+}: {
+  userName: string;
+  IP: any;
+  email: string;
+}) => {
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const pdfRef = useRef<HTMLDivElement>(null);
+  const submitButtonRef = useRef<HTMLButtonElement>(null);
+  const inputFieldRef = useRef<HTMLButtonElement>(null);
+  const inputFieldSignatureRef = useRef<HTMLButtonElement>(null);
+  const hideText = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (hideText.current) {
+      hideText.current.style.display = "none";
+    }
+  }, []);
+  const generatePDF = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setLoading(true);
+
+    if (!pdfRef.current) {
+      alert("pdfRef is null");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      if (submitButtonRef.current) {
+        submitButtonRef.current.style.display = "none";
+      }
+      if (inputFieldRef.current) {
+        inputFieldRef.current.style.display = "none";
+      }
+      if (inputFieldSignatureRef.current) {
+        inputFieldSignatureRef.current.style.display = "none";
+      }
+      if (hideText.current) {
+        hideText.current.style.display = "block";
+      }
+
+      (pdfRef.current as HTMLElement).style.backgroundColor = "#121c2f";
+      const childElements = pdfRef.current.getElementsByTagName("*");
+      for (let i = 0; i < childElements.length; i++) {
+        (childElements[i] as HTMLElement).style.color = "#fff";
+      }
+
+      const canvas = await html2canvas(pdfRef.current, {
+        scale: 1.1,
+        useCORS: true,
+        backgroundColor: "#fff",
+      });
+
+      const imgData = canvas.toDataURL("image/jpeg", 0.5);
+
+      const pdf = new jsPDF("p", "mm", "a4", true);
+      const imgWidth = 210;
+      const pageHeight = 297;
+      let imgHeight = (canvas.height * imgWidth) / canvas.width;
+      let heightLeft = imgHeight;
+      let position = 0;
+
+      pdf.addImage(
+        imgData,
+        "JPEG",
+        0,
+        position,
+        imgWidth,
+        imgHeight,
+        undefined,
+        "FAST"
+      );
+      heightLeft -= pageHeight;
+
+      while (heightLeft > 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(
+          imgData,
+          "JPEG",
+          0,
+          position,
+          imgWidth,
+          imgHeight,
+          undefined,
+          "FAST"
+        );
+        heightLeft -= pageHeight;
+      }
+
+      const pdfBlob = pdf.output("blob");
+      const formData = new FormData();
+      formData.append(
+        "pdfFile",
+        pdfBlob,
+        `${userName}_${new Date().toISOString().replace(/[:.]/g, "-")}.pdf`
+      );
+      formData.append("userName", userName);
+      formData.append("ipAddress", IP);
+      formData.append("email", email);
+      // setTimeout(() => {
+      //   setLoading(false);
+      // }, 3000);
+
+      const response = await fetch(`/api/upload-pdf`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        router.push(
+          "https://www.trainerize.me/profile/xelik/?planGUID=7f3bbd2c16d0407190d2bde53329cd5e&mode=checkout"
+        );
+      } else {
+        console.error("Failed to upload PDF.");
+      }
+
+      // pdf.save("coach_agreement.pdf");
+    } catch (error) {
+      console.error("Error generating or uploading PDF:", error);
+    } finally {
+      if (submitButtonRef.current) {
+        submitButtonRef.current.style.display = "block";
+      }
+      if (inputFieldRef.current) {
+        inputFieldRef.current.style.display = "block";
+      }
+      if (inputFieldSignatureRef.current) {
+        inputFieldSignatureRef.current.style.display = "block";
+      }
+      if (hideText.current) {
+        hideText.current.style.display = "none";
+      }
+      setLoading(false);
+    }
+  };
+
   return (
     <>
-      <div className="flex w-full justify-center   ">
+      <div ref={pdfRef} className="flex w-full justify-center   ">
         <div className="flex flex-col gap-10  my-4">
           <div className="main-heading text-[1.5rem] sm:text-[3rem] 2xl:text-[5rem]  p-[3px] flex justify-center items-center text-center text-[#ffffff] font-bold">
             {/* heading start here  */}4 Month 1-on-1 Coaching Agreement (Full)
           </div>
-          <div className="flex flex-col gap-10  w-[90%] sm:w-[80%] m-auto">
+          <div className="flex flex-col gap-5  w-[90%] sm:w-[80%] m-auto">
             <div className="paragraph text-[#ffffff] text-base ml-[5px] opacity-[0.7] ">
               This Sales Agreement (“Agreement”) for the sale of consulting
               services is between Elevate Wellness and Personal Training, and{" "}
@@ -41,7 +184,7 @@ const Four_month_full = ({ userName }: { userName: string }) => {
                 <span>
                   <ContractInput
                     name="date"
-                    value={new Date().toDateString()}
+                    value={`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
                   />
                 </span>{" "}
               </span>
@@ -264,7 +407,7 @@ const Four_month_full = ({ userName }: { userName: string }) => {
               </div> */}
               </span>
             </div>
-            <div className="space-y-6 py-20 text-[#ffff] text-[1rem] opacity-100 font-bold">
+            <div className="space-y-5 py-5 text-[#ffff] text-[1rem] opacity-100 font-bold">
               <div className="">Exhibit A</div>
               <div className="">Services</div>
               <div className=" opacity-[0.7]">
@@ -291,8 +434,8 @@ const Four_month_full = ({ userName }: { userName: string }) => {
                 The Buyer is signing this agreement on the date stated
                 undertheir signature.
               </div>
-              <div className="py-20 flex flex-col gap-y-4">
-                <span className="underline flex items-end ">
+              <div className="py-5 flex flex-col gap-y-4">
+                <span ref={inputFieldRef} className="underline flex items-end ">
                   Buyer Signature:{" "}
                   <ContractInput value="A" name="signature-one" />
                 </span>
@@ -306,15 +449,16 @@ const Four_month_full = ({ userName }: { userName: string }) => {
                 </div>
                 <div>
                   <span className="underline">
-                    Buying Date: {new Date().toDateString()}
+                    Buying Date:{" "}
+                    {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
                   </span>
                 </div>
               </div>
             </div>
-            <div className="pt-20 text-[1rem] sm:text-[1.5rem] 2xl:text-[5rem] text-[#ffffff] font-bold m-auto ">
+            <div className="pt-10 text-[1rem] sm:text-[1.5rem] 2xl:text-[5rem] text-[#ffffff] font-bold m-auto ">
               Release from Liability for Services
             </div>
-            <div className="main dev flex flex-col space-y-8 text-[#ffff] text-[1rem] opacity-[0.7] font-bold">
+            <div className="main dev flex flex-col space-y-5 text-[#ffff] text-[1rem] opacity-[0.7] font-bold">
               <div>
                 <span className="underline">{userName}</span>, does hereby waive
                 and release, indemnify, and forever discharges Elevate Wellness
@@ -411,13 +555,32 @@ const Four_month_full = ({ userName }: { userName: string }) => {
                 AND DAMAGE TO PROPERTY.
               </div>
               <div>
-                <span className="underline flex items-end ">
+                <span
+                  ref={inputFieldSignatureRef}
+                  className="underline flex items-end "
+                >
                   Buyer Signature: <ContractInput value="A" name="signature" />
                 </span>
+                <span ref={hideText} className="underline">
+                  Buyer Name:{" "}
+                  <span>
+                    <ContractInput value={userName} name="userName" />
+                  </span>
+                </span>
+                <div className="pt-3 pb-2">IP : {IP}</div>
+                <div>
+                  <span className="underline">
+                    Buying Date:{" "}
+                    {`${new Date().toDateString()} ${new Date().toLocaleTimeString()}`}
+                  </span>
+                </div>
                 <div className="py-4">
                   <SubmitButton
-                    url="https://www.trainerize.me/profile/xelik/?planGUID=7f3bbd2c16d0407190d2bde53329cd5e&mode=checkout"
+                    ref={submitButtonRef}
+                    loading={loading}
                     userName={userName}
+                    url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=bd4402b3df6f454694f4a4d40fe8dfd4"
+                    onClick={generatePDF}
                   />
                 </div>
               </div>

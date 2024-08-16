@@ -1,28 +1,48 @@
+'use client'
 import { SignContext } from "@/context";
-import { useRouter } from "next/navigation";
-import React, { useContext } from "react";
+import React, { useContext, forwardRef, Ref } from "react";
+import { useRouter } from 'next/navigation'
+interface SubmitButtonProps {
+  url: string;
+  userName: string;
+  loading: boolean;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => Promise<void>;
+}
 
-const SubmitButton = ({ url, userName }: { url: string; userName: string }) => {
-  const router = useRouter();
-  const { signature } = useContext(SignContext);
-  const handleClick = () => {
-    if (userName === signature) {
-      router.push(url);
-    } else {
-      alert("Signature must match with your name!");
+
+const SubmitButton = forwardRef<HTMLButtonElement, SubmitButtonProps>(
+  ({ loading, userName, onClick, url }, ref) => {
+    const { signature } = useContext(SignContext);
+    const router = useRouter()
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault(); 
+
+      if (userName === signature) {
+        if (onClick) onClick(event);
+      } else {
+        alert("Signature must match with your name!");
+      }
+    };
+
+    if (loading) {
+      return null;
     }
-  };
-  return (
-    <div>
-      <button
-        type="submit"
-        onClick={handleClick}
-        className="bg-primary border-none text-[#fff] px-8 py-2 rounded-md transition-all "
-      >
-        Submit
-      </button>
-    </div>
-  );
-};
+
+    return (
+      <div>
+        <button
+          ref={ref} 
+          type="button"
+          onClick={handleClick}
+          className="bg-primary border-none text-white px-8 py-2 rounded-md transition-all"
+        >
+         {loading? "submitting " :"submit"} 
+        </button>
+      </div>
+    );
+  }
+);
+
+SubmitButton.displayName = "SubmitButton";
 
 export default SubmitButton;

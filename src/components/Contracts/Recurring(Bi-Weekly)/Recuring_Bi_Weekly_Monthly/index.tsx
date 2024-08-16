@@ -1,7 +1,126 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import SubmitButton from "@/components/Submit_Button";
 import ContractInput from "../../ContractInput";
-const Recuring_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+import { useRouter } from "next/navigation";
+const Recuring_Bi_Weekly_Monthly = ({
+  userName,
+  email,
+  IP,
+}: {
+  userName: string;
+  email: string;
+  IP: any;
+}) => {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const pdfRef = useRef<HTMLDivElement>(null);
+  const submitButtonRef = useRef<HTMLButtonElement>(null);
+
+  const generatePDF = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setLoading(true);
+
+    if (!pdfRef.current) {
+      alert("pdfRef is null");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      if (submitButtonRef.current) {
+        submitButtonRef.current.style.display = "none";
+      }
+
+      (pdfRef.current as HTMLElement).style.backgroundColor = "#121c2f";
+      const childElements = pdfRef.current.getElementsByTagName("*");
+      for (let i = 0; i < childElements.length; i++) {
+        (childElements[i] as HTMLElement).style.color = "#fff";
+      }
+
+      const canvas = await html2canvas(pdfRef.current, {
+        scale: 1.1,
+        useCORS: true,
+        backgroundColor: "#fff",
+      });
+
+      const imgData = canvas.toDataURL("image/jpeg", 0.5);
+
+      const pdf = new jsPDF("p", "mm", "a4", true);
+      const imgWidth = 210;
+      const pageHeight = 297;
+      let imgHeight = (canvas.height * imgWidth) / canvas.width;
+      let heightLeft = imgHeight;
+      let position = 0;
+
+      pdf.addImage(
+        imgData,
+        "JPEG",
+        0,
+        position,
+        imgWidth,
+        imgHeight,
+        undefined,
+        "FAST"
+      );
+      heightLeft -= pageHeight;
+
+      while (heightLeft > 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(
+          imgData,
+          "JPEG",
+          0,
+          position,
+          imgWidth,
+          imgHeight,
+          undefined,
+          "FAST"
+        );
+        heightLeft -= pageHeight;
+      }
+
+      const pdfBlob = pdf.output("blob");
+      const formData = new FormData();
+      formData.append(
+        "pdfFile",
+        pdfBlob,
+        `${userName}_${new Date().toISOString().replace(/[:.]/g, "-")}.pdf`
+      );
+      formData.append("userName", userName);
+      formData.append("email", email);
+      formData.append("ipAdress", IP);
+
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
+
+      const response = await fetch(`/api/upload-pdf`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        router.push(
+          "https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=f3e747726a27408da3faf044f3fc5d7f&mode=checkout"
+        );
+      } else {
+        console.error("Failed to upload PDF.");
+      }
+
+      // pdf.save("coach_agreement.pdf");
+    } catch (error) {
+      console.error("Error generating or uploading PDF:", error);
+    } finally {
+      if (submitButtonRef.current) {
+        submitButtonRef.current.style.display = "block";
+      }
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <div className="flex w-full justify-center   ">
@@ -255,7 +374,7 @@ const Recuring_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
                 signed electronically.
               </span>
             </div>
-            <div className="space-y-6 py-20 text-[#ffff] text-[1rem] opacity-100 font-bold">
+            <div className="space-y-6 py-5 text-[#ffff] text-[1rem] opacity-100 font-bold">
               <div className="">Exhibit A</div>
               <div className="">Services</div>
               <div className=" opacity-[0.7]">
@@ -278,11 +397,11 @@ const Recuring_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
                 wishes to add them, the Sellers must provide the Buyer with the
                 supplemental service within a reasonable time upon request.
               </div>
-              <div className="py-7 ">
+              <div className="py-5 ">
                 The Buyer is signing this agreement on the date stated under
                 their signature.
               </div>
-              <div className="py-20 flex flex-col gap-y-4">
+              <div className="py-5 flex flex-col gap-y-4">
                 <span className="underline flex items-end ">
                   Buyer Signature:{" "}
                   <ContractInput value="A" name="signature-one" />
@@ -302,10 +421,10 @@ const Recuring_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
                 </div>
               </div>
             </div>
-            <div className="pt-20 text-[1rem] sm:text-[1.5rem] 2xl:text-[5rem] text-[#ffffff] font-bold m-auto ">
+            <div className="pt-10 text-[1rem] sm:text-[1.5rem] 2xl:text-[5rem] text-[#ffffff] font-bold m-auto ">
               Release from Liability for Services
             </div>
-            <div className="main dev flex flex-col space-y-8 text-[#ffff] text-[1rem] opacity-[0.7] font-bold">
+            <div className="main dev flex flex-col space-y-5 text-[#ffff] text-[1rem] opacity-[0.7] font-bold">
               <div>
                 <span className="underline">{userName}</span>, does hereby waive
                 and release, indemnify, and forever discharges Elevate Wellness
@@ -407,8 +526,11 @@ const Recuring_Bi_Weekly_Monthly = ({ userName }: { userName: string }) => {
                 </span>
                 <div className="py-4">
                   <SubmitButton
+                    ref={submitButtonRef}
+                    loading={loading}
                     userName={userName}
-                    url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=f3e747726a27408da3faf044f3fc5d7f&mode=checkout"
+                    url="https://www.trainerize.me/checkout/xelik/Team.Xelik?planGUID=bd4402b3df6f454694f4a4d40fe8dfd4"
+                    onClick={generatePDF}
                   />
                 </div>
               </div>

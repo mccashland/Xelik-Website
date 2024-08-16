@@ -8,7 +8,7 @@ export async function GET(request: Request) {
     return Response.json({ error: "Email is required!" });
   }
   const res = await axios.get(
-    `https://data-enterprise-9179.my.salesforce.com/services/data/v59.0/query?q=SELECT Name, Email, Client_contract_length__c, Client_contract_type__c, Client_payment_frequency__c from Contact where Email='${email}'`,
+    `https://data-enterprise-9179.my.salesforce.com/services/data/v59.0/query?q=SELECT Name, Email, Client_contract_length__c, IP_Address__c, Client_contract_type__c, Client_payment_frequency__c from Contact where Email='${email}'`,
     {
       headers: {
         Authorization: `Bearer ${token.data.access_token}`,

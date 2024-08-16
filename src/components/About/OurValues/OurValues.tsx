@@ -6,7 +6,7 @@ export default function OurValues() {
       Image: "/assets/imgs/value-shape1.svg",
       heading: "Sustainability",
       description:
-        "We believe the best way to reach one's potential is by building skills and habits that compound in value over time. Our systems and approach are structured to favor long-term success",
+        "We believe the best way to reach one's potential is by building skills and habits that compound in value over time. Our systems and approach are structured to favor long-term success.",
     },
     {
       Image: "/assets/imgs/value-shape2.svg",
@@ -24,7 +24,7 @@ export default function OurValues() {
       Image: "/assets/imgs/value-shape4.svg",
       heading: "Empowerment",
       description:
-        "We aim to provide the means for people to achieve their highest version of themself, Innovation We look to provide novel solutions that address challenges or improve various aspects of life.",
+        "We aim to provide the means for people to achieve their highest version of themselves, and we look to provide novel solutions that address challenges and improve aspects of life.",
     },
   ];
 

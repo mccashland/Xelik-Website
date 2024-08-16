@@ -6,7 +6,7 @@ import MainContent from "@/components/MainContent/page";
 export default function Clients() {
   const content = {
     text1: "Your Partner",
-    text2: "  in Fitness Success",
+    text2: "in Fitness Success",
     description:
       "We help anyone who is looking to increase their health or performance. A customized plan and specialized coach are matched to each client's unique goals to optimize their likelihood of success.",
     mainImage: "/assets/imgs/main-clients.svg",
@@ -19,10 +19,10 @@ export default function Clients() {
       label: "Sign up for coaching",
       link: "/clients/phrase?q=Sign up for coaching",
     },
-    {
-      label: "Apply to be a client Here",
-      link: "https://formstack.io/1A423",
-    },
+    // {
+    //   label: "Apply to become a client",
+    //   link: "https://formstack.io/1A423",
+    // },
   ];
   return (
     <div className="flex flex-col gap-10">
