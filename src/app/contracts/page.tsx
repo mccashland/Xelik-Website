@@ -30,7 +30,7 @@ const ContractPopulte = () => {
   const router = useRouter();
   const [user, setUser] = useState<CLIENT_OBJECT>();
   const [email, setEmail] = useState("");
-
+  console.log(user);
   useEffect(() => {
     const query = async () => {
       let userEmail = localStorage.getItem(EV_USER_EMAIL);
