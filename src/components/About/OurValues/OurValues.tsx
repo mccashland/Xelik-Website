@@ -6,7 +6,7 @@ export default function OurValues() {
       Image: "/assets/imgs/value-shape1.svg",
       heading: "Sustainability",
       description:
-        "We believe the best way to reach one's potential is by building skills and habits that compound in value over time. Our systems and approach are structured to favor long-term success",
+        "We believe the best way to reach one's potential is by building skills and habits that compound in value over time. Our systems and approach are structured to favor long-term success.",
     },
     {
       Image: "/assets/imgs/value-shape2.svg",
