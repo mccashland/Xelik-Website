@@ -11,7 +11,7 @@ export default function Clients() {
       <Banner text={"Partners"} />
       <center className="text-3xl mb-10 text-[#fff]">
         <div className="w-[50%]">
-          We believe in helping others succeed and take pride in our partners.
+          We believe in helping others succeed and take pride in our partnerships.
         </div>
         <div className="w-[40%] mx-auto border mt-10">
           <Link
