@@ -201,7 +201,7 @@ const FourMonth_BiWeekly = ({
                 Sellers’s invoice. The Services will begin immediately upon the
                 effective date and will end exactly 4 months after the beginning
                 of the Services. Missed payments may result in suspension or
-                termination of Services with no refund of pervious payments.
+                termination of Services with no refund of previous payments.
               </span>
             </div>
             <div className="paragraph1">

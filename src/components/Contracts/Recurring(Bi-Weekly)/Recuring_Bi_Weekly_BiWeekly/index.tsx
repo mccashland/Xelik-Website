@@ -202,7 +202,7 @@ const Recuring_Bi_Weekly_BiWeekly = ({
                 days of the date of any given Sellers’s invoice. The Services
                 will begin immediately upon the effective date. Missed payments
                 may result in suspension or termination of Services with no
-                refund of pervious payments.
+                refund of previous payments.
               </span>
             </div>
             <div className="paragraph1">

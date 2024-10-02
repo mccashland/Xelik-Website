@@ -200,7 +200,7 @@ const Recuring_App_Access = ({
                 of the date of any given Sellers’s invoice. The Services will
                 begin immediately upon the effective date. Missed payments may
                 result in suspension or termination of Services with no refund
-                of pervious payments.
+                of previous payments.
               </span>
             </div>
             <div className="paragraph1">

@@ -196,7 +196,7 @@ const Six_month_half = ({
                 any given Sellers’s invoice. The Services will begin immediately
                 upon the effective date and will end exactly 6 months after the
                 beginning of the Services. Missed payments may result in
-                suspension or termination of Services with no refund of pervious
+                suspension or termination of Services with no refund of previous
                 payments.
               </span>
             </div>
