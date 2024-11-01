@@ -149,12 +149,12 @@ const Four_month_half = ({
       <div ref={pdfRef} className="flex w-full justify-center   ">
         <div className="flex flex-col gap-10  my-4 text-[#ffffff]">
           <div className="main-heading text-[1.5rem] sm:text-[3rem] 2xl:text-[5rem]  p-[3px] flex justify-center items-center text-center  font-bold">
-            {/* heading start here  */}4 Month 1-on-1 Coaching Agreement (Half)
+            {/* heading start here  */}4 Month 1 on 1 Coaching (Half)
           </div>
           <div className="flex flex-col gap-5  w-[90%] sm:w-[80%] m-auto">
             <div className="paragraph text-base ml-[5px] opacity-[0.7] ">
-              This Sales Agreement (“Agreement”) for the sale of consulting
-              services is between Elevate Wellness and Personal Training, and{" "}
+            This Sales Agreement (“Agreement”) for the sale of consulting
+            services is between Elevate Wellness and Personal Training, and{" "}
               <span className="underline">{userName}</span> (the “Buyer”).
             </div>
             <div className="span text-[1rem] opacity-100 font-bold">
@@ -170,7 +170,7 @@ const Four_month_half = ({
                 “Services”) in the quantities and at the prices stated in clause
                 3. The Buyer shall pay all taxes and third-party expenses
                 imposed on, in connection with, or measured by the transaction
-                contemplated by this agreement.
+                contemplated by this Agreement.
               </span>
             </div>
             <div className="paragraph1 ">
@@ -178,8 +178,9 @@ const Four_month_half = ({
                 {" "}
                 2. Effectiveness; Date.
               </span>
-              <span className="paragraph text-base ml-[5px] opacity-[0.7]">
+              <span className="paragraph text-base ml-[5px] opacity-[0.9]">
                 This agreement is effective as of{" "}
+
                 <span>
                   <ContractInput
                     name="date"
@@ -194,14 +195,14 @@ const Four_month_half = ({
                 3. Invoices; Payment.
               </span>
               <span className="paragraph text-base ml-[5px] opacity-[0.7]">
-                The Buyer agrees to pay $750 once every two months, a payment
-                that will occur for 4 months over the duration of the Services.
-                Cash payment for the Services is due within 30 days of the date
-                of any given Sellers’s invoice. The Services will begin
-                immediately upon the effective date and will end exactly 4
-                months after the beginning of the Services. Missed payments may
-                result in suspension or termination of Services with no refund
-                of previous payments.
+                The Buyer agrees to pay $750 once every two months, a payment 
+                that will occur for a minimum of 4 months from the effective 
+                date, then will continue in perpetuity until the cancellation 
+                process has been completed. Cash payment for the Services is 
+                due within 30 days of the date of any given Sellers’ invoice.
+                The Services will begin immediately upon the effective date. 
+                Missed payments may result in suspension or termination of 
+                Services with no refund.
               </span>
             </div>
             <div className="paragraph1">
@@ -220,12 +221,15 @@ const Four_month_half = ({
             </div>
             <div className="paragraph1">
               <span className="span text-[1rem] opacity-100 font-bold">
-                5. No Cancellation.
+                5. Cancellation Policy.
               </span>
               <span className="paragraph text-base ml-[5px] opacity-[0.7]">
-                The Buyer acknowledges that there is a no cancellation policy.
-                The Buyer is committing to full payment for the 4-monthServices
-                by the end of the 4-month period.
+                After the minimum 4 months have passed from the effective date,
+                the agreement for Services may be cancelled at any time with 
+                30 days of notice. The notice must be given by email to 
+                finance@xelik.com, and must explicitly state the desire to 
+                cancel. If all of this is fulfilled, the cancellation process 
+                will be completed.
               </span>
             </div>
             <div className="paragraph1">

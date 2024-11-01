@@ -148,7 +148,7 @@ const FourMonth_Bi_Weekly_Monthly = ({
       <div ref={pdfRef} className="flex w-full justify-center ">
         <div className="flex flex-col gap-10 my-4">
           <div className="main-heading text-[1.5rem] sm:text-[3rem] 2xl:text-[5rem]  p-[3px] flex justify-center items-center text-center text-[#ffffff] font-bold">
-            4 Month Bi-Weekly 1 on 1 coaching (Monthly)
+            4 Month Bi-Weekly 1 on 1 Coaching (Monthly)
           </div>
           <div className="flex flex-col gap-5  w-[90%] sm:w-[80%] m-auto">
             <div className="text-[#ffffff] text-base ml-[5px] opacity-[0.7] ">
@@ -218,12 +218,15 @@ const FourMonth_Bi_Weekly_Monthly = ({
             </div>
             <div className="paragraph1">
               <span className="span  text-[#ffff] text-[1rem] opacity-100 font-bold">
-                5. No Cancellation.
+                5. Cancellation Policy.
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
-                The Buyer acknowledges that there is a no cancellation policy.
-                The Buyer is committing to full payment for the 4-month Services
-                by the end of the 4-month period.
+                After the minimum 4 months have passed from the effective date, 
+                the agreement for Services may be cancelled at any time with 
+                30 days of notice. The notice must be given by email to 
+                finance@xelik.com, and must explicitly state the desire to cancel.
+                If all of this is fulfilled, the cancellation process will 
+                be completed. 
               </span>
             </div>
             <div className="paragraph1">

@@ -40,17 +40,29 @@ const ContractPopulte = () => {
       }
       setEmail(userEmail as string);
       if (userType === "Coach") {
-        const res = await axios.get(`/api/coach?email=${userEmail}`);
-        if (!res.data.data) {
-          setUser(res.data.message);
+        try {
+          const res = await axios.get(
+            `https://xelik.com/api/coach?email=${userEmail}`
+          );
+          if (!res.data.data) {
+            setUser(res.data.message);
+          }
+          setUser(res.data.data);
+        } catch (err) {
+          console.error("error", err);
         }
-        setUser(res.data.data);
       } else if (userType === "Client") {
-        const res = await axios.get(`/api/client?email=${userEmail}`);
-        if (!res.data.data) {
-          setUser(res.data.message);
+        try {
+          const res = await axios.get(
+            `https://xelik.com/api/client?email=${userEmail}`
+          );
+          if (!res.data.data) {
+            setUser(res.data.message);
+          }
+          setUser(res.data.data);
+        } catch (err) {
+          console.error("error", err);
         }
-        setUser(res.data.data);
       }
     };
     query();

@@ -6,6 +6,6 @@ export const getAccessToken = async () => {
   const base_url = process.env.SALSEFORCE_BASE_URL;
   const res = await axios.get(
     `${base_url}/services/oauth2/token?grant_type=client_credentials&client_id=${client_id}&client_secret=${client_secret}`
-  );
+  )
   return res;
 };

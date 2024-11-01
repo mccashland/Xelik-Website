@@ -148,7 +148,7 @@ const Recuring_App_Access = ({
         <div className="flex flex-col gap-10  my-4">
           <div className="main-heading text-[1.5rem] sm:text-[3rem] 2xl:text-[5rem]  p-[3px] flex justify-center items-center text-center text-[#ffffff] font-bold">
             {/* heading start here  */}
-            Recurring App Access Agreement{" "}
+            App Access Agreement (Monthly){" "}
           </div>
           <div className="flex flex-col gap-5  w-[90%] sm:w-[80%] m-auto">
             <div className="paragraph text-[#ffffff] text-base ml-[5px] opacity-[0.7] ">
@@ -225,7 +225,7 @@ const Recuring_App_Access = ({
                 After the minimum 3 months have passed from the effective date,
                 the agreement for app access may be cancelled at any time with
                 30 days of notice. The notice must be given by email to
-                zainegallagher@xelik.com, and must explicitly state the desire
+                finance@xelik.com, and must explicitly state the desire
                 to cancel. If all of this is fulfilled, the cancellation process
                 will be considered completed.
               </span>
@@ -236,7 +236,7 @@ const Recuring_App_Access = ({
               </span>
               <span className="paragraph  text-[#ffffff] text-base ml-[5px] opacity-[0.7]">
                 The Sellers shall deliver the Services online. Any goods
-                purchased through the Sellerswill be providedvia drop shipping
+                purchased through the Sellers will be provided via drop shipping
                 and title to and risk of loss of the goods will pass to the
                 Buyer upon such delivery by the Sellers. Any stated delivery
                 dates are approximate. The Sellers will not be liable for any
@@ -273,7 +273,7 @@ const Recuring_App_Access = ({
               </span>
               <span className="spansemibold text-[#ffff] font-bold text-base ml-[5px] opacity-[0.7] ">
                 The Sellers will not be liable for any indirect, special,
-                consequential, or punitive damagesarising out of or relating to
+                consequential, or punitive damages arising out of or relating to
                 this agreement or the transactions it contemplates (whether for
                 breach of contract, tort, negligence, or other form of action)
                 and irrespective of whether the Sellers have been advised of the

@@ -16,7 +16,7 @@ export default function Clients() {
   };
   const buttons = [
     {
-      label: "Sign up for coaching",
+      label: "Sign up for Coaching",
       link: "/clients/phrase?q=Sign up for coaching",
     },
     // {
