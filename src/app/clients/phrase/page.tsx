@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 
 export default function ClientPhrase() {
   const searchParams = useSearchParams();
-  const q = searchParams.get("q") as string | undefined;
+  const q = searchParams.get("q") || "";
   return (
     <div className="mb-10 mx-3">
       <LogoHeader />
