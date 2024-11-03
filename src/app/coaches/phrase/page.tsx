@@ -1,12 +1,12 @@
+"use client";
+
 import LogoHeader from "@/components/LogoHeader/page";
 import { Phrase } from "@/components/Phrase";
 import { FORMS_NAMES } from "@/utils/TYPES";
-export default function CoachPhrase({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const { q } = searchParams;
+import { useSearchParams } from "next/navigation";
+export default function CoachPhrase() {
+  const searchParams = useSearchParams();
+  const q = searchParams.get("q") as string | undefined;
   return (
     <div className="mb-10 mx-3">
       <LogoHeader />

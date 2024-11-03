@@ -6,12 +6,12 @@ const ContractInput = ({
   value,
   name,
   disabled,
-  handleChange,
+  handleChange = () => {},
 }: {
   value: string;
   name: string;
   disabled?: boolean;
-  handleChange?: () => {};
+  handleChange?: () => void;
 }) => {
   const { signature, setSignature } = useContext(SignContext);
   if (name === "signature" || name === "signature-one") {
