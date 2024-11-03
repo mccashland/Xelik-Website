@@ -1,12 +1,10 @@
-"use client";
 import LogoHeader from "@/components/LogoHeader/page";
 import { Phrase } from "@/components/Phrase";
 import { FORMS_NAMES } from "@/utils/TYPES";
-import { useSearchParams } from "next/navigation";
+import { PageProps } from "../../../../.next/types/app/layout";
 
-export default function ClientPhrase() {
-  const searchParams = useSearchParams();
-  const q = searchParams.get("q") || "";
+export default async function ClientPhrase({ searchParams }: PageProps) {
+  const { q = "" } = await searchParams;
   return (
     <div className="mb-10 mx-3">
       <LogoHeader />
